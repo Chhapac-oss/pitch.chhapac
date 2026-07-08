@@ -1528,6 +1528,17 @@
   document.querySelectorAll('.sso-btn').forEach(b=>b.addEventListener('click',()=>{
     pmMsg.textContent=b.dataset.sso+' sign-in is coming soon: the quick form below works today.';
   }));
+  // On non-Netlify hosts (e.g. Vercel) the form posts nowhere: route the lead to WhatsApp instead
+  if(!/netlify/.test(location.hostname)){
+    document.querySelector('.price-form').addEventListener('submit',e=>{
+      e.preventDefault();
+      const f=e.target;
+      const text='Hi Chhaya, please send me the '+(pmPlan.value||'Chhapac.decks')+' pricing.\n'
+        +'Name: '+f.name.value+'\nEmail: '+f.email.value+(f.linkedin.value?'\nLinkedIn: '+f.linkedin.value:'');
+      window.open('https://wa.me/919620147470?text='+encodeURIComponent(text),'_blank','noopener');
+      pmMsg.textContent='Opening WhatsApp to send your request. We reply with the deck by email.';
+    });
+  }
 
   // NDA case-study modal
   const CASE_PASSWORDS={};
