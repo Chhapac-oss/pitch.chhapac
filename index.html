@@ -2,14 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="description" content="Chhapac.decks: the narrative-first pitch deck arm of Chhapac. Narrative-led pitchflow and information design for the 3 minutes your pitch gets.">
-<meta property="og:title" content="Chhapac.decks: Fundraise-ready narratives">
-<meta property="og:description" content="The deck speaks for you, after you leave the room. Top 5% pitch readiness and fundraise.">
-<meta property="og:type" content="website">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;600;700&family=Poppins:ital,wght@0,400;0,500;0,600;1,500&display=swap" rel="stylesheet">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%22-6 -6 142 142%22><path d=%22M17.65,0c0,29.87,24.21,54.08,54.08,54.08V0H17.65Z%22 fill=%22%232B1586%22/><path d=%22M0,54.03c0,39.61,32.11,71.73,71.73,71.73V54.03H0Z%22 fill=%22%232B1586%22/><circle cx=%22111.75%22 cy=%2226.98%22 r=%2217.95%22 fill=%22%23E8542A%22/><path d=%22M129.89,89.66c0-9.91-8.04-17.95-17.95-17.95s-17.73,7.82-17.95,17.55c0,.13,0,.26,0,.4v32.58c12.67-4.14,23.78-11.72,32.24-21.62l-.05-.02c2.33-3.03,3.71-6.82,3.71-10.93Z%22 fill=%22%232B1586%22/></svg>">
+<meta name="description" content="Chhapac.decks: the narrative-first pitch deck arm of Chhapac. Narrative-led pitchflow and information design for the 3 minutes your pitch gets.">
+<meta property="og:title" content="Chhapac.decks: Fundraise-ready narratives">
+<meta property="og:description" content="The deck speaks for you, after you leave the room. Top 5% pitch readiness and fundraise.">
+<meta property="og:type" content="website">
 <title>Chhapac.decks: Fundraise-ready narratives</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
@@ -188,10 +188,15 @@
 
   .not-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:56px}
   .not-card{
-    background:#fff;border:1px solid var(--line);border-radius:18px;
-    padding:30px 26px 28px;transition:transform .3s ease,box-shadow .3s ease;
+    border-radius:18px;padding:30px 26px 28px;border:1px solid transparent;
+    background:linear-gradient(#fff,#fff) padding-box,
+      linear-gradient(135deg,rgba(242,106,27,.35),rgba(232,95,160,.30),rgba(122,60,232,.35)) border-box;
+    transition:transform .3s ease,box-shadow .3s ease,background .3s;
   }
-  .not-card:hover{transform:translateY(-5px);box-shadow:0 18px 40px rgba(26,13,110,.10)}
+  .not-card:hover{
+    background:linear-gradient(150deg,#FFFDF8,#FDF3EC 55%,#FBEFF6) padding-box,var(--btn-grad) border-box;
+    transform:translateY(-5px);box-shadow:0 18px 40px rgba(26,13,110,.10);
+  }
   .not-title{font-size:1.25rem;margin-bottom:12px}
   .not-card p{font-size:.93rem;color:var(--ink-soft)}
   .not-card p strong{color:var(--ink);font-weight:600}
@@ -346,11 +351,11 @@
     display:flex;flex-direction:column;
     transition:transform .3s,box-shadow .3s,background .3s;
   }
-  .plans:hover .plan{
+  /* "the subtle hover gradient": individual per card */
+  .plan:hover{
     background:linear-gradient(150deg,#FFFDF8,#FDF3EC 55%,#FBEFF6) padding-box,var(--btn-grad) border-box;
-    box-shadow:0 18px 44px rgba(26,13,110,.10);
+    transform:translateY(-6px);box-shadow:0 24px 54px rgba(26,13,110,.14);
   }
-  .plan:hover{transform:translateY(-6px);box-shadow:0 24px 54px rgba(26,13,110,.16)}
   .plan .best{
     position:absolute;top:-12px;right:26px;background:var(--purple);color:#fff;
     font-size:.62rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;
@@ -451,11 +456,13 @@
   .case-body h3{font-size:1.12rem;line-height:1.28}
   .case-body p{font-size:.87rem;color:var(--ink-soft);flex:1}
   .case-body button{
-    align-self:flex-start;background:none;border:1.5px solid var(--ink);color:var(--ink);
-    font-family:var(--sans);font-weight:600;font-size:.86rem;border-radius:999px;
-    padding:9px 20px;cursor:pointer;transition:background .25s,color .25s;
+    align-self:flex-start;color:var(--ink);font-family:var(--sans);font-weight:600;font-size:.86rem;
+    padding:9px 20px;cursor:pointer;border-radius:999px;border:1px solid transparent;
+    background:linear-gradient(var(--paper-soft),var(--paper-soft)) padding-box,var(--btn-grad) border-box;
+    background-size:100% 100%,240% 100%;animation:borderShift 7s ease-in-out infinite alternate;
+    transition:color .25s,transform .2s;
   }
-  .case-body button:hover{background:var(--ink);color:var(--paper)}
+  .case-body button:hover{color:var(--orange);transform:translateY(-2px)}
   @media(max-width:900px){.cases{grid-template-columns:1fr}}
 
   /* ————— decks wall: 200+ ecosystem ————— */
@@ -488,10 +495,11 @@
   .slide.kpi small{font-size:.55rem;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.1em}
   .wall-pill{
     position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:2;
-    background:rgba(251,248,241,.9);backdrop-filter:blur(10px);
-    border:1px solid var(--line);border-radius:999px;padding:20px 38px;
-    font-family:var(--display);font-size:clamp(1.2rem,2.6vw,1.9rem);font-weight:600;letter-spacing:-.02em;
-    box-shadow:0 18px 50px rgba(26,13,110,.18);white-space:nowrap;
+    padding:10px 22px;font-family:var(--display);font-size:.95rem;font-weight:600;letter-spacing:-.01em;
+    border-radius:999px;border:1px solid transparent;backdrop-filter:blur(8px);
+    background:linear-gradient(rgba(251,248,241,.94),rgba(251,248,241,.94)) padding-box,var(--btn-grad) border-box;
+    background-size:100% 100%,240% 100%;animation:borderShift 7s ease-in-out infinite alternate;
+    box-shadow:0 10px 30px rgba(26,13,110,.14);white-space:nowrap;
   }
   .wall-pill b{color:var(--orange);font-weight:700}
 
@@ -510,9 +518,10 @@
   .fav-card h3{font-size:1.25rem}
   .fav-card p{font-size:.88rem;color:var(--ink-soft)}
   @media(max-width:860px){.fav-cards{grid-template-columns:1fr}}
-  .sector-marquees{display:flex;flex-direction:column;gap:14px}
-  .strip{overflow:hidden;white-space:nowrap;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:16px 0}
-  .strip-track{display:inline-flex;gap:12px;animation:scroll 32s linear infinite}
+  .sector-marquees{display:flex;flex-direction:column;gap:0}
+  .strip{overflow:hidden;white-space:nowrap;padding:19px 0}
+  .strip:first-child{border-bottom:1px solid var(--line)}
+  .strip-track{display:inline-flex;gap:12px;animation:scroll 48s linear infinite}
   .strip.rev .strip-track{animation-direction:reverse}
   .strip .sector{
     font-size:.85rem;font-weight:500;color:var(--ink-soft);
@@ -583,24 +592,41 @@
   @media(max-width:860px){.faq-grid{grid-template-columns:1fr;gap:24px}}
 
   /* ————— odds: gradient bubbles CTA ————— */
-  .odds{position:relative;overflow:hidden;padding:150px 24px;text-align:center}
+  .odds{
+    position:relative;overflow:hidden;padding:170px 24px;text-align:center;
+    min-height:86vh;display:flex;align-items:center;justify-content:center;
+  }
   .odds::after{
-    content:"";position:absolute;inset:0;pointer-events:none;mix-blend-mode:overlay;opacity:.5;
+    content:"";position:absolute;inset:0;pointer-events:none;mix-blend-mode:overlay;opacity:.5;z-index:1;
     background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
   }
-  .bubble{position:absolute;border-radius:50%;pointer-events:none;animation:drift 12s ease-in-out infinite alternate}
-  .bubble.b1{width:340px;height:340px;top:-90px;left:4%;background:radial-gradient(circle at 36% 30%,#F26A1B,#E85FA0 62%,rgba(232,95,160,0) 74%);animation-duration:14s}
-  .bubble.b2{width:220px;height:220px;top:16%;right:8%;background:radial-gradient(circle at 40% 32%,#E85FA0,#B37BE8 66%,rgba(179,123,232,0) 76%);animation-duration:11s;animation-delay:-4s}
-  .bubble.b3{width:170px;height:170px;bottom:6%;left:16%;background:radial-gradient(circle at 38% 30%,#FFB89A,#E8542A 64%,rgba(232,84,42,0) 76%);animation-duration:13s;animation-delay:-7s}
-  .bubble.b4{width:280px;height:280px;bottom:-110px;right:20%;background:radial-gradient(circle at 36% 30%,#F5B8D8,#E85FA0 60%,rgba(232,95,160,0) 74%);animation-duration:16s;animation-delay:-2s}
-  .bubble.b5{width:130px;height:130px;top:30%;left:32%;background:radial-gradient(circle at 40% 32%,#E9D9F8,#B37BE8 68%,rgba(179,123,232,0) 78%);animation-duration:10s;animation-delay:-5s;opacity:.8}
-  .bubble.b6{width:100px;height:100px;top:12%;left:55%;background:radial-gradient(circle at 40% 32%,#FBE1C9,#F26A1B 70%,rgba(242,106,27,0) 80%);animation-duration:9s;animation-delay:-3s;opacity:.85}
-  @keyframes drift{from{transform:translateY(-26px)}to{transform:translateY(26px)}}
-  .odds-inner{position:relative;z-index:1;max-width:640px;margin:0 auto}
+  .bubble{
+    position:absolute;border-radius:50%;pointer-events:none;
+    transform:translateY(-130vh);
+    box-shadow:inset -16px -20px 36px rgba(43,21,134,.16),inset 12px 14px 30px rgba(255,255,255,.38),0 18px 40px rgba(26,13,110,.10);
+  }
+  .odds.go .bubble{
+    animation:fall 1.4s cubic-bezier(.24,.85,.32,1.04) var(--d,0s) both,
+      bobble 9s ease-in-out calc(var(--d,0s) + 1.5s) infinite alternate;
+  }
+  @keyframes fall{from{transform:translateY(-130vh)}to{transform:translateY(0)}}
+  @keyframes bobble{from{transform:translateY(-7px)}to{transform:translateY(7px)}}
+  .odds-inner{position:relative;z-index:2;max-width:640px;margin:0 auto;padding:36px 20px}
+  .odds-inner::before{
+    content:"";position:absolute;inset:-50px -80px;z-index:-1;border-radius:50%;
+    background:radial-gradient(ellipse at center,rgba(245,241,232,.9) 28%,rgba(245,241,232,.5) 58%,transparent 78%);
+  }
   .odds h2{font-size:clamp(2.3rem,5.4vw,3.9rem)}
   .odds p{color:var(--ink-soft);margin:18px auto 30px;max-width:42ch}
   .odds .odds-ctas{display:flex;flex-wrap:wrap;gap:14px;justify-content:center}
   .odds .btn-primary small{font-weight:500;opacity:.85}
+  .btn-glass{
+    background:rgba(255,255,255,.4);
+    backdrop-filter:blur(12px) saturate(160%);-webkit-backdrop-filter:blur(12px) saturate(160%);
+    border:1px solid rgba(255,255,255,.7);color:var(--ink);
+    box-shadow:0 8px 24px rgba(26,13,110,.10),inset 0 1px 0 rgba(255,255,255,.65);
+  }
+  .btn-glass:hover{background:rgba(255,255,255,.6);transform:translateY(-2px)}
 
   /* ————— footer ————— */
   .footer{position:relative;overflow:hidden;color:var(--paper);padding:26px 16px 0;margin:0}
@@ -627,19 +653,15 @@
   .icon-btn svg{width:20px;height:20px;fill:currentColor}
   .footer-lower{
     position:relative;z-index:1;max-width:1240px;margin:0 auto;
-    padding:48px 12px 30px;display:flex;flex-direction:column;gap:36px;
+    padding:36px 12px 28px;display:flex;flex-direction:column;gap:0;
   }
   .back-top{
-    color:#fff;text-decoration:none;font-size:.78rem;font-weight:600;
-    letter-spacing:.16em;text-transform:uppercase;width:max-content;
-    border-bottom:1px solid rgba(255,255,255,.45);padding-bottom:2px;
+    position:absolute;top:26px;right:30px;
+    color:var(--ink);text-decoration:none;font-size:.7rem;font-weight:600;
+    letter-spacing:.14em;text-transform:uppercase;
+    border-bottom:1px solid var(--line);padding-bottom:2px;
   }
-  .back-top:hover{border-color:#fff}
-  .word-pills{display:flex;flex-wrap:wrap;gap:10px}
-  .word-pills span{
-    font-size:.88rem;font-weight:500;color:rgba(245,241,232,.92);
-    border:1px solid rgba(245,241,232,.35);border-radius:999px;padding:7px 18px;
-  }
+  .back-top:hover{border-color:var(--ink)}
   .footer-meta{
     display:flex;flex-wrap:wrap;gap:20px;justify-content:space-between;align-items:center;
     border-top:1px solid rgba(245,241,232,.25);padding-top:24px;font-size:.82rem;color:rgba(245,241,232,.85);
@@ -697,6 +719,7 @@
     <a href="#plans">Plans</a>
     <a href="#cases">Case studies</a>
     <a href="#faq">FAQ</a>
+    <a href="about.html">About</a>
   </div>
   <a class="nav-cta" href="#contact">Book a call</a>
 </nav>
@@ -917,22 +940,22 @@
     </div>
     <div class="outcomes reveal">
       <div class="outcome-row">
-        <svg class="o-icon" viewBox="0 0 72 72" aria-hidden="true"><rect x="10" y="8" width="26" height="26" rx="13" fill="#F5B8D8"/><rect x="10" y="30" width="26" height="26" rx="13" fill="#E8845F" opacity=".9"/></svg>
+        <svg class="o-icon" viewBox="0 0 72 72" aria-hidden="true"><defs><linearGradient id="og1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F26A1B"/><stop offset="1" stop-color="#E85FA0"/></linearGradient></defs><rect x="14" y="6" width="30" height="34" rx="15" fill="url(#og1)" opacity=".55"/><rect x="14" y="32" width="30" height="34" rx="15" fill="url(#og1)"/></svg>
         <h3>Clarity, first</h3>
         <p>Designed to create clarity in the first 5 minutes of the room.</p>
       </div>
       <div class="outcome-row">
-        <svg class="o-icon" viewBox="0 0 72 72" aria-hidden="true"><g fill="#E85FA0"><circle cx="24" cy="24" r="13"/><circle cx="48" cy="24" r="13"/><circle cx="24" cy="48" r="13"/><circle cx="48" cy="48" r="13"/></g></svg>
+        <svg class="o-icon" viewBox="0 0 72 72" aria-hidden="true"><defs><linearGradient id="og2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#E85FA0"/><stop offset="1" stop-color="#7A3CE8"/></linearGradient></defs><g fill="url(#og2)"><circle cx="24" cy="24" r="14"/><circle cx="48" cy="24" r="14"/><circle cx="24" cy="48" r="14"/><circle cx="48" cy="48" r="14"/></g></svg>
         <h3>Follow-ups that convert</h3>
         <p>Up to 70% improvement in follow-up conversations post-pitch.</p>
       </div>
       <div class="outcome-row">
-        <svg class="o-icon" viewBox="0 0 72 72" aria-hidden="true"><path d="M14 62 V30 L36 10 L58 30 V62 Z" fill="#F2C744"/></svg>
+        <svg class="o-icon" viewBox="0 0 72 72" aria-hidden="true"><defs><linearGradient id="og3" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFB89A"/><stop offset="1" stop-color="#E8542A"/></linearGradient></defs><path d="M14 62 V30 L36 10 L58 30 V62 Z" fill="url(#og3)"/></svg>
         <h3>Remembered for days</h3>
         <p>Narratives investors remember days later, not minutes.</p>
       </div>
       <div class="outcome-row">
-        <svg class="o-icon" viewBox="0 0 72 72" aria-hidden="true"><path d="M12 62 V36 A24 24 0 0 1 60 36 V62 Z" fill="#2B1586"/></svg>
+        <svg class="o-icon" viewBox="0 0 72 72" aria-hidden="true"><defs><linearGradient id="og4" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7A3CE8"/><stop offset="1" stop-color="#2B1586"/></linearGradient></defs><path d="M12 62 V36 A24 24 0 0 1 60 36 V62 Z" fill="url(#og4)"/></svg>
         <h3>10x retention</h3>
         <p>Visual-first information design that improves retention by up to 10x.</p>
       </div>
@@ -984,7 +1007,7 @@
           <li><strong>1 PDF output</strong> (no edit access)</li>
         </ul>
         <div class="p-line">Refinement: 1 consolidated round</div>
-        <div class="p-line"><em>5-day sprint</em> · 3 calls valid for 5 days</div>
+        <div class="p-line"><em>5-day sprint</em><br>3 calls valid for 5 days</div>
         <button class="p-cta grad-border" type="button" data-plan="Agentic Module Pilots">Download pricing</button>
       </article>
       <article class="plan reveal">
@@ -1000,7 +1023,7 @@
           <li><strong>1 Presenter Deck</strong> - editable</li>
         </ul>
         <div class="p-line">Refinement: 2 consolidated rounds</div>
-        <div class="p-line"><em>15-day sprint</em> · 10 calls valid for 15 days</div>
+        <div class="p-line"><em>15-day sprint</em><br>10 calls valid for 15 days</div>
         <button class="p-cta grad-border" type="button" data-plan="Starter Module">Download pricing</button>
       </article>
       <article class="plan reveal">
@@ -1015,7 +1038,7 @@
           <li><strong>One pager + Presenter Deck + Emailing Deck</strong> (long)</li>
         </ul>
         <div class="p-line">Refinement: 2 consolidated rounds</div>
-        <div class="p-line"><em>20-day sprint</em> · 15 calls valid for 20 days</div>
+        <div class="p-line"><em>20-day sprint</em><br>15 calls valid for 20 days</div>
         <button class="p-cta grad-border" type="button" data-plan="Pro Pitcher Edition">Download pricing</button>
       </article>
     </div>
@@ -1218,19 +1241,6 @@
   </div>
 </section>
 
-<!-- ————— ABOUT ————— -->
-<section id="about" style="padding-top:0">
-  <div class="wrap">
-    <div class="sec-head reveal" style="margin-bottom:36px">
-      <h2><span class="eyebrow" style="display:inline-flex;margin-bottom:14px">About us</span><br>Founder-built, <span class="accent">founder-to-founder</span></h2>
-    </div>
-    <div class="about-grid reveal">
-      <p><strong>Chhapac is a strategy and creative collective</strong> with a forte in narrative engineering for driven founders who are actively designing how we experience the future. Chhapac.decks is its pitch arm: we help founders turn complex businesses into decks investors understand, trust, and remember.</p>
-      <p>It is led by <strong>Chhaya Joshi</strong>, an ex-SaaS founder who scaled in Southeast Asia, so every engagement runs founder-to-founder, not vendor-to-client. The working belief is simple: you have too much information, and it can't fit in 10 minutes or 10 slides. Deciding what to use, and how it creates a hook: that's the work.</p>
-    </div>
-  </div>
-</section>
-
 <!-- ————— FAQ ————— -->
 <section id="faq" style="padding-top:0">
   <div class="wrap">
@@ -1271,14 +1281,13 @@
 
 <!-- ————— ODDS: gradient bubbles CTA ————— -->
 <section class="odds" aria-label="Call to action">
-  <div class="bubble b1"></div><div class="bubble b2"></div><div class="bubble b3"></div>
-  <div class="bubble b4"></div><div class="bubble b5"></div><div class="bubble b6"></div>
+  <div class="bubble-field" aria-hidden="true"></div>
   <div class="odds-inner reveal">
     <h2>Feel the odds fall <span class="accent">in your favour.</span></h2>
     <p>Unlock the narrative, the structure, and the recall your raise deserves.</p>
     <div class="odds-ctas">
       <a class="btn btn-primary" href="https://wa.me/919620147470?text=Hi%20Chhaya%2C%20I%27d%20like%20a%20free%20pitch%20audit." target="_blank" rel="noopener">Free pitch audit&nbsp;<small>· takes 5 minutes</small></a>
-      <a class="btn btn-ghost" href="https://calendly.com/chhayajoshi" target="_blank" rel="noopener">I'm ready to start</a>
+      <a class="btn btn-glass" href="https://calendly.com/chhayajoshi" target="_blank" rel="noopener">I'm ready to start</a>
     </div>
   </div>
 </section>
@@ -1287,6 +1296,7 @@
 <footer class="footer grad-anim" id="contact">
   <canvas class="grain" data-grain></canvas>
   <div class="footer-card">
+    <a class="back-top" href="#top">Back to top ↑</a>
     <div>
       <span class="eyebrow">The goal</span>
       <h2>The top 5% of <span class="accent">fundraise readiness.</span></h2>
@@ -1314,7 +1324,7 @@
         <a href="#plans">Plans</a>
         <a href="#cases">Case studies</a>
         <a href="#faq">FAQ</a>
-        <a href="#about">About us</a>
+        <a href="about.html">About us</a>
       </div>
       <div class="fc-col">
         <span class="fc-h">Connect</span>
@@ -1326,10 +1336,6 @@
     </div>
   </div>
   <div class="footer-lower">
-    <a class="back-top" href="#top">Back to top ↑</a>
-    <div class="word-pills" aria-hidden="true">
-      <span>narrative</span><span>clarity</span><span>conviction</span><span>speed</span><span>outcome</span><span>memorable</span>
-    </div>
     <div class="footer-meta">
       <div class="footer-brand" style="color:#F5F1E8">
         <svg viewBox="0 0 714.95 129.62" width="121" height="22"><use href="#logo"/></svg>
@@ -1443,6 +1449,25 @@
     for(let i=0;i<8;i++)row+=SLIDES[(i+r*2)%SLIDES.length];
     track.innerHTML=row+row;
   });
+
+  // bubbles: edge-to-edge field, fall on scroll into view
+  (function(){
+    const field=document.querySelector('.bubble-field'),odds=document.querySelector('.odds');
+    if(!field)return;
+    const PAIRS=[['#F26A1B','#E85FA0'],['#E85FA0','#B37BE8'],['#FFB89A','#E8542A'],['#F5B8D8','#E85FA0'],['#E9D9F8','#B37BE8'],['#F5B8D8','#F26A1B']];
+    const COLS=8,ROWS=4;let html='';
+    for(let r=0;r<ROWS;r++)for(let c=0;c<COLS;c++){
+      const i=r*COLS+c;
+      const size=104+((i*29)%44);                       // similar-ish sizes: 104-148px
+      const left=c*(100/COLS)+(((i*17)%10)-5)-4;        // jittered grid, edge to edge
+      const top=r*(100/ROWS)+(((i*23)%12)-6)-6;
+      const [c1,c2]=PAIRS[i%PAIRS.length];
+      const d=(((i*13)%16)*0.07).toFixed(2);
+      html+=`<div class="bubble" style="width:${size}px;height:${size}px;left:${left}%;top:${top}%;--d:${d}s;background:radial-gradient(circle at 36% 30%,${c1},${c2} 72%)"></div>`;
+    }
+    field.innerHTML=html;
+    new IntersectionObserver((es,o)=>{es.forEach(e=>{if(e.isIntersecting){odds.classList.add('go');o.disconnect()}})},{threshold:.2}).observe(odds);
+  })();
 
   // pricing modal
   const priceModal=document.getElementById('priceModal'),pmTitle=document.getElementById('pm-title'),
