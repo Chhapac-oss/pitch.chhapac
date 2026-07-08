@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;600;700&family=Poppins:ital,wght@0,400;0,500;0,600;1,500&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://api.fontshare.com">
+<link rel="preconnect" href="https://cdn.fontshare.com" crossorigin>
+<link href="https://api.fontshare.com/v2/css?f[]=switzer@400,500,600,700&display=swap" rel="stylesheet">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%22-6 -6 142 142%22><path d=%22M17.65,0c0,29.87,24.21,54.08,54.08,54.08V0H17.65Z%22 fill=%22%232B1586%22/><path d=%22M0,54.03c0,39.61,32.11,71.73,71.73,71.73V54.03H0Z%22 fill=%22%232B1586%22/><circle cx=%22111.75%22 cy=%2226.98%22 r=%2217.95%22 fill=%22%23E8542A%22/><path d=%22M129.89,89.66c0-9.91-8.04-17.95-17.95-17.95s-17.73,7.82-17.95,17.55c0,.13,0,.26,0,.4v32.58c12.67-4.14,23.78-11.72,32.24-21.62l-.05-.02c2.33-3.03,3.71-6.82,3.71-10.93Z%22 fill=%22%232B1586%22/></svg>">
 <meta name="description" content="Chhapac.decks: the narrative-first pitch deck arm of Chhapac. Narrative-led pitchflow and information design for the 3 minutes your pitch gets.">
 <meta property="og:title" content="Chhapac.decks: Fundraise-ready narratives">
@@ -18,7 +18,7 @@
     --paper:#F5F1E8;
     --paper-soft:#FBF8F1;
     --ink:#3F3C45;          /* deep gray: all reading text */
-    --ink-soft:#6E6A75;
+    --ink-soft:#3F3C45;
     --purple:#2B1586;       /* UI + brand marks only, never body text */
     --purple-mid:#5a1a8a;
     --orange:#E8542A;
@@ -29,12 +29,12 @@
     --line:rgba(63,60,69,.14);
     --card-dark:#241931;
     --radius:22px;
-    --display:"Inter Tight","Inter","SF Pro Display",-apple-system,"Helvetica Neue","Segoe UI",sans-serif;
-    --sans:"Poppins","Avenir Next","Futura","Century Gothic","Trebuchet MS",system-ui,sans-serif;
+    --display:"Acid Grotesk","Switzer","Inter Tight",-apple-system,"Helvetica Neue","Segoe UI",sans-serif;
+    --sans:"Acid Grotesk","Switzer","Inter Tight",-apple-system,"Helvetica Neue","Segoe UI",sans-serif;
     --max:1160px;
     --grad:linear-gradient(115deg,#2B1586 0%,#5a1a8a 26%,#E8542A 52%,#E85FA0 72%,#7A3CE8 88%,#2B1586 100%);
     --btn-grad:linear-gradient(115deg,#F26A1B 0%,#E8542A 34%,#E85FA0 78%,#7A3CE8 125%);
-    --ast:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><defs><path id='p' d='M50 50C44.5 42 40.5 26 43.5 14.5A9 9 0 0 1 56.5 14.5C59.5 26 55.5 42 50 50Z' fill='%23E8542A'/></defs><use href='%23p'/><use href='%23p' transform='rotate(45 50 50)'/><use href='%23p' transform='rotate(90 50 50)'/><use href='%23p' transform='rotate(135 50 50)'/><use href='%23p' transform='rotate(180 50 50)'/><use href='%23p' transform='rotate(225 50 50)'/><use href='%23p' transform='rotate(270 50 50)'/><use href='%23p' transform='rotate(315 50 50)'/></svg>");
+    --ast:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><defs><path id='p' d='M50 50C43.5 41.5 39.5 25.5 42.5 13A10 10 0 0 1 57.5 13C60.5 25.5 56.5 41.5 50 50Z' fill='%23E8542A'/></defs><use href='%23p'/><use href='%23p' transform='rotate(45 50 50)'/><use href='%23p' transform='rotate(90 50 50)'/><use href='%23p' transform='rotate(135 50 50)'/><use href='%23p' transform='rotate(180 50 50)'/><use href='%23p' transform='rotate(225 50 50)'/><use href='%23p' transform='rotate(270 50 50)'/><use href='%23p' transform='rotate(315 50 50)'/></svg>");
   }
   *{margin:0;padding:0;box-sizing:border-box}
   html{scroll-behavior:smooth}
@@ -44,7 +44,7 @@
   }
   body{
     background:var(--paper);color:var(--ink);font-family:var(--sans);
-    font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;
+    font-size:16px;line-height:1.45;-webkit-font-smoothing:antialiased;overflow-x:hidden;
   }
   ::selection{background:var(--orange);color:var(--paper)}
   a{color:inherit}
@@ -126,15 +126,27 @@
 
   /* ————— hero ————— */
   header{padding:96px 16px 0}
+  .band-wrap{position:relative;max-width:1280px;margin:0 auto}
   .hero-band{
-    position:relative;max-width:1280px;margin:0 auto;height:min(44vh,380px);min-height:250px;
+    position:relative;height:min(44vh,380px);min-height:250px;
     border-radius:16px;overflow:hidden;
+    background:linear-gradient(115deg,#F26A1B 0%,#E8542A 34%,#E85FA0 68%,#9A5BE8 100%);
   }
+  .hero-band .swirl{
+    position:absolute;inset:-45%;transform-origin:center;
+    background:conic-gradient(from 0deg at 50% 50%,#F26A1B,#E85FA0 30%,#B37BE8 50%,#E8542A 72%,#F26A1B 100%);
+    filter:blur(90px);opacity:.45;animation:spin 46s linear infinite;
+  }
+  .hero-blob{
+    position:absolute;right:6%;bottom:-135px;width:535px;height:535px;z-index:2;
+    pointer-events:none;filter:drop-shadow(0 24px 40px rgba(26,13,110,.18));
+  }
+  @media(max-width:860px){.hero-blob{width:245px;height:245px;bottom:-62px;right:2%}}
   .hero-band .band-word{
     position:absolute;left:32px;bottom:22px;color:rgba(255,255,255,.92);z-index:1;
-    font-size:.75rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;
+    font-size:.8rem;font-weight:600;letter-spacing:.04em;text-transform:uppercase;
   }
-  .hero-band .band-ast{position:absolute;top:26px;right:30px;width:46px;height:46px;color:#F5F1E8;z-index:1}
+  .hero-band .band-ast{position:absolute;top:26px;right:30px;width:55px;height:55px;color:#F5F1E8;z-index:1}
   .hero-grid{
     display:grid;grid-template-columns:1.25fr .9fr;gap:48px;align-items:end;
     max-width:var(--max);margin:0 auto;padding:56px 8px 0;
@@ -149,9 +161,9 @@
   }
 
   /* ————— trust counters ————— */
-  .stats{margin-top:64px;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .stats{margin-top:64px;width:100%;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
   .stats-grid{display:grid;grid-template-columns:repeat(4,1fr)}
-  .stat{padding:34px 22px;border-left:1px solid var(--line)}
+  .stat{padding:34px 3vw;border-left:1px solid var(--line)}
   .stat:first-child{border-left:none}
   .stat .num{
     font-family:var(--display);font-size:clamp(2rem,3.6vw,2.9rem);font-weight:600;color:var(--ink);
@@ -215,7 +227,7 @@
   .block-dark{background:var(--card-dark);color:var(--paper)}
   .block .glyph{width:70px;height:70px;flex:none}
   .block h3{font-size:1.3rem;margin-bottom:12px;color:inherit}
-  .block p{font-size:.9rem;line-height:1.55;opacity:.85}
+  .block p{font-size:.9rem;line-height:1.45;opacity:.85}
   .block .tag{
     position:absolute;top:24px;right:24px;font-size:.66rem;font-weight:600;
     letter-spacing:.14em;text-transform:uppercase;
@@ -231,22 +243,40 @@
   .block-dark .block-cta{color:var(--peach)}
   @media(max-width:900px){.blocks{grid-template-columns:1fr}.block{min-height:0;gap:30px}}
 
-  .services-note{
-    margin-top:48px;display:grid;grid-template-columns:1fr 2fr;gap:44px;align-items:center;
-    background:var(--paper-soft);border:1px solid var(--line);border-radius:var(--radius);
-    padding:44px 42px;
+  .ai-band{
+    position:relative;margin:72px calc(50% - 50vw) 240px;
+    background:
+      radial-gradient(circle at 86% 10%,rgba(242,106,27,.42),transparent 52%),
+      radial-gradient(circle at 4% 98%,rgba(232,84,42,.32),transparent 46%),
+      linear-gradient(118deg,#241931 0%,#221240 55%,#2A1670 100%);
+    color:var(--paper);padding:76px 0 84px;
   }
-  .services-q{font-family:var(--display);font-size:clamp(1.3rem,2.4vw,1.7rem);font-weight:600;letter-spacing:-.024em;color:var(--ink);margin-bottom:12px;text-wrap:balance}
-  .services-sub{font-size:.95rem;color:var(--ink-soft)}
-  .services-note h3{font-size:1.05rem;margin:12px 0 16px}
+  .ai-inner{
+    position:relative;z-index:1;max-width:var(--max);margin:0 auto;padding:0 24px;
+    display:grid;grid-template-columns:.9fr 1.1fr;gap:44px;align-items:center;
+  }
+  .services-q{font-family:var(--display);font-size:clamp(1.5rem,2.9vw,2.1rem);font-weight:600;letter-spacing:-.024em;color:var(--paper);margin-bottom:14px;text-wrap:balance}
+  .services-sub{font-size:.95rem;color:rgba(245,241,232,.8)}
+  .ai-band h3{font-size:1.05rem;margin:18px 0 14px;color:var(--paper)}
   .deck-pills{display:flex;flex-wrap:wrap;gap:9px}
   .deck-pills span{
-    font-weight:500;padding:7px 15px;font-size:.82rem;color:var(--ink);
+    font-weight:500;padding:7px 15px;font-size:.82rem;color:var(--paper);
     border:1px solid transparent;border-radius:999px;
-    background:linear-gradient(var(--paper-soft),var(--paper-soft)) padding-box,var(--btn-grad) border-box;
+    background:linear-gradient(#241931,#241931) padding-box,
+      linear-gradient(135deg,rgba(242,106,27,.55),rgba(232,95,160,.45),rgba(122,60,232,.55)) border-box;
     background-size:100% 100%,240% 100%;animation:borderShift 7s ease-in-out infinite alternate;
   }
-  @media(max-width:860px){.services-note{grid-template-columns:1fr;gap:26px}}
+  .ai-cube{
+    width:min(620px,45vw);height:auto;justify-self:end;align-self:end;
+    margin-right:-2vw;margin-bottom:-170px;position:relative;z-index:2;pointer-events:none;
+    filter:drop-shadow(0 30px 50px rgba(26,13,110,.35));
+  }
+  .ai-inner>div:first-child{position:relative;z-index:3}
+  @media(max-width:860px){
+    .ai-inner{grid-template-columns:1fr;gap:26px}
+    .ai-cube{width:min(420px,92%);margin-right:0;justify-self:center;margin-bottom:-110px}
+    .ai-band{margin-bottom:150px}
+  }
 
   /* ————— process accordion (numbered) + faq (unnumbered) ————— */
   .process{counter-reset:step}
@@ -274,19 +304,13 @@
   .step .st-inner{overflow:hidden}
   .step .st-inner ul{
     list-style:none;padding:0 8px 30px 66px;color:var(--ink-soft);font-size:.95rem;
-    display:flex;flex-direction:column;gap:8px;max-width:68ch;
+    display:flex;flex-direction:column;gap:6px;max-width:68ch;
   }
   .step .st-inner li{padding-left:22px;position:relative}
   .step .st-inner li::before{content:"";position:absolute;left:0;top:.3em;width:.75em;height:.75em;background:var(--ast) center/contain no-repeat}
   .step .st-inner .st-text{padding:0 8px 30px 66px;color:var(--ink-soft);font-size:.95rem;max-width:68ch}
   .step .st-inner .st-text a{color:var(--orange);font-weight:600;text-decoration:none;border-bottom:1.5px solid var(--orange)}
-  .process-note{
-    margin-top:36px;display:flex;gap:16px;align-items:flex-start;
-    background:var(--paper-soft);border:1px solid var(--line);border-left:5px solid var(--orange);
-    border-radius:14px;padding:22px 26px;font-size:.93rem;color:var(--ink-soft);max-width:760px;
-  }
-  .process-note strong{color:var(--ink)}
-  .process-note .ast-inline{width:1.25em;height:1.25em;flex:none;margin-top:.15em}
+  .process-fine{margin-top:22px;font-size:.76rem;color:var(--ink);max-width:78ch}
 
   /* ————— marquees ————— */
   .marquee{
@@ -316,30 +340,6 @@
     .outcomes .outcome-row p{grid-column:2}
     .o-icon{width:52px;height:52px}
   }
-
-  /* ————— investor filters ————— */
-  .filters-layout{display:grid;grid-template-columns:1fr 2fr;gap:44px;align-items:start}
-  .filter-chips{display:flex;flex-direction:column;gap:10px}
-  .chip{
-    display:flex;align-items:center;gap:16px;width:100%;
-    background:none;border:1.5px solid var(--line);border-radius:16px;cursor:pointer;
-    padding:15px 20px;font-family:var(--sans);text-align:left;
-    transition:border-color .25s,background .25s,transform .2s;
-  }
-  .chip .c-num{font-size:.75rem;font-weight:600;color:var(--orange);font-variant-numeric:tabular-nums}
-  .chip .c-name{font-size:1.02rem;font-weight:600;color:var(--ink)}
-  .chip:hover{border-color:var(--ink);transform:translateX(4px)}
-  .chip[aria-selected="true"]{background:var(--card-dark);border-color:var(--card-dark)}
-  .chip[aria-selected="true"] .c-name{color:var(--paper)}
-  .chip[aria-selected="true"] .c-num{color:var(--peach)}
-  .filter-panel{
-    color:#fff;border-radius:var(--radius);padding:44px 40px;min-height:340px;
-    position:relative;overflow:hidden;
-    display:flex;flex-direction:column;justify-content:flex-end;gap:18px;
-  }
-  .filter-panel .fp-q{font-family:var(--display);font-weight:500;font-size:1.45rem;line-height:1.3;letter-spacing:-.02em;color:var(--peach);position:relative;z-index:1}
-  .filter-panel .fp-d{font-size:.96rem;opacity:.92;max-width:52ch;position:relative;z-index:1}
-  @media(max-width:860px){.filters-layout{grid-template-columns:1fr}.filter-panel{min-height:0}}
 
   /* ————— plans: modules ————— */
   .plans{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;align-items:stretch}
@@ -493,6 +493,43 @@
   .slide.kpi{flex-direction:row;align-items:center;gap:10px;justify-content:space-between;padding:16px}
   .slide.kpi b{font-family:var(--display);font-size:1.15rem;color:var(--ink);display:block;letter-spacing:-.02em}
   .slide.kpi small{font-size:.55rem;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.1em}
+  .slide.img{padding:0}
+  .slide.img img{width:100%;height:100%;object-fit:cover;display:block}
+  .slide .tt{font-family:var(--display);font-weight:600;letter-spacing:-.02em;line-height:1.15}
+  .slide.tgs{background:#eef0ea;flex-direction:row;gap:10px;padding:14px;justify-content:flex-start}
+  .slide.tgs .tg-l{flex:1;display:flex;flex-direction:column;gap:6px}
+  .slide.tgs .tg-l .tt{font-size:.62rem;color:#173B33}
+  .slide.tgs .tg-pill{background:#E4F97B;border:1px solid #173B33;border-radius:6px;padding:5px 7px;font-size:.5rem;color:#173B33}
+  .slide.tgs .tg-pill b{display:block;font-size:.62rem}
+  .slide.tgs .tg-dots{display:grid;grid-template-columns:repeat(6,1fr);gap:2.5px;align-content:center}
+  .slide.tgs .tg-dots i{width:13px;height:13px;border-radius:50%}
+  .slide.sonx{background:#0b0b0d;flex-direction:row;gap:10px;padding:12px;justify-content:flex-start}
+  .slide.sonx .sx-blobs{flex:1;position:relative;border-radius:8px;overflow:hidden}
+  .slide.sonx .sx-blobs i{position:absolute;border-radius:40px}
+  .slide.sonx .sx-tx{flex:1.1;display:flex;flex-direction:column;justify-content:center;gap:5px;background:#17171c;border-radius:8px;padding:10px}
+  .slide.sonx .sx-tx .tt{font-size:.6rem;color:#4ADE96}
+  .slide.sonx .sx-tx p{font-size:.45rem;color:rgba(255,255,255,.75);line-height:1.35}
+  .slide.edk{background:#0a0a0a;flex-direction:row;gap:8px;padding:14px;justify-content:flex-start}
+  .slide.edk .ed-l{flex:1.3;display:flex;flex-direction:column;justify-content:center}
+  .slide.edk .ed-l .tt{font-size:.78rem;color:#fff}
+  .slide.edk .ed-l small{font-size:.42rem;color:rgba(255,255,255,.55);letter-spacing:.12em;margin-top:8px}
+  .slide.edk .ed-grid{flex:.7;display:grid;grid-template-columns:repeat(4,1fr);gap:1.5px;align-content:center}
+  .slide.edk .ed-grid i{aspect-ratio:1;background:linear-gradient(135deg,#3a3a3a,#6b6b6b 60%,#222)}
+  .slide.edk .ed-grid i:nth-child(3n){background:linear-gradient(45deg,#555,#8a8a8a 50%,#2e2e2e)}
+  .slide.sqf{background:#e9ecf7;flex-direction:column;gap:6px;padding:12px;justify-content:flex-start}
+  .slide.sqf .tt{font-size:.58rem;color:#1c1c28;text-align:center}
+  .slide.sqf .sq-row{display:flex;gap:4px;flex:1}
+  .slide.sqf .sq-col{flex:1;display:flex;flex-direction:column;gap:3px}
+  .slide.sqf .sq-w{background:#fff;border-radius:4px;flex:1;box-shadow:0 1px 2px rgba(28,28,40,.12)}
+  .slide.sqf .sq-b{background:#6c7fe8;border-radius:4px;flex:1}
+  .slide.nrf{background:#fff;flex-direction:row;gap:10px;padding:12px;justify-content:flex-start}
+  .slide.nrf .nf-l{flex:1;display:flex;flex-direction:column;justify-content:center;gap:5px}
+  .slide.nrf .nf-l .tt{font-size:.6rem;color:#1c1c28}
+  .slide.nrf .nf-l .tt em{font-style:normal;color:#5b3df5}
+  .slide.nrf .nf-pills{display:flex;gap:3px}
+  .slide.nrf .nf-pills i{border:1px solid #5b3df5;border-radius:99px;height:8px;width:26px}
+  .slide.nrf .nf-grid{flex:1;display:grid;grid-template-columns:1fr 1fr;gap:4px}
+  .slide.nrf .nf-grid i{border-radius:4px;background:linear-gradient(160deg,#ece7fb,#d9d0f7)}
   .wall-pill{
     position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:2;
     padding:10px 22px;font-family:var(--display);font-size:.95rem;font-weight:600;letter-spacing:-.01em;
@@ -542,28 +579,54 @@
     position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;
     border-radius:var(--radius);padding:28px 24px;display:flex;flex-direction:column;gap:14px;
   }
-  .flip-front{background:var(--card-dark);color:var(--paper)}
+  .flip-front{background:var(--ink);color:var(--paper)}
+  .fm-badge{position:absolute;top:16px;right:16px;font-size:.66rem;font-weight:600;letter-spacing:.06em;color:var(--peach);border:1px solid rgba(255,255,255,.28);padding:4px 10px;border-radius:999px}
   .flip-back{
     background:linear-gradient(150deg,#FBE1C9 0%,#F5B8D8 55%,#E88BB8 100%);
-    color:var(--card-dark);transform:rotateY(180deg);justify-content:space-between;
+    color:var(--card-dark);transform:rotateY(180deg);justify-content:space-between;overflow:hidden;
   }
+  .fb-photo{position:absolute;inset:0;background-size:cover;background-position:center}
+  .fb-veil{position:absolute;inset:0;background:linear-gradient(180deg,rgba(251,232,214,.93),rgba(245,184,216,.88))}
+  .flip-back>span,.flip-back>h4,.flip-back>p{position:relative;z-index:1}
   .avatar{
     width:56px;height:56px;border-radius:50%;flex:none;overflow:hidden;
     background:linear-gradient(140deg,var(--orange),var(--pink));
     display:flex;align-items:center;justify-content:center;color:#fff;font-weight:600;
   }
   .avatar img{width:100%;height:100%;object-fit:cover}
-  .flip-front .fq{font-size:.94rem;line-height:1.55;flex:1}
+  .flip-front .fq{font-size:.94rem;line-height:1.45;flex:1}
   .flip-front .fq::before{content:"“";color:var(--peach);font-size:1.4em;line-height:0;margin-right:2px}
   .flip-front .fn{font-weight:600;font-size:.92rem}
   .flip-front .fr{font-size:.78rem;opacity:.7;line-height:1.4}
   .flip-back .fb-tag{font-size:.66rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--purple)}
   .flip-back h4{font-size:1.08rem;line-height:1.28;color:inherit}
-  .flip-back p{font-size:.86rem;line-height:1.55;opacity:.85;flex:1}
+  .flip-back p{font-size:.86rem;line-height:1.45;opacity:.85;flex:1}
   .flip-back .hint{font-size:.72rem;opacity:.6}
 
+  .wins-blocks{margin-top:56px}
+  .ws-lead{font-weight:600;font-size:.95rem;margin-bottom:14px}
+  .wb-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-bottom:28px}
+  .wb{
+    background:var(--paper-soft);border:1px solid var(--line);border-radius:16px;
+    padding:46px 20px 20px;font-size:.92rem;position:relative;
+    transition:transform .25s,box-shadow .25s;
+  }
+  .wb::before{content:"";position:absolute;top:18px;left:20px;width:18px;height:18px;background:var(--ast) center/contain no-repeat}
+  .wb:hover{transform:translateY(-4px);box-shadow:0 14px 30px rgba(26,13,110,.10)}
+  @media(max-width:900px){.wb-grid{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:560px){.wb-grid{grid-template-columns:1fr}}
+  .ws-close{font-size:.95rem}
+  .ws-big{
+    display:block;font-family:var(--display);font-size:1.4rem;font-weight:600;
+    letter-spacing:-.02em;line-height:1.22;margin-top:8px;
+  }
+  .ws-big em{
+    font-style:normal;background:var(--btn-grad);
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+
   /* ————— investor logo strip ————— */
-  .inv-strip{margin-top:64px;text-align:center}
+  .inv-strip{margin:210px 0 80px;text-align:center}
   .inv-strip h3{font-size:1.35rem}
   .inv-strip .inv-sub{font-size:.9rem;color:var(--ink-soft);margin:8px 0 30px}
   .inv-track-wrap{overflow:hidden;white-space:nowrap;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:26px 0}
@@ -588,6 +651,8 @@
   /* ————— FAQ ————— */
   .faq-grid{display:grid;grid-template-columns:1fr 2fr;gap:44px;align-items:start}
   .faq-grid h2{font-size:clamp(2.4rem,5vw,3.6rem)}
+  .faq-list .st-title{font-weight:400}
+  .faq-list .st-inner .st-text{padding-left:8px}
   .faq-grid .faq-sub{font-family:var(--display);font-size:1.25rem;font-weight:500;letter-spacing:-.02em;color:var(--ink-soft);margin-top:14px;max-width:20ch}
   @media(max-width:860px){.faq-grid{grid-template-columns:1fr;gap:24px}}
 
@@ -675,14 +740,14 @@
 <body>
 <svg style="display:none" aria-hidden="true"><defs>
 <symbol id="ast" viewBox="0 0 100 100">
-  <path d="M50 50C44.5 42 40.5 26 43.5 14.5A9 9 0 0 1 56.5 14.5C59.5 26 55.5 42 50 50Z"/>
-  <path transform="rotate(45 50 50)" d="M50 50C44.5 42 40.5 26 43.5 14.5A9 9 0 0 1 56.5 14.5C59.5 26 55.5 42 50 50Z"/>
-  <path transform="rotate(90 50 50)" d="M50 50C44.5 42 40.5 26 43.5 14.5A9 9 0 0 1 56.5 14.5C59.5 26 55.5 42 50 50Z"/>
-  <path transform="rotate(135 50 50)" d="M50 50C44.5 42 40.5 26 43.5 14.5A9 9 0 0 1 56.5 14.5C59.5 26 55.5 42 50 50Z"/>
-  <path transform="rotate(180 50 50)" d="M50 50C44.5 42 40.5 26 43.5 14.5A9 9 0 0 1 56.5 14.5C59.5 26 55.5 42 50 50Z"/>
-  <path transform="rotate(225 50 50)" d="M50 50C44.5 42 40.5 26 43.5 14.5A9 9 0 0 1 56.5 14.5C59.5 26 55.5 42 50 50Z"/>
-  <path transform="rotate(270 50 50)" d="M50 50C44.5 42 40.5 26 43.5 14.5A9 9 0 0 1 56.5 14.5C59.5 26 55.5 42 50 50Z"/>
-  <path transform="rotate(315 50 50)" d="M50 50C44.5 42 40.5 26 43.5 14.5A9 9 0 0 1 56.5 14.5C59.5 26 55.5 42 50 50Z"/>
+  <path d="M50 50C43.5 41.5 39.5 25.5 42.5 13A10 10 0 0 1 57.5 13C60.5 25.5 56.5 41.5 50 50Z"/>
+  <path transform="rotate(45 50 50)" d="M50 50C43.5 41.5 39.5 25.5 42.5 13A10 10 0 0 1 57.5 13C60.5 25.5 56.5 41.5 50 50Z"/>
+  <path transform="rotate(90 50 50)" d="M50 50C43.5 41.5 39.5 25.5 42.5 13A10 10 0 0 1 57.5 13C60.5 25.5 56.5 41.5 50 50Z"/>
+  <path transform="rotate(135 50 50)" d="M50 50C43.5 41.5 39.5 25.5 42.5 13A10 10 0 0 1 57.5 13C60.5 25.5 56.5 41.5 50 50Z"/>
+  <path transform="rotate(180 50 50)" d="M50 50C43.5 41.5 39.5 25.5 42.5 13A10 10 0 0 1 57.5 13C60.5 25.5 56.5 41.5 50 50Z"/>
+  <path transform="rotate(225 50 50)" d="M50 50C43.5 41.5 39.5 25.5 42.5 13A10 10 0 0 1 57.5 13C60.5 25.5 56.5 41.5 50 50Z"/>
+  <path transform="rotate(270 50 50)" d="M50 50C43.5 41.5 39.5 25.5 42.5 13A10 10 0 0 1 57.5 13C60.5 25.5 56.5 41.5 50 50Z"/>
+  <path transform="rotate(315 50 50)" d="M50 50C43.5 41.5 39.5 25.5 42.5 13A10 10 0 0 1 57.5 13C60.5 25.5 56.5 41.5 50 50Z"/>
 </symbol>
 <symbol id="logo" viewBox="0 0 714.95 129.62">
   <path fill="currentColor" d="M237.49,108.21c-7.84,0-14.53-1.37-20.06-4.12-5.53-2.75-9.98-6.31-13.35-10.7-3.37-4.39-5.84-9.15-7.41-14.29-1.57-5.14-2.35-10.1-2.35-14.88v-2.59c0-5.18.8-10.35,2.41-15.53,1.61-5.18,4.1-9.88,7.47-14.12,3.37-4.23,7.76-7.65,13.18-10.23,5.41-2.59,11.88-3.88,19.41-3.88s14.27,1.33,19.76,4c5.49,2.67,9.84,6.39,13.06,11.17,3.21,4.78,5.18,10.43,5.88,16.94h-11.76c-.63-4.86-2.2-8.88-4.71-12.06-2.51-3.18-5.66-5.55-9.47-7.12-3.81-1.57-8.06-2.35-12.76-2.35-5.1,0-9.57.88-13.41,2.65-3.84,1.76-7.04,4.23-9.59,7.41-2.55,3.18-4.47,6.84-5.76,11s-1.94,8.67-1.94,13.53.65,9.02,1.94,13.17c1.29,4.16,3.25,7.84,5.88,11.06,2.63,3.22,5.9,5.75,9.82,7.59,3.92,1.84,8.51,2.76,13.76,2.76,7.37,0,13.57-1.84,18.59-5.53,5.02-3.68,8.08-9.02,9.18-16h11.76c-.79,5.88-2.76,11.26-5.94,16.11-3.18,4.86-7.57,8.75-13.18,11.65s-12.41,4.35-20.41,4.35Z"/>
@@ -716,23 +781,30 @@
 </nav>
 
 <header id="top">
-  <div class="hero-band grad-anim" role="img" aria-label="Chhapac brand gradient">
-    <canvas class="grain" data-grain></canvas>
-    <svg class="band-ast spin-slow" viewBox="0 0 100 100" fill="currentColor" aria-hidden="true"><use href="#ast"/></svg>
-    <div class="band-word">Top 5% Pitch Readiness + Fundraise</div>
+  <div class="band-wrap">
+    <div class="hero-band" role="img" aria-label="Chhapac brand gradient">
+      <div class="swirl" aria-hidden="true"></div>
+      <canvas class="grain" data-grain></canvas>
+      <svg class="band-ast" viewBox="0 0 100 100" fill="currentColor" aria-hidden="true"><use href="#ast"/></svg>
+      <div class="band-word">Crafting the top 5% pitch readiness!</div>
+    </div>
+    <video class="hero-blob" autoplay loop muted playsinline aria-hidden="true">
+      <source src="assets/slime.mov" type='video/quicktime; codecs="hvc1"'>
+      <source src="assets/slime.webm" type="video/webm">
+    </video>
   </div>
   <div class="hero-grid">
-    <h1>The deck speaks for you, <span class="accent">after you leave the room.</span></h1>
+    <h1>Narrative-led pitching investors grasp <span class="accent">in seconds, not minutes.</span></h1>
     <div class="hero-copy">
-      <p>Narrative-led pitchflow and information design for the <strong>3 minutes</strong> your pitch gets.</p>
+      <p>Strategic storytelling, information design, and narrative architecture for founders preparing for <strong>consequential rooms.</strong></p>
       <div class="hero-ctas">
-        <a class="btn btn-primary" href="https://calendly.com/chhayajoshi/deep-dive-session-clone" target="_blank" rel="noopener">Book a working session</a>
-        <a class="btn btn-ghost" href="https://wa.me/919620147470?text=Hi%20Chhaya%2C%20I%27d%20like%20a%20free%20deck%20audit." target="_blank" rel="noopener">Get a free deck audit</a>
+        <a class="btn btn-primary" href="https://wa.me/919620147470?text=Hi%20Chhaya%2C%20I%27d%20like%20a%20free%20deck%20audit%20report." target="_blank" rel="noopener">Free deck audit report</a>
+        <a class="btn btn-ghost" href="https://calendly.com/chhayajoshi/deep-dive-session-clone" target="_blank" rel="noopener">Book a working session</a>
       </div>
     </div>
   </div>
 
-  <div class="wrap stats reveal">
+  <div class="stats reveal">
     <div class="stats-grid">
       <div class="stat"><div class="num" data-count="30" data-prefix="$" data-unit="M" data-suffix="+">0</div><div class="lbl">raised via proven smart pitching</div></div>
       <div class="stat"><div class="num" data-count="50" data-suffix="+">0</div><div class="lbl">narratives &amp; decks shipped</div></div>
@@ -810,6 +882,17 @@
       <div class="testi-track" id="testiTrack"></div>
     </div>
 
+    <div class="wins-blocks reveal">
+      <p class="ws-lead">Clients typically see:</p>
+      <div class="wb-grid">
+        <div class="wb">Sharper investor conversations</div>
+        <div class="wb">Clearer narrative flow in meetings</div>
+        <div class="wb">Stronger follow-up interest</div>
+        <div class="wb">Decks that continue selling when founders leave the room</div>
+      </div>
+      <p class="ws-close">Because the goal is not prettier slides. <span class="ws-big">The goal is <em>clarity</em> that drives decisions.</span></p>
+    </div>
+
     <div class="inv-strip reveal">
       <h3>Trusted by the best</h3>
       <p class="inv-sub">Helped portfolio companies of renowned investors.</p>
@@ -869,17 +952,22 @@
         </div>
       </article>
     </div>
-    <div class="services-note reveal">
-      <div>
-        <p class="services-q">In a world full of AI generations, we hyper-personalize information design for you to stand out.</p>
-        <p class="services-sub">Every engagement starts with one question: what decision does this deck need to support?</p>
-      </div>
-      <div>
-        <span class="eyebrow">Services</span>
-        <h3>We work across</h3>
-        <div class="deck-pills">
-          <span>Fundraise decks</span><span>Sales &amp; growth decks</span><span>Expansion &amp; partnership decks</span><span>Board &amp; internal strategy decks</span>
+    <div class="ai-band reveal">
+      <canvas class="grain" data-grain></canvas>
+      <div class="ai-inner">
+        <div>
+          <span class="eyebrow">Services</span>
+          <p class="services-q" style="margin-top:14px">In a world full of AI generations, we hyper-personalize information design for you to stand out.</p>
+          <p class="services-sub">Every engagement starts with one question: what decision does this deck need to support?</p>
+          <h3>We work across</h3>
+          <div class="deck-pills">
+            <span>Fundraise decks</span><span>Sales &amp; growth decks</span><span>Expansion &amp; partnership decks</span><span>Board &amp; internal strategy decks</span>
+          </div>
         </div>
+        <video class="ai-cube" autoplay loop muted playsinline aria-hidden="true">
+          <source src="assets/cube.mov" type='video/quicktime; codecs="hvc1"'>
+          <source src="assets/cube.webm" type="video/webm">
+        </video>
       </div>
     </div>
   </div>
@@ -942,10 +1030,7 @@
         </ul></div></div>
       </div>
     </div>
-    <div class="process-note reveal">
-      <svg class="ast-inline" viewBox="0 0 100 100" fill="#E8542A" aria-hidden="true"><use href="#ast"/></svg>
-      <div><strong>Timelines that hold.</strong> Sprints close on the committed date, subject to timely consolidated review cycles: feedback arrives as one list per round, and the engagement ends investment-ready.</div>
-    </div>
+    <p class="process-fine reveal">Timelines that hold: sprints close on the committed date, subject to timely consolidated review cycles. Feedback arrives as one list per round, and the engagement ends investment-ready.</p>
   </div>
 </section>
 
@@ -982,30 +1067,6 @@
         <svg class="o-icon" viewBox="0 0 72 72" aria-hidden="true"><defs><linearGradient id="og4" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F26A1B"/><stop offset=".55" stop-color="#E85FA0"/><stop offset="1" stop-color="#7A3CE8"/></linearGradient></defs><path d="M18 56 V36 A18 18 0 0 1 54 36 V56 Z" fill="url(#og4)" stroke="url(#og4)" stroke-width="12" stroke-linejoin="round"/></svg>
         <h3>10x retention</h3>
         <p>Visual-first information design that improves retention by up to 10x.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ————— INVESTOR FILTERS ————— -->
-<section id="filters" style="padding-top:0">
-  <div class="wrap">
-    <div class="sec-head reveal">
-      <h2><span class="eyebrow" style="display:inline-flex;margin-bottom:14px">Why it works</span><br>The five filters investors <span class="accent">actually run</span></h2>
-      <p class="side">We've built a tailored mechanism to get it right for you in the consequential rooms. Tap a filter to see what we solve for.</p>
-    </div>
-    <div class="filters-layout reveal">
-      <div class="filter-chips" role="tablist" aria-label="Investor filters">
-        <button class="chip" role="tab" aria-selected="true" data-i="0"><span class="c-num">01</span><span class="c-name">Context fit</span></button>
-        <button class="chip" role="tab" aria-selected="false" data-i="1"><span class="c-num">02</span><span class="c-name">Competence signal</span></button>
-        <button class="chip" role="tab" aria-selected="false" data-i="2"><span class="c-num">03</span><span class="c-name">Conviction energy</span></button>
-        <button class="chip" role="tab" aria-selected="false" data-i="3"><span class="c-num">04</span><span class="c-name">Cognitive load</span></button>
-        <button class="chip" role="tab" aria-selected="false" data-i="4"><span class="c-num">05</span><span class="c-name">Continuity proof</span></button>
-      </div>
-      <div class="filter-panel grad-anim" role="tabpanel" aria-live="polite">
-        <canvas class="grain" data-grain></canvas>
-        <p class="fp-q" id="fp-q">"Does this fit my thesis: is this a market I already believe in?"</p>
-        <p class="fp-d" id="fp-d">We open with the macro-to-consumer-truth formula, so the first slides place your company inside a shift the investor already has conviction about, before a single product claim is made.</p>
       </div>
     </div>
   </div>
@@ -1123,7 +1184,7 @@
 <section id="cases" style="padding-top:0">
   <div class="wrap">
     <div class="sec-head reveal">
-      <h2><span class="eyebrow" style="display:inline-flex;margin-bottom:14px">Case studies</span><br>The work, <span class="accent">under lock</span></h2>
+      <h2><span class="eyebrow" style="display:inline-flex;margin-bottom:14px">Case studies</span><br>We made <span class="accent">big splashes</span> out there!</h2>
       <p class="side">Client narratives are NDA-protected. Request access and we'll verify you before sharing the full story.</p>
     </div>
     <div class="cases">
@@ -1390,43 +1451,35 @@
     });
   });
 
-  // investor filter tabs
-  const FILTERS=[
-    {q:'"Does this fit my thesis: is this a market I already believe in?"',
-     d:'We open with the macro-to-consumer-truth formula, so the first slides place your company inside a shift the investor already has conviction about, before a single product claim is made.'},
-    {q:'"Can these founders actually execute what they\'re describing?"',
-     d:'Traction, team, and proof points get re-sequenced as execution evidence, not a trophy shelf. Each metric answers a specific doubt instead of decorating a slide.'},
-    {q:'"Do they believe this, and is it obvious why them?"',
-     d:'Founder-market fit becomes a narrative thread, not a bio slide. Your proximity to the problem is engineered into the story so conviction reads on paper, without you in the room.'},
-    {q:'"How hard do I have to work to understand this?"',
-     d:'One idea per slide, a hook per section, and information architecture that makes the complex feel obvious. If an investor has to reread, the deck has already lost.'},
-    {q:'"What exactly happens with my money, and what\'s the next milestone?"',
-     d:'The ask, use of funds, and the milestone it unlocks close the deck as one continuous argument, so the takeaway is a decision, not a follow-up question.'}
-  ];
-  const chips=[...document.querySelectorAll('.chip')],fq=document.getElementById('fp-q'),fd=document.getElementById('fp-d');
-  chips.forEach(ch=>ch.addEventListener('click',()=>{
-    chips.forEach(c=>c.setAttribute('aria-selected','false'));
-    ch.setAttribute('aria-selected','true');
-    const f=FILTERS[+ch.dataset.i];fq.textContent=f.q;fd.textContent=f.d;
-  }));
+  // process steps expand on hover (faster); click remains for touch
+  if(matchMedia('(hover:hover)').matches){
+    document.querySelectorAll('.process .step').forEach(st=>{
+      st.addEventListener('mouseenter',()=>{
+        document.querySelectorAll('.process .step').forEach(x=>{x.dataset.open='false';x.querySelector('button').setAttribute('aria-expanded','false')});
+        st.dataset.open='true';st.querySelector('button').setAttribute('aria-expanded','true');
+      });
+    });
+  }
 
   // testimonial strip (built once, duplicated for seamless loop; avatars accept <img>)
   const TESTIMONIALS=[
-    {ini:'SB',q:'I\'m happy that you have a long-term vision. You\'re not talking to me like just another \'get your pitch made\' vendor."',n:'Sunil Bagrecha',r:'Founder · DigiGold savings platform',tag:'Fintech · India',co:'Gold-savings SIP platform',d:'Growth engagement: full narrative rebuild with presenter deck, one-pager, and long-form deck. Verbally closed on the first working call.'},
-    {ini:'RA',q:'We had pitched 40-50 VCs and I felt the deck didn\'t matter. I left the call agreeing: it\'s the document that speaks for you after you leave the room."',n:'Co-founder',r:'Hyperlocal consumer startup · Bangalore',tag:'Consumer · India',co:'Hyperlocal services brand',d:'Pre-seed raise: 5-day custom sprint covering market sizing methodology, GTM triangle, and a full investor deck against a hard deadline.'},
-    {ini:'WD',q:'The visual-led approach made a complex claims engine legible to the non-technical investors in our round."',n:'Wade Denton',r:'Co-founder · Healthcare claims AI, USA',tag:'Healthcare AI · USA',co:'Claims automation platform',d:'Kickoff to closure across narrative and visual systems: positioning a 97-99% accuracy engine against generic LLM claims.'},
-    {ini:'AM',q:'Repositioning us food-first, not tech-first, changed the rooms we got into. The deck kept working between the meetings."',n:'Aditya Mehta',r:'Co-founder · Epicure Robotics',tag:'Food Robotics · India',co:'Epicure Robotics',d:'8+ sessions across three fundraise rounds: narrative, deck builds, and real-time investor feedback loops through the raise.'},
-    {ini:'AN',q:'The narrative made our science legible to investors without dumbing it down."',n:'Anagha',r:'Founder · Biocompute',tag:'Deep Tech · Biotech',co:'Biocompute',d:'Narrative build translating research depth into an investor-grade story with a clear category claim.'},
-    {ini:'AD',q:'The story finally matched the scale of the problem we\'re solving."',n:'Ajinkya',r:'Founder · PadCare',tag:'Sustainability · India',co:'PadCare',d:'Impact narrative and investor deck for a circular-economy platform: unit economics and impact told as one story.'}
+    {ini:'SB',q:'I\'m happy that you have a long-term vision. You\'re not talking to me like just another \'get your pitch made\' vendor."',n:'Sunil Bagrecha',r:'Founder · DigiGold savings platform',tag:'Fintech · India',raised:'$—M',co:'Gold-savings SIP platform',d:'Growth engagement: full narrative rebuild with presenter deck, one-pager, and long-form deck. Verbally closed on the first working call.'},
+    {ini:'RA',q:'We had pitched 40-50 VCs and I felt the deck didn\'t matter. I left the call agreeing: it\'s the document that speaks for you after you leave the room."',n:'Co-founder',r:'Hyperlocal consumer startup · Bangalore',tag:'Consumer · India',raised:'$—M',co:'Hyperlocal services brand',d:'Pre-seed raise: 5-day custom sprint covering market sizing methodology, GTM triangle, and a full investor deck against a hard deadline.'},
+    {ini:'WD',q:'The visual-led approach made a complex claims engine legible to the non-technical investors in our round."',n:'Wade Denton',r:'Co-founder · Healthcare claims AI, USA',tag:'Healthcare AI · USA',raised:'$—M',co:'Claims automation platform',d:'Kickoff to closure across narrative and visual systems: positioning a 97-99% accuracy engine against generic LLM claims.'},
+    {ini:'AM',q:'Repositioning us food-first, not tech-first, changed the rooms we got into. The deck kept working between the meetings."',n:'Aditya Mehta',r:'Co-founder · Epicure Robotics',tag:'Food Robotics · India',raised:'$—M',co:'Epicure Robotics',d:'8+ sessions across three fundraise rounds: narrative, deck builds, and real-time investor feedback loops through the raise.'},
+    {ini:'AN',q:'The narrative made our science legible to investors without dumbing it down."',n:'Anagha',r:'Founder · Biocompute',tag:'Deep Tech · Biotech',raised:'$—M',co:'Biocompute',d:'Narrative build translating research depth into an investor-grade story with a clear category claim.'},
+    {ini:'AD',q:'The story finally matched the scale of the problem we\'re solving."',n:'Ajinkya',r:'Founder · PadCare',tag:'Sustainability · India',raised:'$—M',img:'assets/testi/padcare.png',co:'PadCare',d:'Impact narrative and investor deck for a circular-economy platform: unit economics and impact told as one story.'}
   ];
   const cardHTML=(t,hidden)=>`<div class="flip"${hidden?' aria-hidden="true"':' tabindex="0"'}>
     <div class="flip-inner">
       <div class="flip-face flip-front">
+        ${t.raised?`<span class="fm-badge">${t.raised} raised</span>`:''}
         <span class="avatar">${t.ini}</span>
         <p class="fq">${t.q}</p>
         <div><div class="fn">${t.n}</div><div class="fr">${t.r}</div></div>
       </div>
       <div class="flip-face flip-back">
+        ${t.img?`<div class="fb-photo" style="background-image:url('${t.img}')"></div><div class="fb-veil"></div>`:''}
         <span class="fb-tag">${t.tag}</span>
         <h4>${t.co}</h4>
         <p>${t.d}</p>
@@ -1440,16 +1493,20 @@
   // decks wall: build slide previews (swap with real thumbnails anytime)
   const SLIDES=[
     '<div class="slide cover"><span class="sl-dot" style="background:#F5F1E8"></span><div class="sl-bar hi" style="width:66%"></div><div class="sl-bar hi" style="width:42%"></div></div>',
+    '<div class="slide tgs"><div class="tg-l"><span class="tt">Funding Goals</span><span class="tg-pill">Convert<b>75 clients</b></span><span class="tg-pill">Reach<b>$6M ARR</b></span></div><div class="tg-dots">'+Array.from({length:24},(_,k)=>`<i style="background:${k<9?'#173B33':k<17?'#E4F97B':k<21?'#cfd2cc':'#fff'};border:1px solid #173B33"></i>`).join('')+'</div></div>',
     '<div class="slide chart"><div class="sl-bars"><i style="height:36%"></i><i style="height:58%"></i><i style="height:44%"></i><i style="height:76%"></i><i style="height:100%"></i></div><div class="sl-bar" style="width:52%"></div></div>',
+    '<div class="slide sonx"><div class="sx-blobs"><i style="left:4%;top:6%;width:34%;height:44%;background:#e5484d"></i><i style="left:44%;top:2%;width:30%;height:56%;background:#6a3de8"></i><i style="left:2%;bottom:6%;width:30%;height:40%;background:#2f6bff"></i><i style="right:4%;bottom:4%;width:26%;height:34%;background:#f5c542"></i><i style="left:38%;bottom:8%;width:22%;height:46%;background:#ef8fa3"></i></div><div class="sx-tx"><span class="tt">Welcome to the classroom for the real world</span><p>AI-powered, hyper-personalized immersive learning</p></div></div>',
     '<div class="slide dark"><div class="sl-accent"></div><div class="sl-bar" style="width:74%"></div><div class="sl-bar" style="width:58%"></div></div>',
+    '<div class="slide edk"><div class="ed-l"><span class="tt">Geospatial insights made easy and affordable</span><small>PITCH DECK · SEED · 2025</small></div><div class="ed-grid">'+'<i></i>'.repeat(16)+'</div></div>',
     '<div class="slide quote"><span class="sl-q">“</span><div class="sl-bar" style="width:82%"></div><div class="sl-bar" style="width:64%"></div><div class="sl-bar" style="width:36%"></div></div>',
+    '<div class="slide sqf"><span class="tt">Sequifi cuts costs and time spent by 50% vs. alternatives</span><div class="sq-row"><div class="sq-col"><i class="sq-w"></i><i class="sq-w"></i><i class="sq-w"></i></div><div class="sq-col"><i class="sq-w"></i><i class="sq-w"></i></div><div class="sq-col"><i class="sq-b"></i><i class="sq-b"></i><i class="sq-b"></i></div></div></div>',
     '<div class="slide split"><div class="sp-img"></div><div class="sp-tx"><div class="sl-bar" style="width:88%"></div><div class="sl-bar" style="width:70%"></div><div class="sl-bar" style="width:48%"></div></div></div>',
+    '<div class="slide nrf"><div class="nf-l"><span class="tt"><em>Neurofin</em> - The Agent-Powered Operations Layer</span><div class="nf-pills"><i></i><i></i><i></i></div></div><div class="nf-grid"><i></i><i></i><i></i><i></i></div></div>',
     '<div class="slide kpi"><span><b>4.2x</b><small>LTV / CAC</small></span><span><b>78%</b><small>Margin</small></span><span><b>12M</b><small>Runway</small></span></div>'
   ];
+  const WALL_ORDER=[[1,0,3,2,6,4,8,5,10],[10,2,1,7,3,9,6,0,4],[8,5,10,1,6,3,0,9,2]];
   document.querySelectorAll('[data-wall]').forEach((track,r)=>{
-    let row='';
-    for(let i=0;i<8;i++)row+=SLIDES[(i+r*2)%SLIDES.length];
-    track.innerHTML=row+row;
+    track.innerHTML=(WALL_ORDER[r].map(i=>SLIDES[i]).join('')).repeat(2);
   });
 
   // bubbles: gravity + collision physics; balls drop in and stack unevenly
