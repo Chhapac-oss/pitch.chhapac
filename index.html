@@ -600,13 +600,12 @@
     content:"";position:absolute;inset:0;pointer-events:none;mix-blend-mode:overlay;opacity:.45;z-index:1;
     background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
   }
+  .bubble-field{position:absolute;inset:0;z-index:0}
   .bubble{
-    position:absolute;border-radius:50%;pointer-events:none;
-    transform:translateY(-140vh);
+    position:absolute;left:0;top:0;border-radius:50%;pointer-events:none;will-change:transform;
+    transform:translate(-50vw,-200vh);
     box-shadow:inset -14px -18px 32px rgba(43,21,134,.08),inset 12px 14px 28px rgba(255,255,255,.6),0 10px 26px rgba(26,13,110,.07);
   }
-  .odds.go .bubble{animation:fall 1.6s cubic-bezier(.32,.72,.38,1.03) var(--d,0s) both}
-  @keyframes fall{from{transform:translateY(-140vh)}to{transform:translateY(0)}}
   .odds-inner{position:relative;z-index:2;max-width:640px;margin:0 auto}
   .odds h2{font-size:clamp(2.3rem,5.4vw,3.9rem)}
   .odds p{color:var(--ink-soft);margin:18px auto 30px;max-width:42ch}
@@ -735,7 +734,7 @@
 
   <div class="wrap stats reveal">
     <div class="stats-grid">
-      <div class="stat"><div class="num" data-count="30" data-prefix="$" data-suffix="M+">0</div><div class="lbl">raised via proven smart pitching</div></div>
+      <div class="stat"><div class="num" data-count="30" data-prefix="$" data-unit="M" data-suffix="+">0</div><div class="lbl">raised via proven smart pitching</div></div>
       <div class="stat"><div class="num" data-count="50" data-suffix="+">0</div><div class="lbl">narratives &amp; decks shipped</div></div>
       <div class="stat"><div class="num" data-count="300" data-suffix="+">0</div><div class="lbl">founder conversations since Sep 2025</div></div>
       <div class="stat"><div class="num" data-count="20" data-suffix="+">0</div><div class="lbl">sectors translated into investor language</div></div>
@@ -1265,6 +1264,18 @@
           <button type="button" aria-expanded="false"><span class="st-title">What value can you add for a Series B+ business?</span><span class="st-ind">+</span></button>
           <div class="st-body"><div class="st-inner"><p class="st-text">Beyond fundraise decks: sales and growth decks, expansion and partnership decks, and board or internal strategy decks. The same decision-first system, applied to institutional audiences. <a href="https://calendly.com/chhayajoshi/quick-catch-up" target="_blank" rel="noopener">Book a deep dive</a></p></div></div>
         </div>
+        <div class="step">
+          <button type="button" aria-expanded="false"><span class="st-title">Why you, over investment banks who are incentivised to raise for me?</span><span class="st-ind">+</span></button>
+          <div class="st-body"><div class="st-inner"><p class="st-text">A banker's fee sits on the transaction, so the deck is a process artifact: produced at volume, good enough to open the doors they already control. Our entire product is the document itself: what an investor understands, trusts, and remembers when you're not in the room. Nothing we make is subsidised by a success fee, so the narrative has to earn its keep on every page. The two aren't exclusive: plenty of founders let the bank run the process while we engineer what the process is selling.</p></div></div>
+        </div>
+        <div class="step">
+          <button type="button" aria-expanded="false"><span class="st-title">I have an in-house team who can design. Why do I need you?</span><span class="st-ind">+</span></button>
+          <div class="st-body"><div class="st-inner"><p class="st-text">Keep them: we're not selling design. In-house teams execute your brand beautifully, but they sit inside the same information you do, and they answer to you: too close to the business to see what an investor filters out, and rarely positioned to push back on the founder. We bring the outside read: investor psychology and information architecture tested across 300+ founder conversations and 20+ sectors. We lock the narrative and structure; your team gets editable masters and runs everything after.</p></div></div>
+        </div>
+        <div class="step">
+          <button type="button" aria-expanded="false"><span class="st-title">I have offers for pitch decks at a much lower price.</span><span class="st-ind">+</span></button>
+          <div class="st-body"><div class="st-inner"><p class="st-text">You will, and if a clean template is genuinely all you need, take one: sincerely. Cheaper offers price slides. We price the last 5% of a raise: the difference between a deck that describes your business and one that keeps arguing for it after you leave the room. Against the cost of a stalled round, the delta is a rounding error. And you don't have to take that on faith: start with the free audit and see exactly what your current deck is leaving on the table. <a href="https://wa.me/919620147470?text=Hi%20Chhaya%2C%20I%27d%20like%20a%20free%20deck%20audit." target="_blank" rel="noopener">Get the free audit</a></p></div></div>
+        </div>
       </div>
     </div>
   </div>
@@ -1359,12 +1370,12 @@
   // animated counters
   const cio=new IntersectionObserver(es=>es.forEach(e=>{
     if(!e.isIntersecting)return;cio.unobserve(e.target);
-    const el=e.target,target=+el.dataset.count,suffix=el.dataset.suffix||'+',prefix=el.dataset.prefix||'',dur=1400,t0=performance.now();
-    const done=()=>{el.innerHTML=prefix+target+'<sup>'+suffix+'</sup>'};
+    const el=e.target,target=+el.dataset.count,suffix=el.dataset.suffix||'+',prefix=el.dataset.prefix||'',unit=el.dataset.unit||'',dur=1400,t0=performance.now();
+    const done=()=>{el.innerHTML=prefix+target+unit+'<sup>'+suffix+'</sup>'};
     if(matchMedia('(prefers-reduced-motion: reduce)').matches){done();return}
     (function tick(t){
       const p=Math.min((t-t0)/dur,1),ease=1-Math.pow(1-p,3);
-      el.innerHTML=prefix+Math.round(target*ease)+'<sup>'+suffix+'</sup>';
+      el.innerHTML=prefix+Math.round(target*ease)+unit+'<sup>'+suffix+'</sup>';
       if(p<1)requestAnimationFrame(tick);else done();
     })(t0);
   }),{threshold:.5});
@@ -1441,23 +1452,69 @@
     track.innerHTML=row+row;
   });
 
-  // bubbles: light orbs fall and pile up from the bottom of the box
+  // bubbles: gravity + collision physics; balls drop in and stack unevenly
   (function(){
     const field=document.querySelector('.bubble-field'),odds=document.querySelector('.odds');
     if(!field)return;
     const PAIRS=[['#FBE1C9','#F5B8D8'],['#F5B8D8','#E9D9F8'],['#FFD9C4','#F0B6D6'],['#E9D9F8','#D9C7F2'],['#FCE0D0','#F5B8D8'],['#F3D3E8','#DCC9F5']];
-    const COLS=9,ROWS=4;let html='';
-    for(let r=0;r<ROWS;r++)for(let c=0;c<COLS;c++){
-      const i=r*COLS+c;
-      const size=112+((i*29)%36);                                  // similar sizes 112-148
-      const left=c*(100/COLS)+((r%2)*(50/COLS))+(((i*17)%8)-4)-6;  // nested like stacked balls
-      const bottom=r*84-40+(((i*23)%12)-6);                        // pile rows from the base
-      const [c1,c2]=PAIRS[i%PAIRS.length];
-      const d=(r*0.42+((i*13)%9)*0.06).toFixed(2);                 // bottom row lands first
-      html+=`<div class="bubble" style="width:${size}px;height:${size}px;left:${left}%;bottom:${bottom}px;--d:${d}s;background:radial-gradient(circle at 36% 30%,${c1},${c2} 74%)"></div>`;
+    const N=32,G=.42,REST=.28,DAMP=.995,OVERLAP=4;
+    let balls=[],W=0,H=0,frame=0,sleep=0,raf=null;
+    const rnd=(i,k)=>(((i*2654435761)^(k*40503))>>>7)%1000/1000; // deterministic jitter
+    function setup(){
+      W=odds.clientWidth;H=odds.clientHeight;
+      field.innerHTML='';balls=[];
+      for(let i=0;i<N;i++){
+        const r=50+rnd(i,1)*22;                       // similar sizes, visible variation: r 50-72
+        const [c1,c2]=PAIRS[i%PAIRS.length];
+        const el=document.createElement('div');
+        el.className='bubble';
+        el.style.width=el.style.height=(r*2).toFixed(0)+'px';
+        el.style.background=`radial-gradient(circle at 36% 30%,${c1},${c2} 74%)`;
+        field.appendChild(el);
+        balls.push({el,r,x:r+rnd(i,2)*(W-2*r),y:-r-rnd(i,3)*H*.6,vx:(rnd(i,4)-.5)*2,vy:0,delay:i*9,on:false});
+      }
     }
-    field.innerHTML=html;
-    new IntersectionObserver((es,o)=>{es.forEach(e=>{if(e.isIntersecting){odds.classList.add('go');o.disconnect()}})},{threshold:.25}).observe(odds);
+    function step(paint){
+      frame++;let motion=0;
+      for(const b of balls){
+        if(!b.on){if(frame>b.delay)b.on=true;else continue}
+        b.vy+=G;b.vx*=DAMP;b.vy*=DAMP;b.x+=b.vx;b.y+=b.vy;
+      }
+      for(let pass=0;pass<3;pass++){
+        for(let i=0;i<balls.length;i++){const a=balls[i];if(!a.on)continue;
+          if(a.x<a.r){a.x=a.r;a.vx=Math.abs(a.vx)*REST}
+          if(a.x>W-a.r){a.x=W-a.r;a.vx=-Math.abs(a.vx)*REST}
+          if(a.y>H-a.r+8){a.y=H-a.r+8;a.vy=-Math.abs(a.vy)*REST;a.vx*=.92}
+          for(let j=i+1;j<balls.length;j++){const c=balls[j];if(!c.on)continue;
+            const dx=c.x-a.x,dy=c.y-a.y,dist=Math.hypot(dx,dy),min=a.r+c.r-OVERLAP;
+            if(dist<min&&dist>0){
+              const nx=dx/dist,ny=dy/dist,push=(min-dist)/2;
+              a.x-=nx*push;a.y-=ny*push;c.x+=nx*push;c.y+=ny*push;
+              const rv=(c.vx-a.vx)*nx+(c.vy-a.vy)*ny;
+              if(rv<0){const imp=rv*(1+REST)/2;a.vx+=imp*nx;a.vy+=imp*ny;c.vx-=imp*nx;c.vy-=imp*ny}
+            }
+          }
+        }
+      }
+      for(const b of balls){if(!b.on)continue;
+        motion+=Math.abs(b.vx)+Math.abs(b.vy);
+        if(paint)b.el.style.transform=`translate(${(b.x-b.r).toFixed(1)}px,${(b.y-b.r).toFixed(1)}px)`;
+      }
+      return motion;
+    }
+    function run(){
+      const m=step(true);
+      if(balls.every(b=>b.on)&&m<1.2)sleep++;else sleep=0;
+      if(sleep<90)raf=requestAnimationFrame(run);   // settle naturally, then stop
+    }
+    function start(){
+      setup();
+      if(matchMedia('(prefers-reduced-motion: reduce)').matches){
+        for(let k=0;k<900;k++)step(false);step(true);   // pre-settled pile, no motion
+      }else{run()}
+    }
+    new IntersectionObserver((es,o)=>{es.forEach(e=>{if(e.isIntersecting){start();o.disconnect()}})},{threshold:.2}).observe(odds);
+    let rT;addEventListener('resize',()=>{clearTimeout(rT);rT=setTimeout(()=>{if(balls.length){cancelAnimationFrame(raf);frame=0;sleep=0;start()}},300)});
   })();
 
   // pricing modal
