@@ -195,7 +195,7 @@
     transform:translateY(-5px);box-shadow:0 18px 40px rgba(26,13,110,.10);
   }
   .not-title{font-size:1.25rem;margin-bottom:12px}
-  .not-card p{font-size:.93rem;color:var(--ink-soft)}
+  .not-card p{font-size:.9rem;color:var(--ink-soft)}
   .not-card p strong{color:var(--ink);font-weight:600}
   @media(max-width:860px){.who-grid{grid-template-columns:1fr}.not-cards{grid-template-columns:1fr}}
 
@@ -211,8 +211,8 @@
   .block-grad-2{background:linear-gradient(160deg,#E9D9F8 0%,#F0B6D6 45%,#F2A487 100%);color:var(--card-dark)}
   .block-dark{background:var(--card-dark);color:var(--paper)}
   .block .glyph{width:70px;height:70px;flex:none}
-  .block h3{font-size:1.4rem;margin-bottom:12px;color:inherit}
-  .block p{font-size:.93rem;line-height:1.55;opacity:.85}
+  .block h3{font-size:1.3rem;margin-bottom:12px;color:inherit}
+  .block p{font-size:.9rem;line-height:1.55;opacity:.85}
   .block .tag{
     position:absolute;top:24px;right:24px;font-size:.66rem;font-weight:600;
     letter-spacing:.14em;text-transform:uppercase;
@@ -229,12 +229,12 @@
   @media(max-width:900px){.blocks{grid-template-columns:1fr}.block{min-height:0;gap:30px}}
 
   .services-note{
-    margin-top:48px;display:grid;grid-template-columns:1.05fr .95fr;gap:44px;align-items:center;
+    margin-top:48px;display:grid;grid-template-columns:1fr 2fr;gap:44px;align-items:center;
     background:var(--paper-soft);border:1px solid var(--line);border-radius:var(--radius);
     padding:44px 42px;
   }
   .services-q{font-family:var(--display);font-size:clamp(1.3rem,2.4vw,1.7rem);font-weight:600;letter-spacing:-.024em;color:var(--ink);margin-bottom:12px;text-wrap:balance}
-  .services-sub{font-size:.92rem;color:var(--ink-soft)}
+  .services-sub{font-size:.95rem;color:var(--ink-soft)}
   .services-note h3{font-size:1.05rem;margin:12px 0 16px}
   .deck-pills{display:flex;flex-wrap:wrap;gap:9px}
   .deck-pills span{
@@ -290,24 +290,24 @@
     padding:32px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
     overflow:hidden;white-space:nowrap;background:var(--paper-soft);
   }
-  .marquee-track{display:inline-flex;animation:scroll 26s linear infinite}
-  .marquee span{
+  .marquee-track{display:inline-flex;align-items:center;gap:36px;animation:scroll 26s linear infinite}
+  .mq-u{
+    display:inline-flex;align-items:center;gap:36px;
     font-family:var(--display);font-size:clamp(1.8rem,4vw,3rem);font-weight:600;letter-spacing:-.02em;
-    color:var(--ink);padding:0 .5em;
+    color:var(--ink);
   }
-  .marquee span em{font-style:normal;color:var(--orange)}
-  .marquee .ast-inline{width:.75em;height:.75em}
+  .marquee .ast-inline{width:.62em;height:.62em;flex:none}
   @keyframes scroll{to{transform:translateX(-50%)}}
 
   /* ————— outcomes with icons ————— */
   .outcomes .outcome-row{
-    display:grid;grid-template-columns:96px 1fr 1.1fr;gap:34px;align-items:center;
-    border-top:1px solid var(--line);padding:30px 12px;
+    display:grid;grid-template-columns:84px 1fr 2fr;gap:34px;align-items:center;
+    border-top:1px solid var(--line);padding:20px 12px;
   }
   .outcomes .outcome-row:last-child{border-bottom:1px solid var(--line)}
   .outcome-row h3{font-size:clamp(1.15rem,2.2vw,1.5rem)}
   .outcome-row p{color:var(--ink-soft);font-size:.95rem}
-  .o-icon{width:72px;height:72px}
+  .o-icon{width:58px;height:58px}
   @media(max-width:760px){
     .outcomes .outcome-row{grid-template-columns:64px 1fr;gap:20px}
     .outcomes .outcome-row p{grid-column:2}
@@ -315,7 +315,7 @@
   }
 
   /* ————— investor filters ————— */
-  .filters-layout{display:grid;grid-template-columns:.9fr 1.1fr;gap:56px;align-items:start}
+  .filters-layout{display:grid;grid-template-columns:1fr 2fr;gap:44px;align-items:start}
   .filter-chips{display:flex;flex-direction:column;gap:10px}
   .chip{
     display:flex;align-items:center;gap:16px;width:100%;
@@ -387,7 +387,7 @@
   }
   .call-box:hover{transform:translateY(-4px);box-shadow:0 16px 34px rgba(26,13,110,.12)}
   .call-box .cb-name{font-family:var(--display);font-weight:600;font-size:1.05rem;letter-spacing:-.02em}
-  .call-box .cb-d{font-size:.85rem;color:var(--ink-soft);flex:1}
+  .call-box .cb-d{font-size:.9rem;color:var(--ink-soft);flex:1}
   .call-box .cb-link{
     display:inline-flex;align-items:center;gap:.5em;margin-top:8px;text-decoration:none;
     font-weight:600;font-size:.88rem;color:var(--orange);width:max-content;
@@ -451,7 +451,7 @@
   .case-body{padding:24px 24px 26px;display:flex;flex-direction:column;gap:10px;flex:1}
   .case-body .c-tag{font-size:.68rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--orange)}
   .case-body h3{font-size:1.12rem;line-height:1.28}
-  .case-body p{font-size:.87rem;color:var(--ink-soft);flex:1}
+  .case-body p{font-size:.9rem;color:var(--ink-soft);flex:1}
   .case-body button{
     align-self:flex-start;color:var(--ink);font-family:var(--sans);font-weight:600;font-size:.86rem;
     padding:9px 20px;cursor:pointer;border-radius:999px;border:1px solid transparent;
@@ -513,7 +513,7 @@
   .fav-card:nth-child(2) .f-icon{background:var(--card-dark)}
   .fav-card:nth-child(3) .f-icon{background:linear-gradient(160deg,#E9D9F8,#F2A487)}
   .fav-card h3{font-size:1.25rem}
-  .fav-card p{font-size:.88rem;color:var(--ink-soft)}
+  .fav-card p{font-size:.9rem;color:var(--ink-soft)}
   @media(max-width:860px){.fav-cards{grid-template-columns:1fr}}
   .sector-marquees{display:flex;flex-direction:column;gap:0}
   .strip{overflow:hidden;white-space:nowrap;padding:19px 0}
@@ -583,36 +583,28 @@
   @media(max-width:860px){.about-grid{grid-template-columns:1fr}}
 
   /* ————— FAQ ————— */
-  .faq-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:56px;align-items:start}
+  .faq-grid{display:grid;grid-template-columns:1fr 2fr;gap:44px;align-items:start}
   .faq-grid h2{font-size:clamp(2.4rem,5vw,3.6rem)}
   .faq-grid .faq-sub{font-family:var(--display);font-size:1.25rem;font-weight:500;letter-spacing:-.02em;color:var(--ink-soft);margin-top:14px;max-width:20ch}
   @media(max-width:860px){.faq-grid{grid-template-columns:1fr;gap:24px}}
 
   /* ————— odds: gradient bubbles CTA ————— */
   .odds{
-    position:relative;overflow:hidden;padding:170px 24px;text-align:center;
-    min-height:86vh;display:flex;align-items:center;justify-content:center;
+    position:relative;overflow:hidden;text-align:center;
+    min-height:92vh;padding:120px 24px 0;
   }
   .odds::after{
-    content:"";position:absolute;inset:0;pointer-events:none;mix-blend-mode:overlay;opacity:.5;z-index:1;
+    content:"";position:absolute;inset:0;pointer-events:none;mix-blend-mode:overlay;opacity:.45;z-index:1;
     background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
   }
   .bubble{
     position:absolute;border-radius:50%;pointer-events:none;
-    transform:translateY(-130vh);
-    box-shadow:inset -16px -20px 36px rgba(43,21,134,.16),inset 12px 14px 30px rgba(255,255,255,.38),0 18px 40px rgba(26,13,110,.10);
+    transform:translateY(-140vh);
+    box-shadow:inset -14px -18px 32px rgba(43,21,134,.08),inset 12px 14px 28px rgba(255,255,255,.6),0 10px 26px rgba(26,13,110,.07);
   }
-  .odds.go .bubble{
-    animation:fall 1.4s cubic-bezier(.24,.85,.32,1.04) var(--d,0s) both,
-      bobble 9s ease-in-out calc(var(--d,0s) + 1.5s) infinite alternate;
-  }
-  @keyframes fall{from{transform:translateY(-130vh)}to{transform:translateY(0)}}
-  @keyframes bobble{from{transform:translateY(-7px)}to{transform:translateY(7px)}}
-  .odds-inner{position:relative;z-index:2;max-width:640px;margin:0 auto;padding:36px 20px}
-  .odds-inner::before{
-    content:"";position:absolute;inset:-50px -80px;z-index:-1;border-radius:50%;
-    background:radial-gradient(ellipse at center,rgba(245,241,232,.9) 28%,rgba(245,241,232,.5) 58%,transparent 78%);
-  }
+  .odds.go .bubble{animation:fall 1.6s cubic-bezier(.32,.72,.38,1.03) var(--d,0s) both}
+  @keyframes fall{from{transform:translateY(-140vh)}to{transform:translateY(0)}}
+  .odds-inner{position:relative;z-index:2;max-width:640px;margin:0 auto}
   .odds h2{font-size:clamp(2.3rem,5.4vw,3.9rem)}
   .odds p{color:var(--ink-soft);margin:18px auto 30px;max-width:42ch}
   .odds .odds-ctas{display:flex;flex-wrap:wrap;gap:14px;justify-content:center}
@@ -653,7 +645,7 @@
     padding:36px 12px 28px;display:flex;flex-direction:column;gap:0;
   }
   .back-top{
-    position:absolute;top:26px;right:30px;
+    position:absolute;bottom:70px;right:34px;
     color:var(--ink);text-decoration:none;font-size:.7rem;font-weight:600;
     letter-spacing:.14em;text-transform:uppercase;
     border-bottom:1px solid var(--line);padding-bottom:2px;
