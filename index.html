@@ -1,0 +1,1235 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="description" content="Chhapac.decks: the narrative-first pitch deck arm of Chhapac. Narrative-led pitchflow and information design for the 3 minutes your pitch gets.">
+<meta property="og:title" content="Chhapac.decks: Fundraise-ready narratives">
+<meta property="og:description" content="The deck speaks for you, after you leave the room. Top 5% pitch readiness and fundraise.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;600;700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%22-6 -6 142 142%22><path d=%22M17.65,0c0,29.87,24.21,54.08,54.08,54.08V0H17.65Z%22 fill=%22%232B1586%22/><path d=%22M0,54.03c0,39.61,32.11,71.73,71.73,71.73V54.03H0Z%22 fill=%22%232B1586%22/><circle cx=%22111.75%22 cy=%2226.98%22 r=%2217.95%22 fill=%22%23E8542A%22/><path d=%22M129.89,89.66c0-9.91-8.04-17.95-17.95-17.95s-17.73,7.82-17.95,17.55c0,.13,0,.26,0,.4v32.58c12.67-4.14,23.78-11.72,32.24-21.62l-.05-.02c2.33-3.03,3.71-6.82,3.71-10.93Z%22 fill=%22%232B1586%22/></svg>">
+<title>Chhapac.decks: Fundraise-ready narratives</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  /* ————— Chhapac design tokens: one visual world, warm off-white paper ————— */
+  :root{
+    --paper:#F5F1E8;
+    --paper-soft:#FBF8F1;
+    --ink:#2B2140;
+    --ink-soft:#5A5168;
+    --purple:#2B1586;
+    --purple-mid:#5a1a8a;
+    --purple-deep:#1a0d6e;
+    --orange:#E8542A;
+    --orange-soft:#F26A1B;
+    --pink:#E85FA0;
+    --violet:#7A3CE8;
+    --peach:#ffb89a;
+    --line:rgba(43,21,134,.14);
+    --card-dark:#241931;
+    --radius:22px;
+    /* two families, same leading and kerning discipline everywhere */
+    --display:"Inter Tight","Inter","SF Pro Display",-apple-system,"Helvetica Neue","Segoe UI",sans-serif;
+    --sans:"Poppins","Avenir Next","Futura","Century Gothic","Trebuchet MS",system-ui,sans-serif;
+    --max:1160px;
+    --grad:linear-gradient(135deg,#2B1586 0%,#5a1a8a 45%,#E8542A 100%);
+    --btn-grad:linear-gradient(115deg,#F26A1B 0%,#E8542A 34%,#E85FA0 78%,#7A3CE8 125%);
+    --ast:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><defs><path id='p' d='M50 50C43 40 41 24 45 15A8.5 8.5 0 0 1 55 15C59 24 57 40 50 50Z' fill='%23E8542A'/></defs><use href='%23p'/><use href='%23p' transform='rotate(45 50 50)'/><use href='%23p' transform='rotate(90 50 50)'/><use href='%23p' transform='rotate(135 50 50)'/><use href='%23p' transform='rotate(180 50 50)'/><use href='%23p' transform='rotate(225 50 50)'/><use href='%23p' transform='rotate(270 50 50)'/><use href='%23p' transform='rotate(315 50 50)'/></svg>");
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto}
+    *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+  }
+  body{
+    background:var(--paper);color:var(--ink);font-family:var(--sans);
+    font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;
+  }
+  ::selection{background:var(--orange);color:var(--paper)}
+  a{color:inherit}
+  a:focus-visible,button:focus-visible{outline:3px solid var(--orange);outline-offset:3px;border-radius:6px}
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
+
+  /* uniform leading + kerning across every heading level */
+  h1,h2,h3,h4{font-family:var(--display);text-wrap:balance;line-height:1.06;font-weight:600;letter-spacing:-.028em}
+  .accent{color:var(--purple)}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:.6em;font-family:var(--sans);
+    font-size:.72rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--orange);
+  }
+  .eyebrow::before{content:"";width:1em;height:1em;flex:none;background:var(--ast) center/contain no-repeat}
+
+  /* animated brand gradient: slow, eased, pleasant */
+  .grad-anim{
+    background:var(--grad);background-size:300% 300%;
+    animation:gradShift 18s ease-in-out infinite alternate;
+  }
+  @keyframes gradShift{
+    0%{background-position:0% 20%}
+    50%{background-position:60% 80%}
+    100%{background-position:100% 30%}
+  }
+  .grain{position:absolute;inset:0;pointer-events:none;mix-blend-mode:overlay;opacity:.55;z-index:0}
+
+  .ast-inline{width:1em;height:1em;display:inline-block;vertical-align:-.08em}
+  .spin-slow{animation:spin 16s linear infinite;transform-origin:center}
+  @keyframes spin{to{transform:rotate(360deg)}}
+
+  /* ————— floating pill nav: 3/4 of the screen ————— */
+  nav{
+    position:fixed;top:18px;left:50%;transform:translateX(-50%);z-index:50;
+    width:min(1200px,76vw);min-width:fit-content;
+    display:flex;align-items:center;justify-content:space-between;gap:18px;
+    background:rgba(251,248,241,.88);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+    border:1px solid var(--line);border-radius:999px;padding:9px 12px 9px 22px;
+    box-shadow:0 8px 30px rgba(26,13,110,.10);max-width:calc(100vw - 32px);
+  }
+  .nav-brand{display:flex;align-items:center;color:var(--purple);text-decoration:none}
+  .nav-links{display:flex;gap:2px}
+  .nav-links a{
+    text-decoration:none;font-size:.85rem;font-weight:500;color:var(--ink-soft);
+    padding:6px 13px;border-radius:999px;transition:background .2s,color .2s;white-space:nowrap;
+  }
+  .nav-links a:hover{background:rgba(43,21,134,.08);color:var(--purple)}
+  @media(max-width:860px){.nav-links{display:none}nav{width:auto}}
+
+  /* ————— buttons: brand gradient, soft depth ————— */
+  .btn{
+    display:inline-flex;align-items:center;gap:.6em;text-decoration:none;
+    font-family:var(--sans);font-weight:600;font-size:.95rem;padding:11px 26px;border-radius:999px;
+    transition:transform .2s,box-shadow .25s,background-position .4s ease,color .25s,border-color .25s;
+  }
+  .btn-primary{
+    background-image:var(--btn-grad);background-size:170% 100%;background-position:0% 0;
+    color:#fff;box-shadow:0 8px 22px rgba(232,84,42,.32),inset 0 1px 0 rgba(255,255,255,.28);
+    border:none;cursor:pointer;
+  }
+  .btn-primary:hover{background-position:95% 0;transform:translateY(-2px);box-shadow:0 14px 30px rgba(122,60,232,.35),inset 0 1px 0 rgba(255,255,255,.28)}
+  .btn-ghost{border:1.5px solid var(--purple);color:var(--purple)}
+  .btn-ghost:hover{background:var(--purple);color:var(--paper);transform:translateY(-2px)}
+  .nav-cta{
+    background-image:var(--btn-grad);background-size:170% 100%;background-position:0% 0;
+    color:#fff;text-decoration:none;font-size:.85rem;font-weight:600;padding:9px 20px;border-radius:999px;
+    white-space:nowrap;box-shadow:0 5px 16px rgba(232,84,42,.3),inset 0 1px 0 rgba(255,255,255,.28);
+    transition:transform .2s,background-position .4s ease,box-shadow .25s;
+  }
+  .nav-cta:hover{background-position:95% 0;transform:translateY(-1px);box-shadow:0 9px 22px rgba(122,60,232,.35)}
+
+  /* ————— hero ————— */
+  header{padding:96px 16px 0}
+  .hero-band{
+    position:relative;max-width:1280px;margin:0 auto;height:min(44vh,380px);min-height:250px;
+    border-radius:16px;overflow:hidden;
+  }
+  .hero-band .band-word{
+    position:absolute;left:32px;bottom:22px;color:rgba(255,255,255,.92);z-index:1;
+    font-size:.75rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;
+  }
+  .hero-band .band-ast{
+    position:absolute;top:26px;right:30px;width:46px;height:46px;color:#F5F1E8;z-index:1;
+  }
+  .hero-grid{
+    display:grid;grid-template-columns:1.25fr .9fr;gap:48px;align-items:end;
+    max-width:var(--max);margin:0 auto;padding:56px 8px 0;
+  }
+  .hero-grid h1{font-size:clamp(2.5rem,5.6vw,4.2rem);color:var(--ink)}
+  .hero-grid h1 .accent{color:var(--purple)}
+  .hero-copy p{color:var(--ink-soft);font-size:1.05rem;max-width:40ch}
+  .hero-copy strong{color:var(--ink);font-weight:600}
+  .hero-ctas{display:flex;flex-wrap:wrap;gap:14px;margin-top:26px}
+  @media(max-width:860px){
+    header{padding-top:88px}
+    .hero-grid{grid-template-columns:1fr;gap:26px;padding-top:40px}
+  }
+
+  /* ————— trust counters ————— */
+  .stats{margin-top:64px;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .stats-grid{display:grid;grid-template-columns:repeat(4,1fr)}
+  .stat{padding:34px 22px;border-left:1px solid var(--line)}
+  .stat:first-child{border-left:none}
+  .stat .num{
+    font-family:var(--display);font-size:clamp(2rem,3.6vw,2.9rem);font-weight:600;color:var(--purple);
+    letter-spacing:-.028em;font-variant-numeric:tabular-nums;line-height:1;
+  }
+  .stat .num sup{font-size:.5em;color:var(--orange);font-weight:600}
+  .stat .lbl{margin-top:8px;font-size:.82rem;color:var(--ink-soft);line-height:1.4}
+  @media(max-width:760px){
+    .stats-grid{grid-template-columns:repeat(2,1fr)}
+    .stat:nth-child(3){border-left:none}
+    .stat{border-top:1px solid var(--line)}
+    .stat:nth-child(-n+2){border-top:none}
+  }
+
+  section{padding:92px 0}
+  .sec-head{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:end;margin-bottom:52px}
+  .sec-head h2{font-size:clamp(1.9rem,3.6vw,2.8rem);color:var(--ink)}
+  .sec-head h2 .accent{color:var(--purple)}
+  .sec-head .side{color:var(--ink-soft);font-size:.98rem;max-width:46ch;justify-self:end}
+  @media(max-width:860px){.sec-head{grid-template-columns:1fr}.sec-head .side{justify-self:start}}
+
+  /* ————— who we are ————— */
+  .who-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:56px;align-items:center}
+  .who-quote{
+    font-family:var(--display);font-size:clamp(1.45rem,2.7vw,2rem);line-height:1.3;color:var(--purple);
+    font-weight:500;letter-spacing:-.02em;
+  }
+  .who-quote .accent{color:var(--orange)}
+  .glass-wrap{display:flex;justify-content:center}
+  .glass{width:min(280px,70vw);height:auto;filter:drop-shadow(0 18px 30px rgba(26,13,110,.16))}
+  .glass .wave{animation:waveMove 4.5s linear infinite}
+  @keyframes waveMove{to{transform:translateX(110px)}}
+  .glass .slice{animation:bob 5s ease-in-out infinite}
+  @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(6px)}}
+
+  .not-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-top:56px}
+  .not-card{
+    position:relative;border-radius:22px;padding:2.5px;
+    background:linear-gradient(135deg,var(--orange),var(--pink),var(--violet));
+    transform:rotate(-1.2deg);transition:transform .3s ease,box-shadow .3s ease;
+  }
+  .not-card:nth-child(2){transform:rotate(1.1deg)}
+  .not-card:nth-child(3){transform:rotate(-.7deg)}
+  .not-card:hover{transform:rotate(0) translateY(-6px);box-shadow:0 22px 44px rgba(26,13,110,.16)}
+  .not-inner{background:var(--paper-soft);border-radius:19px;padding:30px 26px 28px;height:100%}
+  .not-card .stamp{
+    position:absolute;top:-13px;left:24px;background:var(--orange);color:#fff;
+    font-size:.62rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;
+    padding:5px 13px;border-radius:999px;
+  }
+  .not-title{font-size:1.3rem;color:var(--purple);margin-bottom:12px}
+  .not-inner p{font-size:.93rem;color:var(--ink-soft)}
+  .not-inner p strong{color:var(--ink);font-weight:600}
+  @media(max-width:860px){.who-grid{grid-template-columns:1fr}.not-cards{grid-template-columns:1fr}}
+
+  /* ————— what we do: building blocks ————— */
+  .blocks{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  .block{
+    border-radius:var(--radius);padding:36px 30px;min-height:400px;
+    display:flex;flex-direction:column;justify-content:space-between;gap:40px;
+    transition:transform .3s ease,box-shadow .3s ease;position:relative;overflow:hidden;
+  }
+  .block:hover{transform:translateY(-6px);box-shadow:0 24px 48px rgba(26,13,110,.16)}
+  .block-grad{background:linear-gradient(150deg,#FBE1C9 0%,#F5B8D8 42%,#E88BB8 72%,#E8845F 100%);color:var(--card-dark)}
+  .block-grad-2{background:linear-gradient(160deg,#E9D9F8 0%,#F0B6D6 45%,#F2A487 100%);color:var(--card-dark)}
+  .block-dark{background:var(--card-dark);color:var(--paper)}
+  .block .glyph{width:70px;height:70px;flex:none}
+  .block h3{font-size:1.4rem;margin-bottom:12px}
+  .block p{font-size:.93rem;line-height:1.55;opacity:.85}
+  .block .tag{
+    position:absolute;top:24px;right:24px;font-size:.66rem;font-weight:600;
+    letter-spacing:.14em;text-transform:uppercase;
+    padding:6px 12px;border-radius:999px;border:1px solid currentColor;opacity:.75;
+  }
+  .block-cta{
+    display:inline-flex;align-items:center;gap:.5em;margin-top:16px;
+    font-weight:600;font-size:.9rem;text-decoration:none;
+    border-bottom:2px solid currentColor;padding-bottom:2px;width:max-content;
+    transition:gap .2s;
+  }
+  .block-cta:hover{gap:.9em}
+  .block-grad .block-cta,.block-grad-2 .block-cta{color:var(--purple)}
+  .block-dark .block-cta{color:var(--peach)}
+  @media(max-width:900px){.blocks{grid-template-columns:1fr}.block{min-height:0;gap:30px}}
+
+  /* ————— process accordion ————— */
+  .process{counter-reset:step}
+  .step{border-bottom:1px solid var(--line)}
+  .step:first-child{border-top:1px solid var(--line)}
+  .step button{
+    counter-increment:step;width:100%;display:flex;align-items:center;gap:26px;
+    background:none;border:none;cursor:pointer;text-align:left;
+    padding:26px 8px;font-family:var(--sans);color:var(--ink);
+  }
+  .step button::before{
+    content:"0" counter(step);font-variant-numeric:tabular-nums;
+    font-size:.85rem;font-weight:600;color:var(--orange);letter-spacing:.08em;flex:none;
+  }
+  .step .st-title{font-family:var(--display);font-size:clamp(1.15rem,2.2vw,1.5rem);font-weight:600;letter-spacing:-.02em;flex:1}
+  .step .st-ind{
+    flex:none;width:34px;height:34px;border-radius:50%;border:1.5px solid var(--purple);
+    display:flex;align-items:center;justify-content:center;color:var(--purple);
+    font-size:1.1rem;transition:transform .3s,background .3s,color .3s;
+  }
+  .step[data-open="true"] .st-ind{background:var(--purple);color:var(--paper);transform:rotate(45deg)}
+  .step .st-body{display:grid;grid-template-rows:0fr;transition:grid-template-rows .35s ease}
+  .step[data-open="true"] .st-body{grid-template-rows:1fr}
+  .step .st-inner{overflow:hidden}
+  .step .st-inner ul{
+    list-style:none;padding:0 8px 30px 66px;color:var(--ink-soft);font-size:.95rem;
+    display:flex;flex-direction:column;gap:8px;max-width:68ch;
+  }
+  .step .st-inner li{padding-left:22px;position:relative}
+  .step .st-inner li::before{content:"";position:absolute;left:0;top:.3em;width:.75em;height:.75em;background:var(--ast) center/contain no-repeat}
+  .process-note{
+    margin-top:36px;display:flex;gap:16px;align-items:flex-start;
+    background:var(--paper-soft);border:1px solid var(--line);border-left:5px solid var(--orange);
+    border-radius:14px;padding:22px 26px;font-size:.93rem;color:var(--ink-soft);max-width:760px;
+  }
+  .process-note strong{color:var(--ink)}
+  .process-note .ast-inline{width:1.25em;height:1.25em;flex:none;margin-top:.15em}
+
+  /* ————— marquees ————— */
+  .marquee{
+    padding:32px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+    overflow:hidden;white-space:nowrap;background:var(--paper-soft);
+  }
+  .marquee-track{display:inline-flex;animation:scroll 26s linear infinite}
+  .marquee span{
+    font-family:var(--display);font-size:clamp(1.8rem,4vw,3rem);font-weight:600;letter-spacing:-.02em;
+    color:var(--purple);padding:0 .5em;
+  }
+  .marquee span em{font-style:normal;color:var(--orange)}
+  .marquee .ast-inline{width:.75em;height:.75em}
+  @keyframes scroll{to{transform:translateX(-50%)}}
+
+  /* ————— investor logo strip ————— */
+  .inv-strip{margin-top:64px;text-align:center}
+  .inv-strip h3{font-size:1.35rem;color:var(--ink)}
+  .inv-strip .inv-sub{font-size:.9rem;color:var(--ink-soft);margin:8px 0 30px}
+  .inv-track-wrap{overflow:hidden;white-space:nowrap;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:26px 0}
+  .inv-track{display:inline-flex;align-items:center;gap:64px;animation:scroll 30s linear infinite;padding-right:64px}
+  .inv{display:inline-flex;align-items:center;gap:9px;color:var(--ink);opacity:.72;font-family:var(--display);white-space:nowrap;transition:opacity .25s}
+  .inv:hover{opacity:1}
+  .inv .yc-sq{width:26px;height:26px;border-radius:6px;background:#fb651e;color:#fff;display:inline-flex;align-items:center;justify-content:center;font-weight:700;font-size:1rem;font-family:var(--display)}
+  .inv-serif{font-family:"Georgia","Times New Roman",serif;font-size:1.35rem;letter-spacing:.01em}
+  .inv-caps{font-weight:700;font-size:1rem;letter-spacing:.2em}
+  .inv-low{font-weight:700;font-size:1.3rem;letter-spacing:-.01em}
+  .inv-low small{font-weight:600;font-size:.6rem;letter-spacing:.22em;vertical-align:.25em;margin-left:6px}
+  .inv-duo{font-weight:600;font-size:1.2rem}
+  .inv-duo b{font-weight:800}
+
+  /* ————— investor filters ————— */
+  .filters-layout{display:grid;grid-template-columns:.9fr 1.1fr;gap:56px;align-items:start}
+  .filter-chips{display:flex;flex-direction:column;gap:10px}
+  .chip{
+    display:flex;align-items:center;gap:16px;width:100%;
+    background:none;border:1.5px solid var(--line);border-radius:16px;cursor:pointer;
+    padding:15px 20px;font-family:var(--sans);text-align:left;
+    transition:border-color .25s,background .25s,transform .2s;
+  }
+  .chip .c-num{font-size:.75rem;font-weight:600;color:var(--orange);font-variant-numeric:tabular-nums}
+  .chip .c-name{font-size:1.02rem;font-weight:600;color:var(--ink)}
+  .chip:hover{border-color:var(--purple);transform:translateX(4px)}
+  .chip[aria-selected="true"]{background:var(--purple);border-color:var(--purple)}
+  .chip[aria-selected="true"] .c-name{color:var(--paper)}
+  .chip[aria-selected="true"] .c-num{color:var(--peach)}
+  .filter-panel{
+    color:#fff;border-radius:var(--radius);padding:44px 40px;min-height:340px;
+    position:relative;overflow:hidden;
+    display:flex;flex-direction:column;justify-content:flex-end;gap:18px;
+  }
+  .filter-panel .fp-q{font-family:var(--display);font-weight:500;font-size:1.45rem;line-height:1.3;letter-spacing:-.02em;color:var(--peach);position:relative;z-index:1}
+  .filter-panel .fp-d{font-size:.96rem;opacity:.92;max-width:52ch;position:relative;z-index:1}
+  @media(max-width:860px){.filters-layout{grid-template-columns:1fr}.filter-panel{min-height:0}}
+
+  /* ————— plans ————— */
+  .plans{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;align-items:stretch}
+  .plan{
+    background:var(--paper-soft);border:1px solid var(--line);border-radius:var(--radius);
+    padding:36px 30px;display:flex;flex-direction:column;
+    transition:transform .3s,box-shadow .3s;
+  }
+  .plan:hover{transform:translateY(-5px);box-shadow:0 20px 44px rgba(26,13,110,.13)}
+  .plan.featured{background:var(--purple);color:var(--paper);border-color:var(--purple);position:relative}
+  .plan.featured::before{
+    content:"MOST CHOSEN";position:absolute;top:-12px;left:30px;
+    background:var(--orange);color:#fff;font-size:.65rem;font-weight:600;letter-spacing:.14em;
+    padding:5px 13px;border-radius:999px;
+  }
+  .plan h3{font-size:1.3rem;margin-bottom:6px}
+  .plan .p-for{font-size:.87rem;opacity:.78;min-height:3.4em;margin-bottom:16px}
+  .plan .p-meta{font-size:.84rem;font-weight:600;opacity:.9;margin-bottom:20px;padding-bottom:20px;border-bottom:1px solid var(--line)}
+  .plan.featured .p-meta{border-color:rgba(245,241,232,.25)}
+  .plan ul{list-style:none;display:flex;flex-direction:column;gap:9px;font-size:.89rem;flex:1}
+  .plan li{padding-left:24px;position:relative;opacity:.9}
+  .plan li::before{content:"";position:absolute;left:0;top:.35em;width:.7em;height:.7em;background:var(--ast) center/contain no-repeat}
+  .plan.featured li::before{filter:brightness(1.5) saturate(.7)}
+  .plan .p-cta{
+    margin-top:26px;text-align:center;text-decoration:none;font-weight:600;font-size:.9rem;
+    border:1.5px solid var(--purple);color:var(--purple);border-radius:999px;padding:11px;
+    transition:background .25s,color .25s,border-color .25s;
+  }
+  .plan .p-cta:hover{background:var(--purple);color:var(--paper)}
+  .plan.featured .p-cta{
+    border:none;background-image:var(--btn-grad);background-size:170% 100%;color:#fff;
+    box-shadow:0 8px 22px rgba(232,84,42,.35),inset 0 1px 0 rgba(255,255,255,.28);
+    transition:background-position .4s ease,transform .2s;
+  }
+  .plan.featured .p-cta:hover{background-position:95% 0;transform:translateY(-2px)}
+  .calls-strip{margin-top:26px;display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .call-box{
+    background:var(--paper-soft);border:1px solid var(--line);border-radius:18px;padding:24px 24px 20px;
+    display:flex;flex-direction:column;gap:8px;transition:transform .25s,box-shadow .25s;
+  }
+  .call-box:hover{transform:translateY(-4px);box-shadow:0 16px 34px rgba(26,13,110,.12)}
+  .call-box .cb-name{font-family:var(--display);font-weight:600;font-size:1.05rem;letter-spacing:-.02em;color:var(--purple)}
+  .call-box .cb-d{font-size:.85rem;color:var(--ink-soft);flex:1}
+  .call-box .cb-link{
+    display:inline-flex;align-items:center;gap:.5em;margin-top:8px;text-decoration:none;
+    font-weight:600;font-size:.88rem;color:var(--orange);width:max-content;
+    border-bottom:2px solid var(--orange);padding-bottom:2px;transition:gap .2s;
+  }
+  .call-box .cb-link:hover{gap:.9em}
+  .flex-note{margin-top:22px;font-size:.88rem;color:var(--ink-soft);max-width:72ch}
+  .flex-note strong{color:var(--ink)}
+  @media(max-width:900px){.plans{grid-template-columns:1fr}.calls-strip{grid-template-columns:1fr}}
+
+  /* ————— case studies ————— */
+  .cases{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  .case-card{
+    background:var(--paper-soft);border:1px solid var(--line);border-radius:var(--radius);
+    overflow:hidden;display:flex;flex-direction:column;
+    transition:transform .3s,box-shadow .3s;
+  }
+  .case-card:hover{transform:translateY(-6px);box-shadow:0 22px 44px rgba(26,13,110,.15)}
+  .case-thumb{position:relative;aspect-ratio:16/10;display:flex;align-items:center;justify-content:center}
+  .case-thumb .lock{
+    width:52px;height:52px;border-radius:50%;background:rgba(245,241,232,.92);
+    display:flex;align-items:center;justify-content:center;color:var(--purple);
+    box-shadow:0 8px 22px rgba(26,13,110,.25);position:relative;z-index:1;
+  }
+  .case-thumb .nda{
+    position:absolute;top:14px;left:14px;z-index:1;
+    background:rgba(26,13,110,.55);color:#fff;font-size:.62rem;font-weight:600;
+    letter-spacing:.15em;text-transform:uppercase;padding:5px 11px;border-radius:999px;
+    backdrop-filter:blur(4px);
+  }
+  .case-body{padding:24px 24px 26px;display:flex;flex-direction:column;gap:10px;flex:1}
+  .case-body .c-tag{font-size:.68rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--orange)}
+  .case-body h3{font-size:1.12rem;line-height:1.28}
+  .case-body p{font-size:.87rem;color:var(--ink-soft);flex:1}
+  .case-body button{
+    align-self:flex-start;background:none;border:1.5px solid var(--purple);color:var(--purple);
+    font-family:var(--sans);font-weight:600;font-size:.86rem;border-radius:999px;
+    padding:9px 20px;cursor:pointer;transition:background .25s,color .25s;
+  }
+  .case-body button:hover{background:var(--purple);color:var(--paper)}
+  @media(max-width:900px){.cases{grid-template-columns:1fr}}
+
+  dialog#caseModal{
+    border:none;border-radius:22px;padding:0;max-width:420px;width:calc(100vw - 48px);
+    background:var(--paper-soft);color:var(--ink);
+    box-shadow:0 30px 80px rgba(26,13,110,.35);
+  }
+  dialog#caseModal::backdrop{background:rgba(26,13,110,.45);backdrop-filter:blur(3px)}
+  .modal-inner{padding:34px 32px 30px;display:flex;flex-direction:column;gap:14px;position:relative}
+  .modal-inner h3{font-size:1.2rem;color:var(--purple)}
+  .modal-inner p{font-size:.88rem;color:var(--ink-soft)}
+  .modal-inner input{
+    font-family:var(--sans);font-size:.95rem;padding:12px 16px;border-radius:12px;
+    border:1.5px solid var(--line);background:#fff;color:var(--ink);width:100%;
+  }
+  .modal-inner input:focus-visible{outline:3px solid var(--orange);outline-offset:1px}
+  .modal-row{display:flex;gap:10px;flex-wrap:wrap}
+  .modal-msg{font-size:.82rem;color:var(--orange);min-height:1.2em;font-weight:500}
+  .modal-close{
+    position:absolute;top:14px;right:16px;background:none;border:none;cursor:pointer;
+    font-size:1.3rem;color:var(--ink-soft);line-height:1;font-family:var(--sans);
+  }
+
+  /* ————— sectors ————— */
+  .fav-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-bottom:52px}
+  .fav-card{
+    background:var(--paper-soft);border:1px solid var(--line);border-radius:var(--radius);
+    padding:36px 30px;display:flex;flex-direction:column;gap:18px;
+    transition:transform .3s,box-shadow .3s;
+  }
+  .fav-card:hover{transform:translateY(-6px);box-shadow:0 22px 44px rgba(26,13,110,.14)}
+  .fav-card .f-icon{width:84px;height:84px;border-radius:24px;display:flex;align-items:center;justify-content:center}
+  .fav-card:nth-child(1) .f-icon{background:linear-gradient(150deg,#FBE1C9,#E88BB8)}
+  .fav-card:nth-child(2) .f-icon{background:var(--card-dark)}
+  .fav-card:nth-child(3) .f-icon{background:linear-gradient(160deg,#E9D9F8,#F2A487)}
+  .fav-card h3{font-size:1.25rem}
+  .fav-card p{font-size:.88rem;color:var(--ink-soft)}
+  @media(max-width:860px){.fav-cards{grid-template-columns:1fr}}
+  .sector-marquees{display:flex;flex-direction:column;gap:14px}
+  .strip{overflow:hidden;white-space:nowrap;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:16px 0}
+  .strip-track{display:inline-flex;gap:12px;animation:scroll 32s linear infinite}
+  .strip.rev .strip-track{animation-direction:reverse}
+  .strip .sector{
+    font-size:.85rem;font-weight:500;color:var(--ink-soft);
+    border:1px solid var(--line);border-radius:999px;padding:8px 18px;background:var(--paper-soft);
+  }
+
+  /* ————— testimonials: flip cards ————— */
+  .flips{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+  .flip{perspective:1200px;min-height:360px}
+  .flip-inner{
+    position:relative;width:100%;height:100%;min-height:360px;
+    transform-style:preserve-3d;transition:transform .65s cubic-bezier(.4,.1,.2,1);
+  }
+  .flip:hover .flip-inner,.flip:focus-within .flip-inner{transform:rotateY(180deg)}
+  .flip-face{
+    position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;
+    border-radius:var(--radius);padding:28px 24px;display:flex;flex-direction:column;gap:14px;
+  }
+  .flip-front{background:var(--card-dark);color:var(--paper)}
+  .flip-back{
+    background:linear-gradient(150deg,#FBE1C9 0%,#F5B8D8 55%,#E88BB8 100%);
+    color:var(--card-dark);transform:rotateY(180deg);justify-content:space-between;
+  }
+  .avatar{
+    width:48px;height:48px;border-radius:50%;flex:none;
+    background:linear-gradient(140deg,var(--orange),var(--pink));
+    display:flex;align-items:center;justify-content:center;color:#fff;font-weight:600;
+  }
+  .flip-front .fq{font-size:.94rem;line-height:1.55;flex:1}
+  .flip-front .fq::before{content:"“";color:var(--peach);font-size:1.4em;line-height:0;margin-right:2px}
+  .flip-front .fn{font-weight:600;font-size:.92rem}
+  .flip-front .fr{font-size:.78rem;opacity:.7;line-height:1.4}
+  .flip-back .fb-tag{font-size:.66rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--purple)}
+  .flip-back h4{font-size:1.08rem;line-height:1.28}
+  .flip-back p{font-size:.86rem;line-height:1.55;opacity:.85;flex:1}
+  .flip-back .hint{font-size:.72rem;opacity:.6}
+  @media(max-width:1000px){.flips{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:600px){.flips{grid-template-columns:1fr}}
+
+  /* ————— about ————— */
+  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+  .about-grid p{font-size:.98rem;color:var(--ink-soft)}
+  .about-grid p strong{color:var(--ink);font-weight:600}
+  .about-grid p + p{margin-top:14px}
+  @media(max-width:860px){.about-grid{grid-template-columns:1fr}}
+
+  /* ————— footer: full-bleed gradient, off-white card on top, flat bottom ————— */
+  .footer{
+    position:relative;overflow:hidden;color:var(--paper);
+    padding:26px 16px 0;margin:0;
+  }
+  .footer-card{
+    position:relative;z-index:1;max-width:1240px;margin:0 auto;
+    background:var(--paper-soft);color:var(--ink);border-radius:20px;
+    padding:56px 52px;display:grid;grid-template-columns:1.15fr .85fr;gap:48px;
+  }
+  .footer-card h2{font-size:clamp(2rem,4.2vw,3.2rem);margin:16px 0 18px;max-width:16ch}
+  .footer-card h2 .accent{color:var(--purple)}
+  .footer-card .sub{color:var(--ink-soft);max-width:46ch;font-size:.98rem}
+  .footer-card .fc-ctas{display:flex;flex-wrap:wrap;align-items:center;gap:14px;margin-top:28px}
+  .fc-cols{display:flex;gap:56px;justify-content:flex-end}
+  .fc-col{display:flex;flex-direction:column;gap:10px;min-width:130px}
+  .fc-col .fc-h{font-size:.7rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--orange);margin-bottom:6px}
+  .fc-col a{text-decoration:none;font-size:.9rem;color:var(--ink-soft);width:max-content;border-bottom:1px solid transparent;transition:color .2s,border-color .2s}
+  .fc-col a:hover{color:var(--purple);border-color:var(--purple)}
+  .icon-row{display:flex;gap:12px;margin-top:6px}
+  .icon-btn{
+    width:44px;height:44px;border-radius:50%;border:1.5px solid var(--line);
+    display:flex;align-items:center;justify-content:center;color:var(--purple);text-decoration:none;
+    transition:background .25s,color .25s,transform .2s,border-color .25s;
+  }
+  .icon-btn:hover{background:var(--purple);border-color:var(--purple);color:var(--paper);transform:translateY(-2px)}
+  .icon-btn svg{width:20px;height:20px;fill:currentColor}
+  .footer-lower{
+    position:relative;z-index:1;max-width:1240px;margin:0 auto;
+    padding:48px 12px 30px;display:flex;flex-direction:column;gap:36px;
+  }
+  .word-pills{display:flex;flex-wrap:wrap;gap:10px}
+  .word-pills span{
+    font-size:.88rem;font-weight:500;color:rgba(245,241,232,.92);
+    border:1px solid rgba(245,241,232,.35);border-radius:999px;padding:7px 18px;
+  }
+  .footer-meta{
+    display:flex;flex-wrap:wrap;gap:20px;justify-content:space-between;align-items:center;
+    border-top:1px solid rgba(245,241,232,.25);padding-top:24px;font-size:.82rem;color:rgba(245,241,232,.85);
+  }
+  .footer-brand svg{height:22px;width:auto;display:block}
+  @media(max-width:900px){
+    .footer-card{grid-template-columns:1fr;padding:40px 30px}
+    .fc-cols{justify-content:flex-start}
+  }
+
+  /* ————— scroll reveal ————— */
+  .reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease}
+  .reveal.in{opacity:1;transform:none}
+  @media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none}}
+</style>
+
+<!-- Chhapac wordmark (real vector) + petal asterisk symbols -->
+</head>
+<body>
+<svg style="display:none" aria-hidden="true"><defs>
+<symbol id="ast" viewBox="0 0 100 100">
+  <path d="M50 50C43 40 41 24 45 15A8.5 8.5 0 0 1 55 15C59 24 57 40 50 50Z"/>
+  <path transform="rotate(45 50 50)" d="M50 50C43 40 41 24 45 15A8.5 8.5 0 0 1 55 15C59 24 57 40 50 50Z"/>
+  <path transform="rotate(90 50 50)" d="M50 50C43 40 41 24 45 15A8.5 8.5 0 0 1 55 15C59 24 57 40 50 50Z"/>
+  <path transform="rotate(135 50 50)" d="M50 50C43 40 41 24 45 15A8.5 8.5 0 0 1 55 15C59 24 57 40 50 50Z"/>
+  <path transform="rotate(180 50 50)" d="M50 50C43 40 41 24 45 15A8.5 8.5 0 0 1 55 15C59 24 57 40 50 50Z"/>
+  <path transform="rotate(225 50 50)" d="M50 50C43 40 41 24 45 15A8.5 8.5 0 0 1 55 15C59 24 57 40 50 50Z"/>
+  <path transform="rotate(270 50 50)" d="M50 50C43 40 41 24 45 15A8.5 8.5 0 0 1 55 15C59 24 57 40 50 50Z"/>
+  <path transform="rotate(315 50 50)" d="M50 50C43 40 41 24 45 15A8.5 8.5 0 0 1 55 15C59 24 57 40 50 50Z"/>
+</symbol>
+<symbol id="logo" viewBox="0 0 714.95 129.62">
+  <path fill="currentColor" d="M237.49,108.21c-7.84,0-14.53-1.37-20.06-4.12-5.53-2.75-9.98-6.31-13.35-10.7-3.37-4.39-5.84-9.15-7.41-14.29-1.57-5.14-2.35-10.1-2.35-14.88v-2.59c0-5.18.8-10.35,2.41-15.53,1.61-5.18,4.1-9.88,7.47-14.12,3.37-4.23,7.76-7.65,13.18-10.23,5.41-2.59,11.88-3.88,19.41-3.88s14.27,1.33,19.76,4c5.49,2.67,9.84,6.39,13.06,11.17,3.21,4.78,5.18,10.43,5.88,16.94h-11.76c-.63-4.86-2.2-8.88-4.71-12.06-2.51-3.18-5.66-5.55-9.47-7.12-3.81-1.57-8.06-2.35-12.76-2.35-5.1,0-9.57.88-13.41,2.65-3.84,1.76-7.04,4.23-9.59,7.41-2.55,3.18-4.47,6.84-5.76,11s-1.94,8.67-1.94,13.53.65,9.02,1.94,13.17c1.29,4.16,3.25,7.84,5.88,11.06,2.63,3.22,5.9,5.75,9.82,7.59,3.92,1.84,8.51,2.76,13.76,2.76,7.37,0,13.57-1.84,18.59-5.53,5.02-3.68,8.08-9.02,9.18-16h11.76c-.79,5.88-2.76,11.26-5.94,16.11-3.18,4.86-7.57,8.75-13.18,11.65s-12.41,4.35-20.41,4.35Z"/>
+  <path fill="currentColor" d="M292.07,106.1V20.23h11.29v51.29h-2.82c0-6.19.8-11.55,2.41-16.06,1.61-4.51,4.1-7.98,7.47-10.41,3.37-2.43,7.69-3.65,12.94-3.65h.47c7.53,0,13.21,2.49,17.06,7.47,3.84,4.98,5.76,12.1,5.76,21.35v35.88h-11.29v-38.23c0-5.1-1.43-9.06-4.29-11.88-2.86-2.82-6.57-4.23-11.12-4.23-5.02,0-9.04,1.67-12.06,5-3.02,3.34-4.53,7.7-4.53,13.12v36.23h-11.29Z"/>
+  <path fill="currentColor" d="M367.35,106.1V20.23h11.29v51.29h-2.82c0-6.19.8-11.55,2.41-16.06,1.61-4.51,4.1-7.98,7.47-10.41,3.37-2.43,7.69-3.65,12.94-3.65h.47c7.53,0,13.21,2.49,17.06,7.47,3.84,4.98,5.76,12.1,5.76,21.35v35.88h-11.29v-38.23c0-5.1-1.43-9.06-4.29-11.88-2.86-2.82-6.57-4.23-11.12-4.23-5.02,0-9.04,1.67-12.06,5-3.02,3.34-4.53,7.7-4.53,13.12v36.23h-11.29Z"/>
+  <path fill="currentColor" d="M460.05,107.74c-4.7,0-8.76-.81-12.17-2.41-3.41-1.61-6.04-3.94-7.88-7-1.84-3.06-2.76-6.74-2.76-11.06s1-8.19,3-11.17c2-2.98,4.92-5.23,8.76-6.76,3.84-1.53,8.47-2.29,13.88-2.29h17.06v8.47h-17.53c-4.55,0-8.04,1.1-10.47,3.29-2.43,2.2-3.65,5.02-3.65,8.47s1.22,6.23,3.65,8.35c2.43,2.12,5.92,3.18,10.47,3.18,2.66,0,5.21-.49,7.65-1.47,2.43-.98,4.45-2.63,6.06-4.94,1.61-2.31,2.49-5.51,2.65-9.59l3.06,4.47c-.39,4.47-1.47,8.22-3.23,11.23-1.77,3.02-4.2,5.31-7.29,6.88s-6.84,2.35-11.23,2.35ZM480.63,106.1v-18.82h-1.88v-21.76c0-4.31-1.12-7.57-3.35-9.76s-5.51-3.29-9.82-3.29c-2.43,0-4.94.04-7.53.12-2.59.08-5.06.16-7.41.24-2.35.08-4.39.2-6.12.35v-9.88c1.72-.16,3.55-.3,5.47-.41,1.92-.12,3.9-.2,5.94-.24,2.04-.04,4-.06,5.88-.06,6.43,0,11.68.76,15.76,2.29s7.1,4.02,9.06,7.47c1.96,3.45,2.94,8.12,2.94,14v39.76h-8.94Z"/>
+  <path fill="currentColor" d="M510.27,129.62V43.28h8.94v27.17l-2.12-.24c.39-6.74,1.82-12.25,4.29-16.53,2.47-4.27,5.71-7.43,9.7-9.47,4-2.04,8.35-3.06,13.06-3.06s8.68.86,12.41,2.59c3.72,1.73,6.92,4.08,9.59,7.06s4.71,6.43,6.12,10.35c1.41,3.92,2.12,8.08,2.12,12.47v2.12c0,4.39-.75,8.55-2.24,12.47-1.49,3.92-3.59,7.37-6.29,10.35-2.7,2.98-5.92,5.33-9.65,7.06-3.72,1.72-7.82,2.59-12.29,2.59s-8.75-.98-12.82-2.94c-4.08-1.96-7.45-5.13-10.12-9.53-2.67-4.39-4.2-10.15-4.59-17.29l5.18,9.41v41.76h-11.29ZM542.15,98.33c4.23,0,7.92-1,11.06-3,3.13-2,5.57-4.78,7.29-8.35,1.72-3.57,2.59-7.66,2.59-12.29s-.86-8.82-2.59-12.35c-1.73-3.53-4.16-6.29-7.29-8.29-3.14-2-6.82-3-11.06-3-3.77,0-7.25.84-10.47,2.53-3.22,1.69-5.78,4.12-7.7,7.29-1.92,3.18-2.88,7-2.88,11.47v5.41c0,4.31.98,8,2.94,11.06,1.96,3.06,4.55,5.41,7.76,7.06,3.21,1.65,6.67,2.47,10.35,2.47Z"/>
+  <path fill="currentColor" d="M608.73,107.74c-4.7,0-8.76-.81-12.17-2.41-3.41-1.61-6.04-3.94-7.88-7-1.84-3.06-2.76-6.74-2.76-11.06s1-8.19,3-11.17c2-2.98,4.92-5.23,8.76-6.76,3.84-1.53,8.47-2.29,13.88-2.29h17.06v8.47h-17.53c-4.55,0-8.04,1.1-10.47,3.29-2.43,2.2-3.65,5.02-3.65,8.47s1.22,6.23,3.65,8.35c2.43,2.12,5.92,3.18,10.47,3.18,2.66,0,5.21-.49,7.65-1.47,2.43-.98,4.45-2.63,6.06-4.94,1.61-2.31,2.49-5.51,2.65-9.59l3.06,4.47c-.39,4.47-1.47,8.22-3.23,11.23-1.77,3.02-4.2,5.31-7.29,6.88s-6.84,2.35-11.23,2.35ZM629.32,106.1v-18.82h-1.88v-21.76c0-4.31-1.12-7.57-3.35-9.76s-5.51-3.29-9.82-3.29c-2.43,0-4.94.04-7.53.12-2.59.08-5.06.16-7.41.24-2.35.08-4.39.2-6.12.35v-9.88c1.72-.16,3.55-.3,5.47-.41,1.92-.12,3.9-.2,5.94-.24,2.04-.04,4-.06,5.88-.06,6.43,0,11.68.76,15.76,2.29,4.08,1.53,7.1,4.02,9.06,7.47,1.96,3.45,2.94,8.12,2.94,14v39.76h-8.94Z"/>
+  <path fill="currentColor" d="M685.9,108.21c-5.41,0-10.1-.94-14.06-2.82-3.96-1.88-7.23-4.41-9.82-7.59-2.59-3.18-4.53-6.68-5.82-10.53-1.29-3.84-1.94-7.68-1.94-11.53v-2.12c0-4,.65-7.92,1.94-11.76s3.25-7.31,5.88-10.41c2.63-3.1,5.9-5.59,9.82-7.47,3.92-1.88,8.51-2.82,13.76-2.82s9.98.98,14.17,2.94c4.19,1.96,7.57,4.73,10.12,8.29,2.55,3.57,3.98,7.78,4.29,12.64h-10.82c-.55-3.92-2.35-7.19-5.41-9.82-3.06-2.63-7.18-3.94-12.35-3.94-4.47,0-8.2,1.02-11.17,3.06-2.98,2.04-5.22,4.82-6.71,8.35-1.49,3.53-2.24,7.53-2.24,12s.75,8.25,2.24,11.82c1.49,3.57,3.74,6.39,6.76,8.47,3.02,2.08,6.8,3.12,11.35,3.12,3.53,0,6.59-.62,9.18-1.88,2.59-1.25,4.66-2.94,6.23-5.06,1.57-2.12,2.51-4.51,2.82-7.18h10.82c-.24,4.94-1.67,9.22-4.29,12.82-2.63,3.61-6.08,6.41-10.35,8.41-4.28,2-9.08,3-14.41,3Z"/>
+  <path fill="currentColor" d="M17.65,0h0c0,29.87,24.21,54.08,54.08,54.08h0V0H17.65Z"/>
+  <path fill="currentColor" d="M0,54.03h0c0,39.61,32.11,71.73,71.73,71.73h0V54.03H0Z"/>
+  <circle fill="#E8542A" cx="111.75" cy="26.98" r="17.95"/>
+  <path fill="currentColor" d="M93.99,89.26v.4c0-.13,0-.26,0-.4h0Z"/>
+  <path fill="currentColor" d="M129.89,89.66c0-9.91-8.04-17.95-17.95-17.95s-17.73,7.82-17.95,17.55c0,.13,0,.26,0,.4v32.58c12.67-4.14,23.78-11.72,32.24-21.62l-.05-.02c2.33-3.03,3.71-6.82,3.71-10.93Z"/>
+</symbol>
+</defs></svg>
+
+<nav aria-label="Main">
+  <a class="nav-brand" href="#top" aria-label="Chhapac: home">
+    <svg style="color:#2B1586" viewBox="0 0 714.95 129.62" width="121" height="22"><use href="#logo"/></svg>
+  </a>
+  <div class="nav-links">
+    <a href="#what">What we do</a>
+    <a href="#process">Process</a>
+    <a href="#plans">Plans</a>
+    <a href="#cases">Case studies</a>
+  </div>
+  <a class="nav-cta" href="#contact">Book a call</a>
+</nav>
+
+<header id="top">
+  <div class="hero-band grad-anim" role="img" aria-label="Chhapac brand gradient: purple to coral">
+    <canvas class="grain" data-grain></canvas>
+    <svg class="band-ast spin-slow" viewBox="0 0 100 100" fill="currentColor" aria-hidden="true"><use href="#ast"/></svg>
+    <div class="band-word">Top 5% Pitch Readiness + Fundraise</div>
+  </div>
+  <div class="hero-grid">
+    <h1>The deck speaks for you, <span class="accent">after you leave the room.</span></h1>
+    <div class="hero-copy">
+      <p>Narrative-led pitchflow and information design for the <strong>3 minutes</strong> your pitch gets.</p>
+      <div class="hero-ctas">
+        <a class="btn btn-primary" href="https://calendly.com/chhayajoshi/deep-dive-session-clone" target="_blank" rel="noopener">Book a working session</a>
+        <a class="btn btn-ghost" href="https://wa.me/919620147470?text=Hi%20Chhaya%2C%20I%27d%20like%20a%20free%20deck%20audit." target="_blank" rel="noopener">Get a free deck audit</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrap stats reveal">
+    <div class="stats-grid">
+      <div class="stat"><div class="num" data-count="30" data-suffix="M+">0</div><div class="lbl">raised via proven smart pitching</div></div>
+      <div class="stat"><div class="num" data-count="50" data-suffix="+">0</div><div class="lbl">narratives &amp; decks shipped</div></div>
+      <div class="stat"><div class="num" data-count="300" data-suffix="+">0</div><div class="lbl">founder conversations since Sep 2025</div></div>
+      <div class="stat"><div class="num" data-count="20" data-suffix="+">0</div><div class="lbl">sectors translated into investor language</div></div>
+    </div>
+  </div>
+</header>
+
+<!-- ————— WHO WE ARE ————— -->
+<section id="who">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <h2><span class="eyebrow" style="display:inline-flex;margin-bottom:14px">Who we are</span><br>Specialists in <span class="accent">first impressions</span></h2>
+      <p class="side">You're the expert in your business. We're the experts in what an investor needs to take away from it: in the few minutes decision-makers actually give.</p>
+    </div>
+    <div class="who-grid">
+      <div class="reveal">
+        <p class="who-quote">"Investors understand your business. It's their key takeaway <span class="accent">after you've left, or before you've even met,</span> that decides the deal - and a document will be speaking for you."</p>
+      </div>
+      <div class="glass-wrap reveal" aria-hidden="true">
+        <svg class="glass" viewBox="0 0 220 250">
+          <defs>
+            <linearGradient id="liq" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#F26A1B"/><stop offset=".5" stop-color="#E85FA0"/><stop offset="1" stop-color="#7A3CE8"/>
+            </linearGradient>
+            <clipPath id="bowl"><path d="M33 44 h154 q0 84 -77 84 q-77 0 -77 -84 z"/></clipPath>
+          </defs>
+          <g clip-path="url(#bowl)">
+            <rect x="0" y="44" width="220" height="90" fill="url(#liq)" opacity=".22"/>
+            <path class="wave" fill="url(#liq)" d="M-222 66 q27.5 -16 55 0 t55 0 t55 0 t55 0 t55 0 t55 0 t55 0 t55 0 V134 H-222 z"/>
+          </g>
+          <path d="M33 44 h154 q0 84 -77 84 q-77 0 -77 -84 z" fill="none" stroke="#2B1586" stroke-width="5" stroke-linejoin="round"/>
+          <path d="M110 128 v62" stroke="#2B1586" stroke-width="5" stroke-linecap="round"/>
+          <path d="M64 196 h92" stroke="#2B1586" stroke-width="6" stroke-linecap="round"/>
+          <g class="slice">
+            <circle cx="152" cy="46" r="25" fill="#F26A1B" stroke="#2B1586" stroke-width="4"/>
+            <g stroke="#FBF8F1" stroke-width="2.5">
+              <line x1="152" y1="25" x2="152" y2="67"/><line x1="131" y1="46" x2="173" y2="46"/>
+              <line x1="137" y1="31" x2="167" y2="61"/><line x1="167" y1="31" x2="137" y2="61"/>
+            </g>
+            <circle cx="152" cy="46" r="6" fill="#FBF8F1"/>
+          </g>
+          <g fill="#E8542A">
+            <use href="#ast" x="0" y="0" width="34" height="34" transform="translate(24 8)"/>
+            <use href="#ast" x="0" y="0" width="22" height="22" transform="translate(186 146)"/>
+          </g>
+        </svg>
+      </div>
+    </div>
+    <div class="not-cards">
+      <div class="not-card reveal">
+        <span class="stamp">Not us</span>
+        <div class="not-inner">
+          <h3 class="not-title">Not a design shop.</h3>
+          <p>Story and information architecture come first. <strong>Design is the wrapper</strong> that carries them.</p>
+        </div>
+      </div>
+      <div class="not-card reveal">
+        <span class="stamp">Not us</span>
+        <div class="not-inner">
+          <h3 class="not-title">Not an investment bank.</h3>
+          <p>We don't broker intros. We make sure the intros you already have <strong>convert.</strong></p>
+        </div>
+      </div>
+      <div class="not-card reveal">
+        <span class="stamp">Not us</span>
+        <div class="not-inner">
+          <h3 class="not-title">Not another template vendor.</h3>
+          <p>Nobody remembers a PDF. They remember <strong>clear takeaways designed for higher recall.</strong> The proven information architecture is the IP.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ————— WHAT WE DO ————— -->
+<section id="what" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <h2><span class="eyebrow" style="display:inline-flex;margin-bottom:14px">What we do</span><br>Ready to pitch, <span class="accent">set to grow</span></h2>
+      <p class="side">Three ways in: from a diagnostic you can act on this week, to the full narrative-and-design system behind a raise.</p>
+    </div>
+    <div class="blocks">
+      <article class="block block-grad reveal">
+        <span class="tag">Start here</span>
+        <svg class="glyph" viewBox="0 0 74 74" aria-hidden="true"><g fill="#241931"><circle cx="37" cy="37" r="8"/><ellipse cx="37" cy="16" rx="7" ry="12"/><ellipse cx="37" cy="58" rx="7" ry="12"/><ellipse cx="16" cy="37" rx="12" ry="7"/><ellipse cx="58" cy="37" rx="12" ry="7"/></g></svg>
+        <div>
+          <h3>Deck Audit</h3>
+          <p>Upload your existing deck, get a page-by-page diagnostic: what's lacking, what's buried, and what an investor filters out. The fastest honest read on where you stand.</p>
+          <a class="block-cta" href="https://wa.me/919620147470?text=Hi%20Chhaya%2C%20I%27d%20like%20a%20free%20deck%20audit." target="_blank" rel="noopener">Get a free audit <span aria-hidden="true">→</span></a>
+        </div>
+      </article>
+      <article class="block block-dark reveal">
+        <span class="tag">Live 1:1</span>
+        <svg class="glyph" viewBox="0 0 74 74" aria-hidden="true"><path d="M8 42 q6 -22 11 0 q5 20 10 0 q5 -26 10 0 q5 22 10 0 q5 -18 9 0" fill="none" stroke="#F9B48F" stroke-width="9" stroke-linecap="round"/></svg>
+        <div>
+          <h3>Working Sessions</h3>
+          <p>30-60 minute strategy sprints and live editing calls: real-time deck iteration, narrative surgery, and a post-call deliverable within 24 hours. No retainers, no drift.</p>
+          <a class="block-cta" href="https://calendly.com/chhayajoshi" target="_blank" rel="noopener">Find a time slot <span aria-hidden="true">→</span></a>
+        </div>
+      </article>
+      <article class="block block-grad-2 reveal">
+        <span class="tag">Pricing plans</span>
+        <svg class="glyph" viewBox="0 0 74 74" aria-hidden="true"><path d="M40 6 L40 38 L8 38 A32 32 0 0 1 40 6 Z" fill="#241931"/><circle cx="54" cy="16" r="9" fill="#E8542A"/><path d="M46 44 a10 10 0 0 1 20 0 q0 13 -10 24 q-10 -11 -10 -24 z" fill="#241931"/></svg>
+        <div>
+          <h3>Investor Deck Sprints</h3>
+          <p>Discovery to narrative to design to revisions, in a time-boxed sprint with hard deadlines. Structured builds that end investment-ready, not endlessly iterated.</p>
+          <a class="block-cta" href="#plans">See the plans <span aria-hidden="true">→</span></a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ————— PROCESS ————— -->
+<section id="process" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <h2><span class="eyebrow" style="display:inline-flex;margin-bottom:14px">How we work</span><br>A system, <span class="accent">not a slideshow</span></h2>
+      <p class="side">Six phases, one operating system. 80% of the early time isn't spent touching slides. It's spent making sure the right things end up on them.</p>
+    </div>
+    <div class="process reveal">
+      <div class="step" data-open="true">
+        <button type="button" aria-expanded="true"><span class="st-title">Discovery &amp; Alignment</span><span class="st-ind">+</span></button>
+        <div class="st-body"><div class="st-inner"><ul>
+          <li>Deep-dive conversations on your business, vision, and fundraising goals</li>
+          <li>Identifying investor expectations, positioning gaps, and audience psyche</li>
+          <li>Aligning on narrative direction, tonality, and key messaging pillars</li>
+        </ul></div></div>
+      </div>
+      <div class="step">
+        <button type="button" aria-expanded="false"><span class="st-title">Information Gathering &amp; Structuring</span><span class="st-ind">+</span></button>
+        <div class="st-body"><div class="st-inner"><ul>
+          <li>Gathering all necessary data, insights, and materials from your side</li>
+          <li>Mapping the content structure: what goes in, what stays out</li>
+          <li>Building a slide-wise framework for flow, logic, and clarity</li>
+        </ul></div></div>
+      </div>
+      <div class="step">
+        <button type="button" aria-expanded="false"><span class="st-title">Narrative Building</span><span class="st-ind">+</span></button>
+        <div class="st-body"><div class="st-inner"><ul>
+          <li>Crafting a sharp, persuasive storyline aligned with your brand voice</li>
+          <li>Iterative reviews with you to lock core messaging and positioning</li>
+          <li>Finalising a content flow that captures business and emotional hooks</li>
+        </ul></div></div>
+      </div>
+      <div class="step">
+        <button type="button" aria-expanded="false"><span class="st-title">Visual Direction &amp; Theme Lock-in</span><span class="st-ind">+</span></button>
+        <div class="st-body"><div class="st-inner"><ul>
+          <li>A moodboard aligned with your brand ethos and pitch tone</li>
+          <li>Design direction for layout, palette, typography, and visual style</li>
+          <li>Aesthetic alignment locked before any design execution begins</li>
+        </ul></div></div>
+      </div>
+      <div class="step">
+        <button type="button" aria-expanded="false"><span class="st-title">Deck Design &amp; Build</span><span class="st-ind">+</span></button>
+        <div class="st-body"><div class="st-inner"><ul>
+          <li>Hands-on slide design with custom infographics and visual storytelling</li>
+          <li>Data visualisation that simplifies complex information</li>
+          <li>Iterative refinement for clarity, consistency, and investor-readiness</li>
+        </ul></div></div>
+      </div>
+      <div class="step">
+        <button type="button" aria-expanded="false"><span class="st-title">Final Revisions &amp; Handover</span><span class="st-ind">+</span></button>
+        <div class="st-body"><div class="st-inner"><ul>
+          <li>Final polish: alignment checks and brand tonality tuning</li>
+          <li>Investor-friendly formats: PDF, presenter, and editable master files</li>
+          <li>Consolidated revision rounds so the deck ships on the date committed</li>
+        </ul></div></div>
+      </div>
+    </div>
+    <div class="process-note reveal">
+      <svg class="ast-inline" viewBox="0 0 100 100" fill="#E8542A" aria-hidden="true"><use href="#ast"/></svg>
+      <div><strong>Hard deadlines, by design.</strong> Sprints end on the date we commit: feedback comes consolidated, revisions are scoped, and the engagement closes investment-ready. Fast and scalable because the system is. Quality because the process refuses to drift.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ————— MARQUEE ————— -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <span>PITCH FAST <svg class="ast-inline" viewBox="0 0 100 100" fill="#E8542A"><use href="#ast"/></svg> PITCH <em>RIGHT</em> <svg class="ast-inline" viewBox="0 0 100 100" fill="#E8542A"><use href="#ast"/></svg> </span><span>PITCH FAST <svg class="ast-inline" viewBox="0 0 100 100" fill="#E8542A"><use href="#ast"/></svg> PITCH <em>RIGHT</em> <svg class="ast-inline" viewBox="0 0 100 100" fill="#E8542A"><use href="#ast"/></svg> </span><span>PITCH FAST <svg class="ast-inline" viewBox="0 0 100 100" fill="#E8542A"><use href="#ast"/></svg> PITCH <em>RIGHT</em> <svg class="ast-inline" viewBox="0 0 100 100" fill="#E8542A"><use href="#ast"/></svg> </span><span>PITCH FAST <svg class="ast-inline" viewBox="0 0 100 100" fill="#E8542A"><use href="#ast"/></svg> PITCH <em>RIGHT</em> <svg class="ast-inline" viewBox="0 0 100 100" fill="#E8542A"><use href="#ast"/></svg> </span>
+  </div>
+</div>
+
+<!-- ————— INVESTOR FILTERS ————— -->
+<section id="filters">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <h2><span class="eyebrow" style="display:inline-flex;margin-bottom:14px">Why it works</span><br>The five filters investors <span class="accent">actually run</span></h2>
+      <p class="side">We've built a tailored mechanism to get it right for you in the consequential rooms. Tap a filter to see what we solve for.</p>
+    </div>
+    <div class="filters-layout reveal">
+      <div class="filter-chips" role="tablist" aria-label="Investor filters">
+        <button class="chip" role="tab" aria-selected="true" data-i="0"><span class="c-num">01</span><span class="c-name">Context fit</span></button>
+        <button class="chip" role="tab" aria-selected="false" data-i="1"><span class="c-num">02</span><span class="c-name">Competence signal</span></button>
+        <button class="chip" role="tab" aria-selected="false" data-i="2"><span class="c-num">03</span><span class="c-name">Conviction energy</span></button>
+        <button class="chip" role="tab" aria-selected="false" data-i="3"><span class="c-num">04</span><span class="c-name">Cognitive load</span></button>
+        <button class="chip" role="tab" aria-selected="false" data-i="4"><span class="c-num">05</span><span class="c-name">Continuity proof</span></button>
+      </div>
+      <div class="filter-panel grad-anim" role="tabpanel" aria-live="polite">
+        <canvas class="grain" data-grain></canvas>
+        <p class="fp-q" id="fp-q">"Does this fit my thesis: is this a market I already believe in?"</p>
+        <p class="fp-d" id="fp-d">We open with the macro-to-consumer-truth formula, so the first slides place your company inside a shift the investor already has conviction about, before a single product claim is made.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ————— PLANS ————— -->
+<section id="plans" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <h2><span class="eyebrow" style="display:inline-flex;margin-bottom:14px">Plans</span><br>Structured for clarity. <span class="accent">Flexible where it matters.</span></h2>
+      <p class="side">One-time, outcome-scoped engagements: priced on deliverables and deadlines, not hours. No open-ended retainers unless you ask for one.</p>
+    </div>
+    <div class="plans">
+      <article class="plan reveal">
+        <h3>Design-Only Revamp</h3>
+        <p class="p-for">For founders with a locked narrative who need a sharper, more credible visual presentation.</p>
+        <p class="p-meta">Up to 20 slides · 4-12 days</p>
+        <ul>
+          <li>Clean visual redesign: investor-ready aesthetic</li>
+          <li>Layout, hierarchy, and readability rebuilt</li>
+          <li>Consistent typography, colour, and slide rhythm</li>
+          <li>One consolidated revision round · up to 3 calls</li>
+        </ul>
+        <a class="p-cta" href="https://wa.me/919620147470?text=Hi%20Chhaya%2C%20please%20share%20the%20Design-Only%20Revamp%20pricing." target="_blank" rel="noopener">Download pricing</a>
+      </article>
+      <article class="plan featured reveal">
+        <h3>Starter Plan</h3>
+        <p class="p-for">For early-stage founders establishing a clear, compelling pitch story with sharp visuals.</p>
+        <p class="p-meta">Up to 20 slides · 2-3 weeks</p>
+        <ul>
+          <li>Discovery session on business, goals &amp; audience</li>
+          <li>Narrative structuring: the core storyline</li>
+          <li>Visual enhancement that carries the message</li>
+          <li>Consolidated revision round · up to 5 calls</li>
+          <li>PDF / PPT / Canva presenter handover</li>
+        </ul>
+        <a class="p-cta" href="https://wa.me/919620147470?text=Hi%20Chhaya%2C%20please%20share%20the%20Starter%20Plan%20pricing." target="_blank" rel="noopener">Download pricing</a>
+      </article>
+      <article class="plan reveal">
+        <h3>Growth Plan</h3>
+        <p class="p-for">For startups scaling their pitch efforts: polished storytelling with full brand consistency.</p>
+        <p class="p-meta">15-25 slides · 5-6 weeks</p>
+        <ul>
+          <li>Deep discovery + competitive landscape analysis</li>
+          <li>Advanced investor-centric narrative</li>
+          <li>Custom visual &amp; infographic design</li>
+          <li>Two revision rounds · up to 12 calls</li>
+          <li>Presenter deck + one-pager + long-form deck</li>
+        </ul>
+        <a class="p-cta" href="https://wa.me/919620147470?text=Hi%20Chhaya%2C%20please%20share%20the%20Growth%20Plan%20pricing." target="_blank" rel="noopener">Download pricing</a>
+      </article>
+    </div>
+    <div class="calls-strip reveal">
+      <div class="call-box">
+        <div class="cb-name">30-Minute Strategy Sprint</div>
+        <div class="cb-d">Targeted feedback on your deck, brand, or positioning, with a 1:1 roadmap on next steps.</div>
+        <a class="cb-link" href="https://calendly.com/chhayajoshi/one-on-one-clone" target="_blank" rel="noopener">Find a time slot <span aria-hidden="true">→</span></a>
+      </div>
+      <div class="call-box">
+        <div class="cb-name">60-Minute Deep Dive</div>
+        <div class="cb-d">End-to-end narrative refinement, storytelling breakdown, and market positioning clarity.</div>
+        <a class="cb-link" href="https://calendly.com/chhayajoshi/quick-catch-up" target="_blank" rel="noopener">Find a time slot <span aria-hidden="true">→</span></a>
+      </div>
+      <div class="call-box">
+        <div class="cb-name">Working / Revision Session</div>
+        <div class="cb-d">Real-time deck iteration with design guidance, and a post-call deliverable within 24 hours.</div>
+        <a class="cb-link" href="https://calendly.com/chhayajoshi/deep-dive-session-clone" target="_blank" rel="noopener">Find a time slot <span aria-hidden="true">→</span></a>
+      </div>
+    </div>
+    <p class="flex-note reveal"><strong>Built for serious, bootstrapped founders:</strong> milestone-based payment splits, deferred success-fee structures governed by agreement, and preferential cohort pricing through accelerator partners. The entry point flexes. The quality bar doesn't.</p>
+  </div>
+</section>
+
+<!-- ————— CASE STUDIES ————— -->
+<section id="cases" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <h2><span class="eyebrow" style="display:inline-flex;margin-bottom:14px">Case studies</span><br>The work, <span class="accent">under lock</span></h2>
+      <p class="side">Client narratives are NDA-protected. Request access and we'll verify you before sharing the full story.</p>
+    </div>
+    <div class="cases">
+      <article class="case-card reveal">
+        <div class="case-thumb grad-anim">
+          <span class="nda">NDA protected</span>
+          <span class="lock" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17 9V7a5 5 0 0 0-10 0v2H5v13h14V9h-2zm-8-2a3 3 0 0 1 6 0v2H9V7zm4 9.7V19h-2v-2.3a2 2 0 1 1 2 0z"/></svg></span>
+        </div>
+        <div class="case-body">
+          <span class="c-tag">Fintech · India</span>
+          <h3>How a gold-savings platform closed its seed narrative</h3>
+          <p>Full narrative rebuild across three collateral formats, closed on the first working call.</p>
+          <button type="button" data-case="Gold-savings fintech">Request to view</button>
+        </div>
+      </article>
+      <article class="case-card reveal">
+        <div class="case-thumb" style="background:var(--card-dark)">
+          <span class="nda">NDA protected</span>
+          <span class="lock" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17 9V7a5 5 0 0 0-10 0v2H5v13h14V9h-2zm-8-2a3 3 0 0 1 6 0v2H9V7zm4 9.7V19h-2v-2.3a2 2 0 1 1 2 0z"/></svg></span>
+        </div>
+        <div class="case-body">
+          <span class="c-tag">Healthcare AI · USA</span>
+          <h3>Making a US claims-AI engine legible to investors</h3>
+          <p>A visual-led system that turned a complex technical moat into an investor-grade story.</p>
+          <button type="button" data-case="US healthcare AI">Request to view</button>
+        </div>
+      </article>
+      <article class="case-card reveal">
+        <div class="case-thumb" style="background:linear-gradient(150deg,#F26A1B,#E85FA0)">
+          <span class="nda">NDA protected</span>
+          <span class="lock" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17 9V7a5 5 0 0 0-10 0v2H5v13h14V9h-2zm-8-2a3 3 0 0 1 6 0v2H9V7zm4 9.7V19h-2v-2.3a2 2 0 1 1 2 0z"/></svg></span>
+        </div>
+        <div class="case-body">
+          <span class="c-tag">Consumer · Bangalore</span>
+          <h3>A pre-seed consumer raise, rebuilt in a 5-day sprint</h3>
+          <p>Market sizing, GTM triangle, and an investor deck, shipped against a hard deadline.</p>
+          <button type="button" data-case="Hyperlocal consumer">Request to view</button>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<dialog id="caseModal">
+  <div class="modal-inner">
+    <button class="modal-close" type="button" aria-label="Close">✕</button>
+    <h3 id="modal-title">NDA-protected case study</h3>
+    <p>This case study is shared under NDA. Enter your access password, or request access and we'll verify you.</p>
+    <input type="password" id="casePass" placeholder="Access password" aria-label="Access password">
+    <p class="modal-msg" id="modalMsg"></p>
+    <div class="modal-row">
+      <button class="btn btn-primary" type="button" id="unlockBtn">Unlock</button>
+      <a class="btn btn-ghost" id="requestLink" href="https://wa.me/919620147470" target="_blank" rel="noopener">Request access</a>
+    </div>
+  </div>
+</dialog>
+
+<!-- ————— SECTORS ————— -->
+<section id="sectors" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <h2><span class="eyebrow" style="display:inline-flex;margin-bottom:14px">Trusted across</span><br>Sector-agnostic, <span class="accent">with favourites</span></h2>
+    </div>
+    <div class="fav-cards">
+      <article class="fav-card reveal">
+        <div class="f-icon" aria-hidden="true">
+          <svg width="46" height="46" viewBox="0 0 64 64"><path d="M54 8 C20 12 12 34 14 50 C34 52 52 40 54 8 Z" fill="#2B1586"/><path d="M14 50 Q30 28 50 14" stroke="#F5F1E8" stroke-width="3.5" fill="none" stroke-linecap="round"/></svg>
+        </div>
+        <h3>Sustainability</h3>
+        <p>Clean energy, recycling, and climate platforms: turning engineering depth into an investment thesis.</p>
+      </article>
+      <article class="fav-card reveal">
+        <div class="f-icon" aria-hidden="true">
+          <svg width="46" height="46" viewBox="0 0 64 64"><rect x="16" y="16" width="32" height="32" rx="6" fill="#F9B48F"/><rect x="26" y="26" width="12" height="12" rx="2" fill="#241931"/><g stroke="#F9B48F" stroke-width="4" stroke-linecap="round"><line x1="24" y1="4" x2="24" y2="12"/><line x1="40" y1="4" x2="40" y2="12"/><line x1="24" y1="52" x2="24" y2="60"/><line x1="40" y1="52" x2="40" y2="60"/><line x1="4" y1="24" x2="12" y2="24"/><line x1="4" y1="40" x2="12" y2="40"/><line x1="52" y1="24" x2="60" y2="24"/><line x1="52" y1="40" x2="60" y2="40"/></g></svg>
+        </div>
+        <h3>Deep Tech</h3>
+        <p>Frontier AI, biotech, and space: making the technically complex feel obvious to non-technical rooms.</p>
+      </article>
+      <article class="fav-card reveal">
+        <div class="f-icon" aria-hidden="true">
+          <svg width="46" height="46" viewBox="0 0 64 64"><path d="M14 22 h36 l-4 32 h-28 z" fill="#2B1586"/><path d="M24 22 v-4 a8 8 0 0 1 16 0 v4" stroke="#2B1586" stroke-width="4" fill="none" stroke-linecap="round"/><path d="M26 38 l4.2 4.2 8 -8" stroke="#F5F1E8" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h3>Consumer Brands</h3>
+        <p>D2C, food, and lifestyle: category-truth narratives that keep a brand from being boxed in.</p>
+      </article>
+    </div>
+    <div class="sector-marquees" aria-hidden="true">
+      <div class="strip"><div class="strip-track">
+        <span class="sector">Fintech &amp; Gold Savings</span><span class="sector">B2B Payments</span><span class="sector">Food Robotics</span><span class="sector">Frontier AI / LLMs</span><span class="sector">Healthcare Claims AI</span><span class="sector">Biotech</span><span class="sector">Mental Health Tech</span><span class="sector">Geospatial Data</span><span class="sector">Fintech &amp; Gold Savings</span><span class="sector">B2B Payments</span><span class="sector">Food Robotics</span><span class="sector">Frontier AI / LLMs</span><span class="sector">Healthcare Claims AI</span><span class="sector">Biotech</span><span class="sector">Mental Health Tech</span><span class="sector">Geospatial Data</span>
+      </div></div>
+      <div class="strip rev"><div class="strip-track">
+        <span class="sector">Creator Commerce</span><span class="sector">Rubber Recycling</span><span class="sector">Hyperlocal Services</span><span class="sector">Space Tech</span><span class="sector">SaaS &amp; B2B</span><span class="sector">D2C Nutrition</span><span class="sector">VC Funds &amp; Accelerators</span><span class="sector">Women's Fashion</span><span class="sector">Creator Commerce</span><span class="sector">Rubber Recycling</span><span class="sector">Hyperlocal Services</span><span class="sector">Space Tech</span><span class="sector">SaaS &amp; B2B</span><span class="sector">D2C Nutrition</span><span class="sector">VC Funds &amp; Accelerators</span><span class="sector">Women's Fashion</span>
+      </div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ————— TRUSTED BY THE WINNERS ————— -->
+<section id="winners" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <h2><span class="eyebrow" style="display:inline-flex;margin-bottom:14px">Trusted by the winners</span><br>What founders say <span class="accent">after the room</span></h2>
+      <p class="side">Hover any card to see the engagement behind the words.</p>
+    </div>
+    <div class="flips">
+      <div class="flip reveal" tabindex="0">
+        <div class="flip-inner">
+          <div class="flip-face flip-front">
+            <span class="avatar">SB</span>
+            <p class="fq">I'm happy that you have a long-term vision. You're not talking to me like just another 'get your pitch made' vendor."</p>
+            <div><div class="fn">Sunil Bagrecha</div><div class="fr">Founder · DigiGold savings platform</div></div>
+          </div>
+          <div class="flip-face flip-back">
+            <span class="fb-tag">Fintech · India</span>
+            <h4>Gold-savings SIP platform</h4>
+            <p>Growth Plan engagement: full narrative rebuild with presenter deck, one-pager, and long-form deck. Verbally closed on the first working call.</p>
+            <span class="hint">Hover away to flip back</span>
+          </div>
+        </div>
+      </div>
+      <div class="flip reveal" tabindex="0">
+        <div class="flip-inner">
+          <div class="flip-face flip-front">
+            <span class="avatar">RA</span>
+            <p class="fq">We had pitched 40-50 VCs and I felt the deck didn't matter. I left the call agreeing: it's the document that speaks for you after you leave the room."</p>
+            <div><div class="fn">Co-founder</div><div class="fr">Hyperlocal consumer startup · Bangalore</div></div>
+          </div>
+          <div class="flip-face flip-back">
+            <span class="fb-tag">Consumer · India</span>
+            <h4>Hyperlocal services brand</h4>
+            <p>Pre-seed raise: 5-day custom sprint covering market sizing methodology, GTM triangle, and a full investor deck against a hard deadline.</p>
+            <span class="hint">Hover away to flip back</span>
+          </div>
+        </div>
+      </div>
+      <div class="flip reveal" tabindex="0">
+        <div class="flip-inner">
+          <div class="flip-face flip-front">
+            <span class="avatar">WD</span>
+            <p class="fq">The visual-led approach made a complex claims engine legible to the non-technical investors in our round."</p>
+            <div><div class="fn">Wade Denton</div><div class="fr">Co-founder · Healthcare claims AI, USA</div></div>
+          </div>
+          <div class="flip-face flip-back">
+            <span class="fb-tag">Healthcare AI · USA</span>
+            <h4>Claims automation platform</h4>
+            <p>Kickoff to closure across narrative and visual systems: positioning a 97-99% accuracy engine against generic LLM claims.</p>
+            <span class="hint">Hover away to flip back</span>
+          </div>
+        </div>
+      </div>
+      <div class="flip reveal" tabindex="0">
+        <div class="flip-inner">
+          <div class="flip-face flip-front">
+            <span class="avatar">RJ</span>
+            <p class="fq">Making the model the hero, not the features, changed how enterprise investors heard us."</p>
+            <div><div class="fn">Founder</div><div class="fr">Frontier AI infrastructure · India</div></div>
+          </div>
+          <div class="flip-face flip-back">
+            <span class="fb-tag">Deep Tech · India</span>
+            <h4>Frontier LLM platform</h4>
+            <p>Category-creation narrative across multiple revision rounds, built for enterprise and B2B investor conversations.</p>
+            <span class="hint">Hover away to flip back</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="inv-strip reveal">
+      <h3>Trusted by the best</h3>
+      <p class="inv-sub">Helped portfolio companies of renowned investors.</p>
+      <div class="inv-track-wrap" aria-label="Investor logos">
+        <div class="inv-track">
+          <span class="inv inv-serif">Sequoia</span>
+          <span class="inv inv-caps">TITAN CAPITAL</span>
+          <span class="inv inv-low">arkam<small>VENTURES</small></span>
+          <span class="inv inv-duo">Beyond<b>Seed</b></span>
+          <span class="inv inv-caps">UNLEASH CAPITAL</span>
+          <span class="inv"><span class="yc-sq">Y</span><span style="font-weight:600;font-size:1.15rem">Combinator</span></span>
+          <span class="inv inv-serif">Sequoia</span>
+          <span class="inv inv-caps">TITAN CAPITAL</span>
+          <span class="inv inv-low">arkam<small>VENTURES</small></span>
+          <span class="inv inv-duo">Beyond<b>Seed</b></span>
+          <span class="inv inv-caps">UNLEASH CAPITAL</span>
+          <span class="inv"><span class="yc-sq">Y</span><span style="font-weight:600;font-size:1.15rem">Combinator</span></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ————— ABOUT ————— -->
+<section id="about" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head reveal" style="margin-bottom:36px">
+      <h2><span class="eyebrow" style="display:inline-flex;margin-bottom:14px">About us</span><br>Founder-built, <span class="accent">founder-to-founder</span></h2>
+    </div>
+    <div class="about-grid reveal">
+      <p><strong>Chhapac is a strategy and creative collective</strong> with a forte in narrative engineering for driven founders who are actively designing how we experience the future. Chhapac.decks is its pitch arm: we help founders turn complex businesses into decks investors understand, trust, and remember.</p>
+      <p>It is led by <strong>Chhaya Joshi</strong>, an ex-SaaS founder who scaled in Southeast Asia, so every engagement runs founder-to-founder, not vendor-to-client. The working belief is simple: you have too much information, and it can't fit in 10 minutes or 10 slides. Deciding what to use, and how it creates a hook: that's the work.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ————— FOOTER: gradient bleed, off-white card, flat bottom ————— -->
+<footer class="footer grad-anim" id="contact">
+  <canvas class="grain" data-grain></canvas>
+  <div class="footer-card">
+    <div>
+      <span class="eyebrow">The goal</span>
+      <h2>The top 5% of <span class="accent">fundraise readiness.</span></h2>
+      <p class="sub">Not a prettier PDF: a narrative that keeps making your case after you've left the room. If the traction is real, let's make investors feel it.</p>
+      <div class="fc-ctas">
+        <a class="btn btn-primary" href="https://calendly.com/chhayajoshi" target="_blank" rel="noopener">Book a call</a>
+        <div class="icon-row">
+          <a class="icon-btn" href="https://wa.me/919620147470" target="_blank" rel="noopener" aria-label="WhatsApp">
+            <svg viewBox="0 0 24 24"><path d="M20.52 3.48A11.9 11.9 0 0 0 12.05 0C5.5 0 .16 5.33.16 11.89c0 2.1.55 4.14 1.6 5.95L.05 24l6.33-1.66a11.86 11.86 0 0 0 5.67 1.45h.01c6.55 0 11.89-5.34 11.89-11.9 0-3.18-1.24-6.16-3.43-8.41zM12.06 21.8h-.01a9.9 9.9 0 0 1-5.04-1.38l-.36-.21-3.75.98 1-3.66-.24-.38a9.86 9.86 0 0 1-1.51-5.26c0-5.45 4.44-9.88 9.9-9.88a9.83 9.83 0 0 1 9.89 9.89c0 5.45-4.44 9.9-9.88 9.9zm5.42-7.4c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.96-.94 1.16-.17.2-.35.22-.65.07-.3-.15-1.25-.46-2.39-1.47-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.14.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.68-1.62-.93-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.5 0 1.47 1.07 2.89 1.22 3.09.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.7.63.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2-1.41.25-.7.25-1.29.18-1.41-.07-.12-.27-.2-.57-.35z"/></svg>
+          </a>
+          <a class="icon-btn" href="https://linkedin.com/in/chhayajoshi/" target="_blank" rel="noopener" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.55C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.72C24 .77 23.2 0 22.22 0z"/></svg>
+          </a>
+          <a class="icon-btn" href="mailto:chhayajoshi@chhapac.com" aria-label="Email">
+            <svg viewBox="0 0 24 24"><path d="M12 13.5 2 6.75V20h20V6.75L12 13.5zM12 11 22 4H2l10 7z"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="fc-cols">
+      <div class="fc-col">
+        <span class="fc-h">Menu</span>
+        <a href="#what">What we do</a>
+        <a href="#process">Process</a>
+        <a href="#plans">Plans</a>
+        <a href="#cases">Case studies</a>
+        <a href="#about">About us</a>
+      </div>
+      <div class="fc-col">
+        <span class="fc-h">Connect</span>
+        <a href="https://wa.me/919620147470" target="_blank" rel="noopener">WhatsApp</a>
+        <a href="https://linkedin.com/in/chhayajoshi/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="mailto:chhayajoshi@chhapac.com">Email</a>
+        <a href="https://calendly.com/chhayajoshi" target="_blank" rel="noopener">Calendly</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-lower">
+    <div class="word-pills" aria-hidden="true">
+      <span>narrative</span><span>clarity</span><span>conviction</span><span>speed</span><span>outcome</span><span>memorable</span>
+    </div>
+    <div class="footer-meta">
+      <div class="footer-brand" style="color:#F5F1E8">
+        <svg viewBox="0 0 714.95 129.62" width="121" height="22"><use href="#logo"/></svg>
+      </div>
+      <span>© 2026 Chhapac · Strategy &amp; creative collective · Powered day-to-day by PitchOS</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // film grain on gradient surfaces
+  function makeGrain(c){
+    const p=c.parentElement,W=p.offsetWidth||900,H=p.offsetHeight||300;
+    c.width=W;c.height=H;c.style.width='100%';c.style.height='100%';
+    const ctx=c.getContext('2d'),img=ctx.createImageData(W,H);
+    for(let i=0;i<img.data.length;i+=4){
+      const v=Math.random()*255|0;
+      img.data[i]=v;img.data[i+1]=v;img.data[i+2]=v;img.data[i+3]=Math.random()*60+20|0;
+    }
+    ctx.putImageData(img,0,0);
+  }
+  const grains=[...document.querySelectorAll('[data-grain]')];
+  grains.forEach(makeGrain);
+  let grainT;addEventListener('resize',()=>{clearTimeout(grainT);grainT=setTimeout(()=>grains.forEach(makeGrain),200)});
+
+  // scroll reveal
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+  // animated counters (suffix-aware)
+  const cio=new IntersectionObserver(es=>es.forEach(e=>{
+    if(!e.isIntersecting)return;cio.unobserve(e.target);
+    const el=e.target,target=+el.dataset.count,suffix=el.dataset.suffix||'+',dur=1400,t0=performance.now();
+    const done=()=>{el.innerHTML=target+'<sup>'+suffix+'</sup>'};
+    if(matchMedia('(prefers-reduced-motion: reduce)').matches){done();return}
+    (function tick(t){
+      const p=Math.min((t-t0)/dur,1),ease=1-Math.pow(1-p,3);
+      el.innerHTML=Math.round(target*ease)+'<sup>'+suffix+'</sup>';
+      if(p<1)requestAnimationFrame(tick);else done();
+    })(t0);
+  }),{threshold:.5});
+  document.querySelectorAll('.stat .num').forEach(el=>cio.observe(el));
+
+  // process accordion
+  document.querySelectorAll('.step button').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      const step=btn.closest('.step'),open=step.dataset.open==='true';
+      document.querySelectorAll('.step').forEach(s=>{s.dataset.open='false';s.querySelector('button').setAttribute('aria-expanded','false')});
+      if(!open){step.dataset.open='true';btn.setAttribute('aria-expanded','true')}
+    });
+  });
+
+  // investor filter tabs
+  const FILTERS=[
+    {q:'"Does this fit my thesis: is this a market I already believe in?"',
+     d:'We open with the macro-to-consumer-truth formula, so the first slides place your company inside a shift the investor already has conviction about, before a single product claim is made.'},
+    {q:'"Can these founders actually execute what they\'re describing?"',
+     d:'Traction, team, and proof points get re-sequenced as execution evidence, not a trophy shelf. Each metric answers a specific doubt instead of decorating a slide.'},
+    {q:'"Do they believe this, and is it obvious why them?"',
+     d:'Founder-market fit becomes a narrative thread, not a bio slide. Your proximity to the problem is engineered into the story so conviction reads on paper, without you in the room.'},
+    {q:'"How hard do I have to work to understand this?"',
+     d:'One idea per slide, a hook per section, and information architecture that makes the complex feel obvious. If an investor has to reread, the deck has already lost.'},
+    {q:'"What exactly happens with my money, and what\'s the next milestone?"',
+     d:'The ask, use of funds, and the milestone it unlocks close the deck as one continuous argument, so the takeaway is a decision, not a follow-up question.'}
+  ];
+  const chips=[...document.querySelectorAll('.chip')],fq=document.getElementById('fp-q'),fd=document.getElementById('fp-d');
+  chips.forEach(ch=>ch.addEventListener('click',()=>{
+    chips.forEach(c=>c.setAttribute('aria-selected','false'));
+    ch.setAttribute('aria-selected','true');
+    const f=FILTERS[+ch.dataset.i];fq.textContent=f.q;fd.textContent=f.d;
+  }));
+
+  // NDA case-study modal (per-case passwords wired later, alongside the protected pages)
+  const CASE_PASSWORDS={};
+  const modal=document.getElementById('caseModal'),passIn=document.getElementById('casePass'),
+        msg=document.getElementById('modalMsg'),reqLink=document.getElementById('requestLink'),
+        mTitle=document.getElementById('modal-title');
+  let currentCase='';
+  document.querySelectorAll('.case-body button').forEach(b=>b.addEventListener('click',()=>{
+    currentCase=b.dataset.case;
+    mTitle.textContent=currentCase+': NDA-protected case study';
+    reqLink.href='https://wa.me/919620147470?text='+encodeURIComponent('Hi Chhaya, I would like to request access to the '+currentCase+' case study.');
+    passIn.value='';msg.textContent='';
+    modal.showModal();
+  }));
+  document.getElementById('unlockBtn').addEventListener('click',()=>{
+    const ok=CASE_PASSWORDS[currentCase]&&passIn.value===CASE_PASSWORDS[currentCase];
+    if(ok){location.href=CASE_PASSWORDS[currentCase+'_url']||'#'}
+    else{msg.textContent='That password did not match. Request access and we will verify you.'}
+  });
+  modal.querySelector('.modal-close').addEventListener('click',()=>modal.close());
+  modal.addEventListener('click',e=>{if(e.target===modal)modal.close()});
+</script>
+</body>
+</html>
