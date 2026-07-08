@@ -13,6 +13,11 @@
 <title>Chhapac.decks: Fundraise-ready narratives</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
+  @font-face{
+    font-family:"Acid Grotesk";
+    src:url("assets/fonts/AcidGrotesk-Regular.otf") format("opentype");
+    font-weight:400;font-style:normal;font-display:swap;
+  }
   /* ————— Chhapac design tokens ————— */
   :root{
     --paper:#F5F1E8;
@@ -126,7 +131,7 @@
 
   /* ————— hero ————— */
   header{padding:96px 16px 0}
-  .band-wrap{position:relative;max-width:1280px;margin:0 auto}
+  .band-wrap{position:relative;max-width:var(--max);margin:0 auto}
   .hero-band{
     position:relative;height:min(44vh,380px);min-height:250px;
     border-radius:16px;overflow:hidden;
@@ -143,15 +148,15 @@
   }
   @media(max-width:860px){.hero-blob{width:245px;height:245px;bottom:-62px;right:2%}}
   .hero-band .band-word{
-    position:absolute;left:32px;bottom:22px;color:rgba(255,255,255,.92);z-index:1;
+    position:absolute;left:24px;bottom:22px;color:rgba(255,255,255,.92);z-index:1;
     font-size:.8rem;font-weight:600;letter-spacing:.04em;text-transform:uppercase;
   }
   .hero-band .band-ast{position:absolute;top:26px;right:30px;width:55px;height:55px;color:#F5F1E8;z-index:1}
   .hero-grid{
     display:grid;grid-template-columns:1.25fr .9fr;gap:48px;align-items:end;
-    max-width:var(--max);margin:0 auto;padding:56px 8px 0;
+    max-width:var(--max);margin:0 auto;padding:56px 24px 0;
   }
-  .hero-grid h1{font-size:clamp(2.5rem,5.6vw,4.2rem)}
+  .hero-grid h1{font-size:clamp(2.1rem,4.3vw,3.3rem)}
   .hero-copy p{color:var(--ink-soft);font-size:1.05rem;max-width:40ch}
   .hero-copy strong{color:var(--ink);font-weight:600}
   .hero-ctas{display:flex;flex-wrap:wrap;gap:14px;margin-top:26px}
@@ -162,8 +167,8 @@
 
   /* ————— trust counters ————— */
   .stats{margin-top:64px;width:100%;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-  .stats-grid{display:grid;grid-template-columns:repeat(4,1fr)}
-  .stat{padding:34px 3vw;border-left:1px solid var(--line)}
+  .stats-grid{display:grid;grid-template-columns:repeat(4,1fr);max-width:var(--max);margin:0 auto}
+  .stat{padding:34px 24px;border-left:1px solid var(--line)}
   .stat:first-child{border-left:none}
   .stat .num{
     font-family:var(--display);font-size:clamp(2rem,3.6vw,2.9rem);font-weight:600;color:var(--ink);
@@ -253,9 +258,9 @@
   }
   .ai-inner{
     position:relative;z-index:1;max-width:var(--max);margin:0 auto;padding:0 24px;
-    display:grid;grid-template-columns:.9fr 1.1fr;gap:44px;align-items:center;
+    display:grid;grid-template-columns:1.15fr .85fr;gap:40px;align-items:center;
   }
-  .services-q{font-family:var(--display);font-size:clamp(1.5rem,2.9vw,2.1rem);font-weight:600;letter-spacing:-.024em;color:var(--paper);margin-bottom:14px;text-wrap:balance}
+  .services-q{font-family:var(--display);font-size:clamp(1.35rem,2.2vw,1.8rem);font-weight:600;letter-spacing:-.024em;color:var(--paper);margin-bottom:14px;text-wrap:balance;max-width:34ch}
   .services-sub{font-size:.95rem;color:rgba(245,241,232,.8)}
   .ai-band h3{font-size:1.05rem;margin:18px 0 14px;color:var(--paper)}
   .deck-pills{display:flex;flex-wrap:wrap;gap:9px}
@@ -267,14 +272,14 @@
     background-size:100% 100%,240% 100%;animation:borderShift 7s ease-in-out infinite alternate;
   }
   .ai-cube{
-    width:min(620px,45vw);height:auto;justify-self:end;align-self:end;
+    width:min(560px,40vw);height:auto;justify-self:end;align-self:end;
     margin-right:-2vw;margin-bottom:-170px;position:relative;z-index:2;pointer-events:none;
     filter:drop-shadow(0 30px 50px rgba(26,13,110,.35));
   }
   .ai-inner>div:first-child{position:relative;z-index:3}
   @media(max-width:860px){
     .ai-inner{grid-template-columns:1fr;gap:26px}
-    .ai-cube{width:min(420px,92%);margin-right:0;justify-self:center;margin-bottom:-110px}
+    .ai-cube{width:min(380px,90%);margin-right:0;justify-self:center;margin-bottom:-100px}
     .ai-band{margin-bottom:150px}
   }
 
@@ -334,6 +339,7 @@
   .outcomes .outcome-row:last-child{border-bottom:1px solid var(--line)}
   .outcome-row h3{font-size:clamp(1.15rem,2.2vw,1.5rem)}
   .outcome-row p{color:var(--ink-soft);font-size:.95rem}
+  .outcome-row p strong{font-weight:600;color:var(--ink)}
   .o-icon{width:58px;height:58px}
   @media(max-width:760px){
     .outcomes .outcome-row{grid-template-columns:64px 1fr;gap:20px}
@@ -378,7 +384,7 @@
   }
   .plan .p-cta:hover{color:var(--orange);transform:translateY(-2px)}
   .start-small{
-    margin:46px 0 18px;font-family:var(--display);font-size:1.2rem;font-weight:500;letter-spacing:-.02em;
+    margin:110px 0 26px;font-family:var(--display);font-size:1.2rem;font-weight:500;letter-spacing:-.02em;
     display:flex;align-items:center;gap:.6em;
   }
   .start-small::before{content:"";width:1em;height:1em;flex:none;background:var(--ast) center/contain no-repeat}
@@ -566,7 +572,7 @@
   }
 
   /* ————— testimonials: moving flip strip ————— */
-  .testi-wrap{overflow:hidden}
+  .testi-wrap{overflow:hidden;margin:0 calc(50% - 50vw)}
   .testi-track{display:flex;gap:20px;width:max-content;animation:scroll 55s linear infinite}
   .testi-wrap:hover .testi-track,.testi-track:focus-within{animation-play-state:paused}
   .flip{perspective:1200px;min-height:380px;width:300px;flex:none}
@@ -629,7 +635,7 @@
   .inv-strip{margin:210px 0 80px;text-align:center}
   .inv-strip h3{font-size:1.35rem}
   .inv-strip .inv-sub{font-size:.9rem;color:var(--ink-soft);margin:8px 0 30px}
-  .inv-track-wrap{overflow:hidden;white-space:nowrap;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:26px 0}
+  .inv-track-wrap{overflow:hidden;white-space:nowrap;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:26px 0;margin:0 calc(50% - 50vw)}
   .inv-track{display:inline-flex;align-items:center;gap:64px;animation:scroll 30s linear infinite;padding-right:64px}
   .inv{display:inline-flex;align-items:center;gap:9px;color:var(--ink);opacity:.72;font-family:var(--display);white-space:nowrap;transition:opacity .25s}
   .inv:hover{opacity:1}
@@ -957,7 +963,7 @@
       <div class="ai-inner">
         <div>
           <span class="eyebrow">Services</span>
-          <p class="services-q" style="margin-top:14px">In a world full of AI generations, we hyper-personalize information design for you to stand out.</p>
+          <p class="services-q" style="margin-top:14px">In a world full of AI generations, we <span style="white-space:nowrap">hyper-personalize</span> information design for you to stand out.</p>
           <p class="services-sub">Every engagement starts with one question: what decision does this deck need to support?</p>
           <h3>We work across</h3>
           <div class="deck-pills">
@@ -1049,24 +1055,24 @@
     </div>
     <div class="outcomes reveal">
       <div class="outcome-row">
-        <svg class="o-icon" viewBox="0 0 72 72" aria-hidden="true"><defs><linearGradient id="og1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F26A1B"/><stop offset=".55" stop-color="#E85FA0"/><stop offset="1" stop-color="#7A3CE8"/></linearGradient></defs><rect x="14" y="6" width="30" height="34" rx="15" fill="url(#og1)" opacity=".5"/><rect x="14" y="32" width="30" height="34" rx="15" fill="url(#og1)"/></svg>
+        <svg class="o-icon" viewBox="0 0 72 72" aria-hidden="true"><defs><linearGradient id="og1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F26A1B"/><stop offset=".55" stop-color="#E85FA0"/><stop offset="1" stop-color="#7A3CE8"/></linearGradient></defs><circle cx="36" cy="22" r="16" fill="url(#og1)" opacity=".5"/><circle cx="36" cy="50" r="16" fill="url(#og1)"/></svg>
         <h3>Clarity, first</h3>
-        <p>Designed to create clarity in the first 5 minutes of the room.</p>
+        <p>Designed to create clarity in the <strong>first 5 minutes</strong> of the room.</p>
       </div>
       <div class="outcome-row">
         <svg class="o-icon" viewBox="0 0 72 72" aria-hidden="true"><defs><linearGradient id="og2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F26A1B"/><stop offset=".55" stop-color="#E85FA0"/><stop offset="1" stop-color="#7A3CE8"/></linearGradient></defs><g fill="url(#og2)"><circle cx="24" cy="24" r="14"/><circle cx="48" cy="24" r="14"/><circle cx="24" cy="48" r="14"/><circle cx="48" cy="48" r="14"/></g></svg>
         <h3>Follow-ups that convert</h3>
-        <p>Up to 70% improvement in follow-up conversations post-pitch.</p>
+        <p>Up to <strong>70% improvement</strong> in follow-up conversations post-pitch.</p>
       </div>
       <div class="outcome-row">
         <svg class="o-icon" viewBox="0 0 72 72" aria-hidden="true"><defs><linearGradient id="og3" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F26A1B"/><stop offset=".55" stop-color="#E85FA0"/><stop offset="1" stop-color="#7A3CE8"/></linearGradient></defs><path d="M18 58 V32 L36 16 L54 32 V58 Z" fill="url(#og3)" stroke="url(#og3)" stroke-width="12" stroke-linejoin="round"/></svg>
         <h3>Remembered for days</h3>
-        <p>Narratives investors remember days later, not minutes.</p>
+        <p>Narratives investors <strong>remember</strong> days later, not minutes.</p>
       </div>
       <div class="outcome-row">
         <svg class="o-icon" viewBox="0 0 72 72" aria-hidden="true"><defs><linearGradient id="og4" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F26A1B"/><stop offset=".55" stop-color="#E85FA0"/><stop offset="1" stop-color="#7A3CE8"/></linearGradient></defs><path d="M18 56 V36 A18 18 0 0 1 54 36 V56 Z" fill="url(#og4)" stroke="url(#og4)" stroke-width="12" stroke-linejoin="round"/></svg>
         <h3>10x retention</h3>
-        <p>Visual-first information design that improves retention by up to 10x.</p>
+        <p><strong>Visual-first information design</strong> that improves retention by up to 10x.</p>
       </div>
     </div>
   </div>
@@ -1077,7 +1083,6 @@
   <div class="wrap">
     <div class="sec-head reveal">
       <h2><span class="eyebrow" style="display:inline-flex;margin-bottom:14px">Plans</span><br>Structured for clarity. <span class="accent">Flexible where it matters.</span></h2>
-      <p class="side">One-time, outcome-scoped modules: priced on deliverables and deadlines, not hours. All modules include Discovery, Narrative Structuring, Content Lock and Founder Review.</p>
     </div>
     <div class="plans">
       <article class="plan reveal">
@@ -1493,15 +1498,15 @@
   // decks wall: build slide previews (swap with real thumbnails anytime)
   const SLIDES=[
     '<div class="slide cover"><span class="sl-dot" style="background:#F5F1E8"></span><div class="sl-bar hi" style="width:66%"></div><div class="sl-bar hi" style="width:42%"></div></div>',
-    '<div class="slide tgs"><div class="tg-l"><span class="tt">Funding Goals</span><span class="tg-pill">Convert<b>75 clients</b></span><span class="tg-pill">Reach<b>$6M ARR</b></span></div><div class="tg-dots">'+Array.from({length:24},(_,k)=>`<i style="background:${k<9?'#173B33':k<17?'#E4F97B':k<21?'#cfd2cc':'#fff'};border:1px solid #173B33"></i>`).join('')+'</div></div>',
+    '<div class="slide img"><img src="assets/wall/tgs.jpg" alt="TGS pitch deck: funding goals" loading="lazy"></div>',
     '<div class="slide chart"><div class="sl-bars"><i style="height:36%"></i><i style="height:58%"></i><i style="height:44%"></i><i style="height:76%"></i><i style="height:100%"></i></div><div class="sl-bar" style="width:52%"></div></div>',
-    '<div class="slide sonx"><div class="sx-blobs"><i style="left:4%;top:6%;width:34%;height:44%;background:#e5484d"></i><i style="left:44%;top:2%;width:30%;height:56%;background:#6a3de8"></i><i style="left:2%;bottom:6%;width:30%;height:40%;background:#2f6bff"></i><i style="right:4%;bottom:4%;width:26%;height:34%;background:#f5c542"></i><i style="left:38%;bottom:8%;width:22%;height:46%;background:#ef8fa3"></i></div><div class="sx-tx"><span class="tt">Welcome to the classroom for the real world</span><p>AI-powered, hyper-personalized immersive learning</p></div></div>',
+    '<div class="slide img"><img src="assets/wall/son.jpg" alt="School of Next pitch deck cover" loading="lazy"></div>',
     '<div class="slide dark"><div class="sl-accent"></div><div class="sl-bar" style="width:74%"></div><div class="sl-bar" style="width:58%"></div></div>',
-    '<div class="slide edk"><div class="ed-l"><span class="tt">Geospatial insights made easy and affordable</span><small>PITCH DECK · SEED · 2025</small></div><div class="ed-grid">'+'<i></i>'.repeat(16)+'</div></div>',
+    '<div class="slide img"><img src="assets/wall/edk.jpg" alt="EDK pitch deck cover" loading="lazy"></div>',
     '<div class="slide quote"><span class="sl-q">“</span><div class="sl-bar" style="width:82%"></div><div class="sl-bar" style="width:64%"></div><div class="sl-bar" style="width:36%"></div></div>',
-    '<div class="slide sqf"><span class="tt">Sequifi cuts costs and time spent by 50% vs. alternatives</span><div class="sq-row"><div class="sq-col"><i class="sq-w"></i><i class="sq-w"></i><i class="sq-w"></i></div><div class="sq-col"><i class="sq-w"></i><i class="sq-w"></i></div><div class="sq-col"><i class="sq-b"></i><i class="sq-b"></i><i class="sq-b"></i></div></div></div>',
+    '<div class="slide img"><img src="assets/wall/sequifi.jpg" alt="Sequifi pitch deck: advantage slide" loading="lazy"></div>',
     '<div class="slide split"><div class="sp-img"></div><div class="sp-tx"><div class="sl-bar" style="width:88%"></div><div class="sl-bar" style="width:70%"></div><div class="sl-bar" style="width:48%"></div></div></div>',
-    '<div class="slide nrf"><div class="nf-l"><span class="tt"><em>Neurofin</em> - The Agent-Powered Operations Layer</span><div class="nf-pills"><i></i><i></i><i></i></div></div><div class="nf-grid"><i></i><i></i><i></i><i></i></div></div>',
+    '<div class="slide img"><img src="assets/wall/neurofin.jpg" alt="Neurofin pitch deck: agent operations layer" loading="lazy"></div>',
     '<div class="slide kpi"><span><b>4.2x</b><small>LTV / CAC</small></span><span><b>78%</b><small>Margin</small></span><span><b>12M</b><small>Runway</small></span></div>'
   ];
   const WALL_ORDER=[[1,0,3,2,6,4,8,5,10],[10,2,1,7,3,9,6,0,4],[8,5,10,1,6,3,0,9,2]];
