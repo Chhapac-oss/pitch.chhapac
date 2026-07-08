@@ -34,9 +34,9 @@
     --display:"Inter Tight","Inter","SF Pro Display",-apple-system,"Helvetica Neue","Segoe UI",sans-serif;
     --sans:"Poppins","Avenir Next","Futura","Century Gothic","Trebuchet MS",system-ui,sans-serif;
     --max:1160px;
-    --grad:linear-gradient(135deg,#2B1586 0%,#5a1a8a 45%,#E8542A 100%);
+    --grad:linear-gradient(115deg,#2B1586 0%,#5a1a8a 26%,#E8542A 52%,#E85FA0 72%,#7A3CE8 88%,#2B1586 100%);
     --btn-grad:linear-gradient(115deg,#F26A1B 0%,#E8542A 34%,#E85FA0 78%,#7A3CE8 125%);
-    --ast:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><defs><path id='p' d='M50 50C43 40 41 24 45 15A8.5 8.5 0 0 1 55 15C59 24 57 40 50 50Z' fill='%23E8542A'/></defs><use href='%23p'/><use href='%23p' transform='rotate(45 50 50)'/><use href='%23p' transform='rotate(90 50 50)'/><use href='%23p' transform='rotate(135 50 50)'/><use href='%23p' transform='rotate(180 50 50)'/><use href='%23p' transform='rotate(225 50 50)'/><use href='%23p' transform='rotate(270 50 50)'/><use href='%23p' transform='rotate(315 50 50)'/></svg>");
+    --ast:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><defs><path id='p' d='M50 50C41 43 36 27 41 15A11 11 0 0 1 59 15C64 27 59 43 50 50Z' fill='%23E8542A'/></defs><use href='%23p'/><use href='%23p' transform='rotate(45 50 50)'/><use href='%23p' transform='rotate(90 50 50)'/><use href='%23p' transform='rotate(135 50 50)'/><use href='%23p' transform='rotate(180 50 50)'/><use href='%23p' transform='rotate(225 50 50)'/><use href='%23p' transform='rotate(270 50 50)'/><use href='%23p' transform='rotate(315 50 50)'/></svg>");
   }
   *{margin:0;padding:0;box-sizing:border-box}
   html{scroll-behavior:smooth}
@@ -64,13 +64,12 @@
 
   /* animated brand gradient: slow, eased, pleasant */
   .grad-anim{
-    background:var(--grad);background-size:300% 300%;
-    animation:gradShift 18s ease-in-out infinite alternate;
+    background:var(--grad);background-size:340% 340%;
+    animation:gradShift 16s ease-in-out infinite alternate;
   }
   @keyframes gradShift{
-    0%{background-position:0% 20%}
-    50%{background-position:60% 80%}
-    100%{background-position:100% 30%}
+    0%{background-position:0% 45%}
+    100%{background-position:100% 55%}
   }
   .grain{position:absolute;inset:0;pointer-events:none;mix-blend-mode:overlay;opacity:.55;z-index:0}
 
@@ -455,10 +454,12 @@
   }
 
   /* ————— testimonials: flip cards ————— */
-  .flips{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
-  .flip{perspective:1200px;min-height:360px}
+  .testi-wrap{overflow:hidden}
+  .testi-track{display:flex;gap:20px;width:max-content;animation:scroll 55s linear infinite}
+  .testi-wrap:hover .testi-track,.testi-track:focus-within{animation-play-state:paused}
+  .flip{perspective:1200px;min-height:380px;width:300px;flex:none}
   .flip-inner{
-    position:relative;width:100%;height:100%;min-height:360px;
+    position:relative;width:100%;height:100%;min-height:380px;
     transform-style:preserve-3d;transition:transform .65s cubic-bezier(.4,.1,.2,1);
   }
   .flip:hover .flip-inner,.flip:focus-within .flip-inner{transform:rotateY(180deg)}
@@ -472,10 +473,11 @@
     color:var(--card-dark);transform:rotateY(180deg);justify-content:space-between;
   }
   .avatar{
-    width:48px;height:48px;border-radius:50%;flex:none;
+    width:56px;height:56px;border-radius:50%;flex:none;overflow:hidden;
     background:linear-gradient(140deg,var(--orange),var(--pink));
     display:flex;align-items:center;justify-content:center;color:#fff;font-weight:600;
   }
+  .avatar img{width:100%;height:100%;object-fit:cover}
   .flip-front .fq{font-size:.94rem;line-height:1.55;flex:1}
   .flip-front .fq::before{content:"“";color:var(--peach);font-size:1.4em;line-height:0;margin-right:2px}
   .flip-front .fn{font-weight:600;font-size:.92rem}
@@ -484,8 +486,6 @@
   .flip-back h4{font-size:1.08rem;line-height:1.28}
   .flip-back p{font-size:.86rem;line-height:1.55;opacity:.85;flex:1}
   .flip-back .hint{font-size:.72rem;opacity:.6}
-  @media(max-width:1000px){.flips{grid-template-columns:repeat(2,1fr)}}
-  @media(max-width:600px){.flips{grid-template-columns:1fr}}
 
   /* ————— about ————— */
   .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
@@ -540,6 +540,37 @@
     .fc-cols{justify-content:flex-start}
   }
 
+  /* ————— outcomes rows ————— */
+  .outcomes .outcome-row{
+    border-top:1px solid var(--line);padding:32px 16px;text-align:center;
+    font-family:var(--display);font-size:clamp(1.1rem,2.3vw,1.6rem);
+    font-weight:500;letter-spacing:-.02em;color:var(--ink);text-wrap:balance;
+  }
+  .outcomes .outcome-row:last-child{border-bottom:1px solid var(--line)}
+  .outcome-row strong{color:var(--purple);font-weight:600}
+
+  /* ————— services note ————— */
+  .services-note{
+    margin-top:48px;display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:center;
+    background:var(--paper-soft);border:1px solid var(--line);border-radius:var(--radius);
+    padding:44px 42px;
+  }
+  .services-note h3{font-size:1.3rem;margin:14px 0 18px}
+  .deck-pills{display:flex;flex-wrap:wrap;gap:10px}
+  .deck-pills span{border:1.5px solid var(--purple);color:var(--purple);font-weight:500;padding:9px 18px;border-radius:999px;font-size:.88rem}
+  .services-q{font-family:var(--display);font-size:1.35rem;font-weight:600;letter-spacing:-.02em;color:var(--purple);margin-bottom:12px}
+  .services-ai{font-size:.92rem;color:var(--ink-soft)}
+  @media(max-width:860px){.services-note{grid-template-columns:1fr;gap:26px}}
+
+  .back-top{
+    color:#fff;text-decoration:none;font-size:.78rem;font-weight:600;
+    letter-spacing:.16em;text-transform:uppercase;width:max-content;
+    border-bottom:1px solid rgba(255,255,255,.45);padding-bottom:2px;
+  }
+  .back-top:hover{border-color:#fff}
+  .footer-meta a{color:inherit;text-decoration:underline;text-underline-offset:3px}
+  .footer-meta a:hover{color:#fff}
+
   /* ————— scroll reveal ————— */
   .reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease}
   .reveal.in{opacity:1;transform:none}
@@ -551,14 +582,14 @@
 <body>
 <svg style="display:none" aria-hidden="true"><defs>
 <symbol id="ast" viewBox="0 0 100 100">
-  <path d="M50 50C43 40 41 24 45 15A8.5 8.5 0 0 1 55 15C59 24 57 40 50 50Z"/>
-  <path transform="rotate(45 50 50)" d="M50 50C43 40 41 24 45 15A8.5 8.5 0 0 1 55 15C59 24 57 40 50 50Z"/>
-  <path transform="rotate(90 50 50)" d="M50 50C43 40 41 24 45 15A8.5 8.5 0 0 1 55 15C59 24 57 40 50 50Z"/>
-  <path transform="rotate(135 50 50)" d="M50 50C43 40 41 24 45 15A8.5 8.5 0 0 1 55 15C59 24 57 40 50 50Z"/>
-  <path transform="rotate(180 50 50)" d="M50 50C43 40 41 24 45 15A8.5 8.5 0 0 1 55 15C59 24 57 40 50 50Z"/>
-  <path transform="rotate(225 50 50)" d="M50 50C43 40 41 24 45 15A8.5 8.5 0 0 1 55 15C59 24 57 40 50 50Z"/>
-  <path transform="rotate(270 50 50)" d="M50 50C43 40 41 24 45 15A8.5 8.5 0 0 1 55 15C59 24 57 40 50 50Z"/>
-  <path transform="rotate(315 50 50)" d="M50 50C43 40 41 24 45 15A8.5 8.5 0 0 1 55 15C59 24 57 40 50 50Z"/>
+  <path d="M50 50C41 43 36 27 41 15A11 11 0 0 1 59 15C64 27 59 43 50 50Z"/>
+  <path transform="rotate(45 50 50)" d="M50 50C41 43 36 27 41 15A11 11 0 0 1 59 15C64 27 59 43 50 50Z"/>
+  <path transform="rotate(90 50 50)" d="M50 50C41 43 36 27 41 15A11 11 0 0 1 59 15C64 27 59 43 50 50Z"/>
+  <path transform="rotate(135 50 50)" d="M50 50C41 43 36 27 41 15A11 11 0 0 1 59 15C64 27 59 43 50 50Z"/>
+  <path transform="rotate(180 50 50)" d="M50 50C41 43 36 27 41 15A11 11 0 0 1 59 15C64 27 59 43 50 50Z"/>
+  <path transform="rotate(225 50 50)" d="M50 50C41 43 36 27 41 15A11 11 0 0 1 59 15C64 27 59 43 50 50Z"/>
+  <path transform="rotate(270 50 50)" d="M50 50C41 43 36 27 41 15A11 11 0 0 1 59 15C64 27 59 43 50 50Z"/>
+  <path transform="rotate(315 50 50)" d="M50 50C41 43 36 27 41 15A11 11 0 0 1 59 15C64 27 59 43 50 50Z"/>
 </symbol>
 <symbol id="logo" viewBox="0 0 714.95 129.62">
   <path fill="currentColor" d="M237.49,108.21c-7.84,0-14.53-1.37-20.06-4.12-5.53-2.75-9.98-6.31-13.35-10.7-3.37-4.39-5.84-9.15-7.41-14.29-1.57-5.14-2.35-10.1-2.35-14.88v-2.59c0-5.18.8-10.35,2.41-15.53,1.61-5.18,4.1-9.88,7.47-14.12,3.37-4.23,7.76-7.65,13.18-10.23,5.41-2.59,11.88-3.88,19.41-3.88s14.27,1.33,19.76,4c5.49,2.67,9.84,6.39,13.06,11.17,3.21,4.78,5.18,10.43,5.88,16.94h-11.76c-.63-4.86-2.2-8.88-4.71-12.06-2.51-3.18-5.66-5.55-9.47-7.12-3.81-1.57-8.06-2.35-12.76-2.35-5.1,0-9.57.88-13.41,2.65-3.84,1.76-7.04,4.23-9.59,7.41-2.55,3.18-4.47,6.84-5.76,11s-1.94,8.67-1.94,13.53.65,9.02,1.94,13.17c1.29,4.16,3.25,7.84,5.88,11.06,2.63,3.22,5.9,5.75,9.82,7.59,3.92,1.84,8.51,2.76,13.76,2.76,7.37,0,13.57-1.84,18.59-5.53,5.02-3.68,8.08-9.02,9.18-16h11.76c-.79,5.88-2.76,11.26-5.94,16.11-3.18,4.86-7.57,8.75-13.18,11.65s-12.41,4.35-20.41,4.35Z"/>
@@ -608,7 +639,7 @@
 
   <div class="wrap stats reveal">
     <div class="stats-grid">
-      <div class="stat"><div class="num" data-count="30" data-suffix="M+">0</div><div class="lbl">raised via proven smart pitching</div></div>
+      <div class="stat"><div class="num" data-count="30" data-prefix="$" data-suffix="M+">0</div><div class="lbl">raised via proven smart pitching</div></div>
       <div class="stat"><div class="num" data-count="50" data-suffix="+">0</div><div class="lbl">narratives &amp; decks shipped</div></div>
       <div class="stat"><div class="num" data-count="300" data-suffix="+">0</div><div class="lbl">founder conversations since Sep 2025</div></div>
       <div class="stat"><div class="num" data-count="20" data-suffix="+">0</div><div class="lbl">sectors translated into investor language</div></div>
@@ -719,6 +750,19 @@
         </div>
       </article>
     </div>
+    <div class="services-note reveal">
+      <div>
+        <span class="eyebrow">Services</span>
+        <h3>We work across</h3>
+        <div class="deck-pills">
+          <span>Fundraise decks</span><span>Sales &amp; growth decks</span><span>Expansion &amp; partnership decks</span><span>Board &amp; internal strategy decks</span>
+        </div>
+      </div>
+      <div>
+        <p class="services-q">Every engagement starts with one question: what decision does this deck need to support?</p>
+        <p class="services-ai">In a world full of AI generations, we hyper-personalize visuals for you to stand out.</p>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -792,6 +836,21 @@
     <span>PITCH FAST <svg class="ast-inline" viewBox="0 0 100 100" fill="#E8542A"><use href="#ast"/></svg> PITCH <em>RIGHT</em> <svg class="ast-inline" viewBox="0 0 100 100" fill="#E8542A"><use href="#ast"/></svg> </span><span>PITCH FAST <svg class="ast-inline" viewBox="0 0 100 100" fill="#E8542A"><use href="#ast"/></svg> PITCH <em>RIGHT</em> <svg class="ast-inline" viewBox="0 0 100 100" fill="#E8542A"><use href="#ast"/></svg> </span><span>PITCH FAST <svg class="ast-inline" viewBox="0 0 100 100" fill="#E8542A"><use href="#ast"/></svg> PITCH <em>RIGHT</em> <svg class="ast-inline" viewBox="0 0 100 100" fill="#E8542A"><use href="#ast"/></svg> </span><span>PITCH FAST <svg class="ast-inline" viewBox="0 0 100 100" fill="#E8542A"><use href="#ast"/></svg> PITCH <em>RIGHT</em> <svg class="ast-inline" viewBox="0 0 100 100" fill="#E8542A"><use href="#ast"/></svg> </span>
   </div>
 </div>
+
+<!-- ————— OUTCOMES ————— -->
+<section id="outcomes">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <h2><span class="eyebrow" style="display:inline-flex;margin-bottom:14px">Outcomes</span><br>What the deck is <span class="accent">engineered to do</span></h2>
+    </div>
+    <div class="outcomes reveal">
+      <div class="outcome-row">Designed to create clarity in the <strong>first 5 minutes</strong> of the room</div>
+      <div class="outcome-row">Up to <strong>70% improvement</strong> in follow-up conversations post-pitch</div>
+      <div class="outcome-row">Narratives investors remember <strong>days later, not minutes</strong></div>
+      <div class="outcome-row">Visual-first information design that improves retention by <strong>up to 10x</strong></div>
+    </div>
+  </div>
+</section>
 
 <!-- ————— INVESTOR FILTERS ————— -->
 <section id="filters">
@@ -992,10 +1051,11 @@
   <div class="wrap">
     <div class="sec-head reveal">
       <h2><span class="eyebrow" style="display:inline-flex;margin-bottom:14px">Trusted by the winners</span><br>What founders say <span class="accent">after the room</span></h2>
-      <p class="side">Hover any card to see the engagement behind the words.</p>
+      <p class="side">Hover any card: the strip pauses and the card flips to the engagement behind the words.</p>
     </div>
-    <div class="flips">
-      <div class="flip reveal" tabindex="0">
+    <div class="testi-wrap reveal">
+      <div class="testi-track">
+      <div class="flip" tabindex="0">
         <div class="flip-inner">
           <div class="flip-face flip-front">
             <span class="avatar">SB</span>
@@ -1010,7 +1070,7 @@
           </div>
         </div>
       </div>
-      <div class="flip reveal" tabindex="0">
+      <div class="flip" tabindex="0">
         <div class="flip-inner">
           <div class="flip-face flip-front">
             <span class="avatar">RA</span>
@@ -1025,7 +1085,7 @@
           </div>
         </div>
       </div>
-      <div class="flip reveal" tabindex="0">
+      <div class="flip" tabindex="0">
         <div class="flip-inner">
           <div class="flip-face flip-front">
             <span class="avatar">WD</span>
@@ -1040,20 +1100,142 @@
           </div>
         </div>
       </div>
-      <div class="flip reveal" tabindex="0">
+      <div class="flip" tabindex="0">
         <div class="flip-inner">
           <div class="flip-face flip-front">
-            <span class="avatar">RJ</span>
-            <p class="fq">Making the model the hero, not the features, changed how enterprise investors heard us."</p>
-            <div><div class="fn">Founder</div><div class="fr">Frontier AI infrastructure · India</div></div>
+            <span class="avatar">AM</span>
+            <p class="fq">Repositioning us food-first, not tech-first, changed the rooms we got into. The deck kept working between the meetings."</p>
+            <div><div class="fn">Aditya Mehta</div><div class="fr">Co-founder · Epicure Robotics</div></div>
           </div>
           <div class="flip-face flip-back">
-            <span class="fb-tag">Deep Tech · India</span>
-            <h4>Frontier LLM platform</h4>
-            <p>Category-creation narrative across multiple revision rounds, built for enterprise and B2B investor conversations.</p>
+            <span class="fb-tag">Food Robotics · India</span>
+            <h4>Epicure Robotics</h4>
+            <p>8+ sessions across three fundraise rounds: narrative, deck builds, and real-time investor feedback loops through the raise.</p>
             <span class="hint">Hover away to flip back</span>
           </div>
         </div>
+      </div>
+      <div class="flip" tabindex="0">
+        <div class="flip-inner">
+          <div class="flip-face flip-front">
+            <span class="avatar">AN</span>
+            <p class="fq">The narrative made our science legible to investors without dumbing it down."</p>
+            <div><div class="fn">Anagha</div><div class="fr">Founder · Biocompute</div></div>
+          </div>
+          <div class="flip-face flip-back">
+            <span class="fb-tag">Deep Tech · Biotech</span>
+            <h4>Biocompute</h4>
+            <p>Narrative build translating research depth into an investor-grade story with a clear category claim.</p>
+            <span class="hint">Hover away to flip back</span>
+          </div>
+        </div>
+      </div>
+      <div class="flip" tabindex="0">
+        <div class="flip-inner">
+          <div class="flip-face flip-front">
+            <span class="avatar">AD</span>
+            <p class="fq">The story finally matched the scale of the problem we're solving."</p>
+            <div><div class="fn">Ajinkya</div><div class="fr">Founder · PadCare</div></div>
+          </div>
+          <div class="flip-face flip-back">
+            <span class="fb-tag">Sustainability · India</span>
+            <h4>PadCare</h4>
+            <p>Impact narrative and investor deck for a circular-economy platform: unit economics and impact told as one story.</p>
+            <span class="hint">Hover away to flip back</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="flip" aria-hidden="true">
+        <div class="flip-inner">
+          <div class="flip-face flip-front">
+            <span class="avatar">SB</span>
+            <p class="fq">I'm happy that you have a long-term vision. You're not talking to me like just another 'get your pitch made' vendor."</p>
+            <div><div class="fn">Sunil Bagrecha</div><div class="fr">Founder · DigiGold savings platform</div></div>
+          </div>
+          <div class="flip-face flip-back">
+            <span class="fb-tag">Fintech · India</span>
+            <h4>Gold-savings SIP platform</h4>
+            <p>Growth Plan engagement: full narrative rebuild with presenter deck, one-pager, and long-form deck. Verbally closed on the first working call.</p>
+            <span class="hint">Hover away to flip back</span>
+          </div>
+        </div>
+      </div>
+      <div class="flip" aria-hidden="true">
+        <div class="flip-inner">
+          <div class="flip-face flip-front">
+            <span class="avatar">RA</span>
+            <p class="fq">We had pitched 40-50 VCs and I felt the deck didn't matter. I left the call agreeing: it's the document that speaks for you after you leave the room."</p>
+            <div><div class="fn">Co-founder</div><div class="fr">Hyperlocal consumer startup · Bangalore</div></div>
+          </div>
+          <div class="flip-face flip-back">
+            <span class="fb-tag">Consumer · India</span>
+            <h4>Hyperlocal services brand</h4>
+            <p>Pre-seed raise: 5-day custom sprint covering market sizing methodology, GTM triangle, and a full investor deck against a hard deadline.</p>
+            <span class="hint">Hover away to flip back</span>
+          </div>
+        </div>
+      </div>
+      <div class="flip" aria-hidden="true">
+        <div class="flip-inner">
+          <div class="flip-face flip-front">
+            <span class="avatar">WD</span>
+            <p class="fq">The visual-led approach made a complex claims engine legible to the non-technical investors in our round."</p>
+            <div><div class="fn">Wade Denton</div><div class="fr">Co-founder · Healthcare claims AI, USA</div></div>
+          </div>
+          <div class="flip-face flip-back">
+            <span class="fb-tag">Healthcare AI · USA</span>
+            <h4>Claims automation platform</h4>
+            <p>Kickoff to closure across narrative and visual systems: positioning a 97-99% accuracy engine against generic LLM claims.</p>
+            <span class="hint">Hover away to flip back</span>
+          </div>
+        </div>
+      </div>
+      <div class="flip" aria-hidden="true">
+        <div class="flip-inner">
+          <div class="flip-face flip-front">
+            <span class="avatar">AM</span>
+            <p class="fq">Repositioning us food-first, not tech-first, changed the rooms we got into. The deck kept working between the meetings."</p>
+            <div><div class="fn">Aditya Mehta</div><div class="fr">Co-founder · Epicure Robotics</div></div>
+          </div>
+          <div class="flip-face flip-back">
+            <span class="fb-tag">Food Robotics · India</span>
+            <h4>Epicure Robotics</h4>
+            <p>8+ sessions across three fundraise rounds: narrative, deck builds, and real-time investor feedback loops through the raise.</p>
+            <span class="hint">Hover away to flip back</span>
+          </div>
+        </div>
+      </div>
+      <div class="flip" aria-hidden="true">
+        <div class="flip-inner">
+          <div class="flip-face flip-front">
+            <span class="avatar">AN</span>
+            <p class="fq">The narrative made our science legible to investors without dumbing it down."</p>
+            <div><div class="fn">Anagha</div><div class="fr">Founder · Biocompute</div></div>
+          </div>
+          <div class="flip-face flip-back">
+            <span class="fb-tag">Deep Tech · Biotech</span>
+            <h4>Biocompute</h4>
+            <p>Narrative build translating research depth into an investor-grade story with a clear category claim.</p>
+            <span class="hint">Hover away to flip back</span>
+          </div>
+        </div>
+      </div>
+      <div class="flip" aria-hidden="true">
+        <div class="flip-inner">
+          <div class="flip-face flip-front">
+            <span class="avatar">AD</span>
+            <p class="fq">The story finally matched the scale of the problem we're solving."</p>
+            <div><div class="fn">Ajinkya</div><div class="fr">Founder · PadCare</div></div>
+          </div>
+          <div class="flip-face flip-back">
+            <span class="fb-tag">Sustainability · India</span>
+            <h4>PadCare</h4>
+            <p>Impact narrative and investor deck for a circular-economy platform: unit economics and impact told as one story.</p>
+            <span class="hint">Hover away to flip back</span>
+          </div>
+        </div>
+      </div>
       </div>
     </div>
 
@@ -1135,6 +1317,7 @@
     </div>
   </div>
   <div class="footer-lower">
+    <a class="back-top" href="#top">Back to top ↑</a>
     <div class="word-pills" aria-hidden="true">
       <span>narrative</span><span>clarity</span><span>conviction</span><span>speed</span><span>outcome</span><span>memorable</span>
     </div>
@@ -1142,7 +1325,7 @@
       <div class="footer-brand" style="color:#F5F1E8">
         <svg viewBox="0 0 714.95 129.62" width="121" height="22"><use href="#logo"/></svg>
       </div>
-      <span>© 2026 Chhapac · Strategy &amp; creative collective · Powered day-to-day by PitchOS</span>
+      <span><a href="#privacy" title="Privacy policy page coming soon">Privacy Policy</a> · © 2026 Chhapac · Powered day-to-day by PitchOS</span>
     </div>
   </div>
 </footer>
@@ -1170,12 +1353,12 @@
   // animated counters (suffix-aware)
   const cio=new IntersectionObserver(es=>es.forEach(e=>{
     if(!e.isIntersecting)return;cio.unobserve(e.target);
-    const el=e.target,target=+el.dataset.count,suffix=el.dataset.suffix||'+',dur=1400,t0=performance.now();
-    const done=()=>{el.innerHTML=target+'<sup>'+suffix+'</sup>'};
+    const el=e.target,target=+el.dataset.count,suffix=el.dataset.suffix||'+',prefix=el.dataset.prefix||'',dur=1400,t0=performance.now();
+    const done=()=>{el.innerHTML=prefix+target+'<sup>'+suffix+'</sup>'};
     if(matchMedia('(prefers-reduced-motion: reduce)').matches){done();return}
     (function tick(t){
       const p=Math.min((t-t0)/dur,1),ease=1-Math.pow(1-p,3);
-      el.innerHTML=Math.round(target*ease)+'<sup>'+suffix+'</sup>';
+      el.innerHTML=prefix+Math.round(target*ease)+'<sup>'+suffix+'</sup>';
       if(p<1)requestAnimationFrame(tick);else done();
     })(t0);
   }),{threshold:.5});
