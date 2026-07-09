@@ -56,7 +56,7 @@
   a:focus-visible,button:focus-visible{outline:3px solid var(--orange);outline-offset:3px;border-radius:6px}
   .wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
 
-  h1,h2,h3,h4{font-family:var(--display);text-wrap:balance;line-height:1.06;font-weight:600;letter-spacing:-.028em;color:var(--ink)}
+  h1,h2,h3,h4{font-family:var(--display);text-wrap:balance;line-height:1.06;font-weight:600;letter-spacing:calc(-.028em + 2pt);color:var(--ink)}
   .accent{color:var(--ink-soft)}
   .eyebrow{
     display:inline-flex;align-items:center;gap:.6em;font-family:var(--sans);
@@ -442,7 +442,7 @@
   form.price-form{display:flex;flex-direction:column;gap:10px}
 
   /* ————— case studies ————— */
-  .cases{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  .cases{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
   .case-card{
     background:var(--paper-soft);border:1px solid var(--line);border-radius:var(--radius);
     overflow:hidden;display:flex;flex-direction:column;transition:transform .3s,box-shadow .3s;
@@ -472,7 +472,8 @@
     transition:color .25s,transform .2s;
   }
   .case-body button:hover{color:var(--orange);transform:translateY(-2px)}
-  @media(max-width:900px){.cases{grid-template-columns:1fr}}
+  @media(max-width:1100px){.cases{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:640px){.cases{grid-template-columns:1fr}}
 
   /* ————— decks wall: 200+ ecosystem ————— */
   .decks-wall{position:relative;padding:60px 0;overflow:hidden}
@@ -915,7 +916,7 @@
         <div class="wb">Sharper investor conversations</div>
         <div class="wb">Clearer narrative flow in meetings</div>
         <div class="wb">Stronger follow-up interest</div>
-        <div class="wb">Decks that continue selling when founders leave the room</div>
+        <div class="wb">Collateral continued to convince even after they left the room</div>
       </div>
       <p class="ws-close">Because the goal is not prettier slides. <span class="ws-big">The goal is <em>clarity</em> that drives decisions.</span></p>
     </div>
@@ -1230,10 +1231,10 @@
           <span class="lock" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17 9V7a5 5 0 0 0-10 0v2H5v13h14V9h-2zm-8-2a3 3 0 0 1 6 0v2H9V7zm4 9.7V19h-2v-2.3a2 2 0 1 1 2 0z"/></svg></span>
         </div>
         <div class="case-body">
-          <span class="c-tag">Fintech · India</span>
-          <h3>How a gold-savings platform closed its seed narrative</h3>
-          <p>Full narrative rebuild across three collateral formats, closed on the first working call.</p>
-          <button type="button" data-case="Gold-savings fintech">Request to view</button>
+          <span class="c-tag">Food Robotics · India</span>
+          <h3>Repositioning food robotics as food-first, not tech-first</h3>
+          <p>A multi-round engagement across three fundraise cycles, with real-time investor feedback built into every draft.</p>
+          <button type="button" data-case="Epicure Robotics">Request to view</button>
         </div>
       </article>
       <article class="case-card reveal">
@@ -1242,10 +1243,10 @@
           <span class="lock" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17 9V7a5 5 0 0 0-10 0v2H5v13h14V9h-2zm-8-2a3 3 0 0 1 6 0v2H9V7zm4 9.7V19h-2v-2.3a2 2 0 1 1 2 0z"/></svg></span>
         </div>
         <div class="case-body">
-          <span class="c-tag">Healthcare AI · USA</span>
-          <h3>Making a US claims-AI engine legible to investors</h3>
-          <p>A visual-led system that turned a complex technical moat into an investor-grade story.</p>
-          <button type="button" data-case="US healthcare AI">Request to view</button>
+          <span class="c-tag">Sustainability · India</span>
+          <h3>Making a circular-economy narrative investor-ready</h3>
+          <p>Unit economics and environmental impact told as one coherent growth story.</p>
+          <button type="button" data-case="PadCare">Request to view</button>
         </div>
       </article>
       <article class="case-card reveal">
@@ -1254,10 +1255,22 @@
           <span class="lock" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17 9V7a5 5 0 0 0-10 0v2H5v13h14V9h-2zm-8-2a3 3 0 0 1 6 0v2H9V7zm4 9.7V19h-2v-2.3a2 2 0 1 1 2 0z"/></svg></span>
         </div>
         <div class="case-body">
-          <span class="c-tag">Consumer · Bangalore</span>
-          <h3>A pre-seed consumer raise, rebuilt in a 5-day sprint</h3>
-          <p>Market sizing, GTM triangle, and an investor deck, shipped against a hard deadline.</p>
-          <button type="button" data-case="Hyperlocal consumer">Request to view</button>
+          <span class="c-tag">Geospatial Data · Seed</span>
+          <h3>Turning a geospatial data layer into an accessible pitch</h3>
+          <p>A seed-stage narrative that made a technical infrastructure play legible to non-specialist investors.</p>
+          <button type="button" data-case="EDK">Request to view</button>
+        </div>
+      </article>
+      <article class="case-card reveal">
+        <div class="case-thumb" style="background:linear-gradient(150deg,#7A3CE8,#2B1586)">
+          <span class="nda">NDA protected</span>
+          <span class="lock" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17 9V7a5 5 0 0 0-10 0v2H5v13h14V9h-2zm-8-2a3 3 0 0 1 6 0v2H9V7zm4 9.7V19h-2v-2.3a2 2 0 1 1 2 0z"/></svg></span>
+        </div>
+        <div class="case-body">
+          <span class="c-tag">Fintech · India</span>
+          <h3>Defining the narrative for a first-of-category fintech</h3>
+          <p>Early-stage narrative work to name and defend a category that didn't exist in India before.</p>
+          <button type="button" data-case="Eqaro">Request to view</button>
         </div>
       </article>
     </div>
@@ -1528,19 +1541,13 @@
 
   // decks wall: build slide previews (swap with real thumbnails anytime)
   const SLIDES=[
-    '<div class="slide cover"><span class="sl-dot" style="background:#F5F1E8"></span><div class="sl-bar hi" style="width:66%"></div><div class="sl-bar hi" style="width:42%"></div></div>',
     '<div class="slide img"><img src="assets/wall/tgs.jpg" alt="TGS pitch deck: funding goals" loading="lazy"></div>',
-    '<div class="slide chart"><div class="sl-bars"><i style="height:36%"></i><i style="height:58%"></i><i style="height:44%"></i><i style="height:76%"></i><i style="height:100%"></i></div><div class="sl-bar" style="width:52%"></div></div>',
     '<div class="slide img"><img src="assets/wall/son.jpg" alt="School of Next pitch deck cover" loading="lazy"></div>',
-    '<div class="slide dark"><div class="sl-accent"></div><div class="sl-bar" style="width:74%"></div><div class="sl-bar" style="width:58%"></div></div>',
     '<div class="slide img"><img src="assets/wall/edk.jpg" alt="EDK pitch deck cover" loading="lazy"></div>',
-    '<div class="slide quote"><span class="sl-q">“</span><div class="sl-bar" style="width:82%"></div><div class="sl-bar" style="width:64%"></div><div class="sl-bar" style="width:36%"></div></div>',
     '<div class="slide img"><img src="assets/wall/sequifi.jpg" alt="Sequifi pitch deck: advantage slide" loading="lazy"></div>',
-    '<div class="slide split"><div class="sp-img"></div><div class="sp-tx"><div class="sl-bar" style="width:88%"></div><div class="sl-bar" style="width:70%"></div><div class="sl-bar" style="width:48%"></div></div></div>',
-    '<div class="slide img"><img src="assets/wall/neurofin.jpg" alt="Neurofin pitch deck: agent operations layer" loading="lazy"></div>',
-    '<div class="slide kpi"><span><b>4.2x</b><small>LTV / CAC</small></span><span><b>78%</b><small>Margin</small></span><span><b>12M</b><small>Runway</small></span></div>'
+    '<div class="slide img"><img src="assets/wall/neurofin.jpg" alt="Neurofin pitch deck: agent operations layer" loading="lazy"></div>'
   ];
-  const WALL_ORDER=[[1,0,3,2,6,4,8,5,10],[10,2,1,7,3,9,6,0,4],[8,5,10,1,6,3,0,9,2]];
+  const WALL_ORDER=[[0,1,2,3,4,0,1,2,3],[3,4,0,1,2,3,4,0,1],[1,2,3,4,0,1,2,3,4]];
   document.querySelectorAll('[data-wall]').forEach((track,r)=>{
     track.innerHTML=(WALL_ORDER[r].map(i=>SLIDES[i]).join('')).repeat(2);
   });
