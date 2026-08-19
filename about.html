@@ -399,7 +399,10 @@
     font-size:.95rem;font-weight:600;letter-spacing:-.01em;
     background:var(--btn-grad);-webkit-background-clip:text;background-clip:text;color:transparent;
   }
-  .start-small .ss-sub{color:var(--ink-soft);font-family:var(--sans);font-size:.92rem;font-weight:400;align-self:center}
+  .start-small .ss-sub{
+    color:var(--ink-soft);font-family:var(--sans);font-size:.92rem;font-weight:400;
+    flex-basis:100%;display:block;margin-top:6px;padding-left:calc(1em + .28em);
+  }
   .calls-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
   .call-box{
     background:var(--paper-soft);border:1px solid var(--line);border-radius:18px;padding:24px 24px 20px;
@@ -763,8 +766,6 @@
   }
 
   @media(max-width:640px){
-    .start-small{flex-wrap:wrap}
-    .start-small .ss-sub{flex-basis:100%;display:block;margin-top:6px;padding-left:calc(1em + .6em)}
     #winners{padding-top:64px!important}
     #winners .sec-head{margin-bottom:40px}
     .testi-wrap{margin-top:8px}
