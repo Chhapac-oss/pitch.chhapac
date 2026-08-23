@@ -590,9 +590,9 @@
   .testi-wrap{overflow:hidden;margin:0 calc(50% - 50vw)}
   .testi-track{display:flex;gap:20px;width:max-content;animation:scroll 55s linear infinite}
   .testi-wrap:hover .testi-track,.testi-track:focus-within{animation-play-state:paused}
-  .flip{perspective:1200px;min-height:380px;width:300px;flex:none}
+  .flip{perspective:1200px;min-height:500px;width:300px;flex:none}
   .flip-inner{
-    position:relative;width:100%;height:100%;min-height:380px;
+    position:relative;width:100%;height:100%;min-height:500px;
     transform-style:preserve-3d;transition:transform .65s cubic-bezier(.4,.1,.2,1);
   }
   .flip:hover .flip-inner,.flip:focus-within .flip-inner{transform:rotateY(180deg)}
@@ -620,7 +620,12 @@
   .flip-front .fq::before{content:"“";color:var(--peach);font-size:1.4em;line-height:0;margin-right:2px}
   .flip-front .fn{font-weight:600;font-size:.92rem}
   .flip-front .fr{font-size:.78rem;opacity:.7;line-height:1.4}
-  .flip-back .fb-tag{font-size:.66rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--purple)}
+  .flip-back .fb-tag{
+    display:inline-block;width:max-content;font-size:.66rem;font-weight:600;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--paper);
+    background:rgba(36,25,49,.62);padding:5px 11px;border-radius:999px;
+    backdrop-filter:blur(2px);
+  }
   .flip-back h4{font-size:1.08rem;line-height:1.28;color:inherit}
   .flip-back p{font-size:.86rem;line-height:1.45;opacity:.85;flex:1}
   .flip-back .hint{font-size:.72rem;opacity:.6}
@@ -770,8 +775,8 @@
     #winners{padding-top:64px!important}
     #winners .sec-head{margin-bottom:40px}
     .testi-wrap{margin-top:8px}
-    .flip{width:290px;min-height:460px}
-    .flip-inner{min-height:460px}
+    .flip{width:290px;min-height:540px}
+    .flip-inner{min-height:540px}
   }
 
   .reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease}

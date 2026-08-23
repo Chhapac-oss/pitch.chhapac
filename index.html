@@ -593,9 +593,9 @@
   .testi-wrap{overflow:hidden;margin:0 calc(50% - 50vw)}
   .testi-track{display:flex;gap:20px;width:max-content;animation:scroll 55s linear infinite}
   .testi-wrap:hover .testi-track,.testi-track:focus-within{animation-play-state:paused}
-  .flip{perspective:1200px;min-height:380px;width:300px;flex:none}
+  .flip{perspective:1200px;min-height:500px;width:300px;flex:none}
   .flip-inner{
-    position:relative;width:100%;height:100%;min-height:380px;
+    position:relative;width:100%;height:100%;min-height:500px;
     transform-style:preserve-3d;transition:transform .65s cubic-bezier(.4,.1,.2,1);
   }
   .flip:hover .flip-inner,.flip:focus-within .flip-inner{transform:rotateY(180deg)}
@@ -623,7 +623,12 @@
   .flip-front .fq::before{content:"“";color:var(--peach);font-size:1.4em;line-height:0;margin-right:2px}
   .flip-front .fn{font-weight:600;font-size:.92rem}
   .flip-front .fr{font-size:.78rem;opacity:.7;line-height:1.4}
-  .flip-back .fb-tag{font-size:.66rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--purple)}
+  .flip-back .fb-tag{
+    display:inline-block;width:max-content;font-size:.66rem;font-weight:600;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--paper);
+    background:rgba(36,25,49,.62);padding:5px 11px;border-radius:999px;
+    backdrop-filter:blur(2px);
+  }
   .flip-back h4{font-size:1.08rem;line-height:1.28;color:inherit}
   .flip-back p{font-size:.86rem;line-height:1.45;opacity:.85;flex:1}
   .flip-back .hint{font-size:.72rem;opacity:.6}
@@ -767,8 +772,8 @@
     #winners{padding-top:64px!important}
     #winners .sec-head{margin-bottom:40px}
     .testi-wrap{margin-top:8px}
-    .flip{width:290px;min-height:460px}
-    .flip-inner{min-height:460px}
+    .flip{width:290px;min-height:540px}
+    .flip-inner{min-height:540px}
   }
 
   .reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease}
@@ -1530,7 +1535,7 @@
     {ini:'WD',q:'The visual-led approach made a complex claims engine legible to the non-technical investors in our round."',n:'Wade Denton',r:'Co-founder · Healthcare claims AI, USA',tag:'Healthcare AI · USA',raised:'$—M',co:'Claims automation platform',d:'Kickoff to closure across narrative and visual systems: positioning a 97-99% accuracy engine against generic LLM claims.'},
     {ini:'AM',q:'Repositioning us food-first, not tech-first, changed the rooms we got into. The deck kept working between the meetings."',n:'Aditya Mehta',r:'Co-founder · Epicure Robotics',tag:'Food Robotics · India',raised:'$—M',co:'Epicure Robotics',d:'8+ sessions across three fundraise rounds: narrative, deck builds, and real-time investor feedback loops through the raise.'},
     {ini:'AN',q:'The narrative made our science legible to investors without dumbing it down."',n:'Anagha',r:'Founder · Biocompute',tag:'Deep Tech · Biotech',raised:'$—M',co:'Biocompute',d:'Narrative build translating research depth into an investor-grade story with a clear category claim.'},
-    {ini:'AD',q:'The story finally matched the scale of the problem we\'re solving."',n:'Ajinkya',r:'Founder · PadCare',tag:'Sustainability · India',raised:'$5M',avImg:'assets/testi/ajinkya.jpg',img:'assets/testi/padcare.jpg',co:'PadCare',d:'Impact narrative and investor deck for a circular-economy platform: unit economics and impact told as one story.'}
+    {ini:'AD',q:'After getting 5 blank checks in Shark Tank, the next round and filtering lots of business information for Series B in a consolidated format alongside operations was a challenge. Chhaya really neatly crafted the narrative and her approach got us visible attention and interest from the ongoing investor conversations. It really helped me smoothly close the round right after"',n:'Ajinkya',r:'Founder · PadCare',tag:'Sustainability · India',raised:'$5M',avImg:'assets/testi/ajinkya.jpg',img:'assets/testi/padcare.jpg',co:'PadCare',d:'Impact narrative and investor deck for a circular-economy platform: unit economics and impact told as one story.'}
   ];
   const cardHTML=(t,hidden)=>`<div class="flip"${hidden?' aria-hidden="true"':' tabindex="0"'}>
     <div class="flip-inner">
