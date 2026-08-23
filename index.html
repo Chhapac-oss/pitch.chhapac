@@ -613,11 +613,12 @@
   .fb-veil{position:absolute;inset:0;background:linear-gradient(180deg,rgba(251,232,214,.93),rgba(245,184,216,.88))}
   .flip-back>span,.flip-back>h4,.flip-back>p{position:relative;z-index:1}
   .avatar{
-    width:56px;height:56px;border-radius:50%;flex:none;overflow:hidden;
+    width:56px;height:56px;border-radius:50%;flex:none;overflow:hidden;box-sizing:border-box;
     background:linear-gradient(140deg,var(--orange),var(--pink));
     display:flex;align-items:center;justify-content:center;color:#fff;font-weight:600;
+    padding:2.5px;
   }
-  .avatar img{width:100%;height:100%;object-fit:cover}
+  .avatar img{width:100%;height:100%;object-fit:cover;border-radius:50%;display:block}
   .flip-front .fq{font-size:.94rem;line-height:1.45;flex:1}
   .flip-front .fq::before{content:"“";color:var(--peach);font-size:1.4em;line-height:0;margin-right:2px}
   .flip-front .fn{font-weight:600;font-size:.92rem}
@@ -1529,13 +1530,13 @@
     {ini:'WD',q:'The visual-led approach made a complex claims engine legible to the non-technical investors in our round."',n:'Wade Denton',r:'Co-founder · Healthcare claims AI, USA',tag:'Healthcare AI · USA',raised:'$—M',co:'Claims automation platform',d:'Kickoff to closure across narrative and visual systems: positioning a 97-99% accuracy engine against generic LLM claims.'},
     {ini:'AM',q:'Repositioning us food-first, not tech-first, changed the rooms we got into. The deck kept working between the meetings."',n:'Aditya Mehta',r:'Co-founder · Epicure Robotics',tag:'Food Robotics · India',raised:'$—M',co:'Epicure Robotics',d:'8+ sessions across three fundraise rounds: narrative, deck builds, and real-time investor feedback loops through the raise.'},
     {ini:'AN',q:'The narrative made our science legible to investors without dumbing it down."',n:'Anagha',r:'Founder · Biocompute',tag:'Deep Tech · Biotech',raised:'$—M',co:'Biocompute',d:'Narrative build translating research depth into an investor-grade story with a clear category claim.'},
-    {ini:'AD',q:'The story finally matched the scale of the problem we\'re solving."',n:'Ajinkya',r:'Founder · PadCare',tag:'Sustainability · India',raised:'$—M',img:'assets/testi/padcare.png',co:'PadCare',d:'Impact narrative and investor deck for a circular-economy platform: unit economics and impact told as one story.'}
+    {ini:'AD',q:'The story finally matched the scale of the problem we\'re solving."',n:'Ajinkya',r:'Founder · PadCare',tag:'Sustainability · India',raised:'$5M',avImg:'assets/testi/ajinkya.jpg',img:'assets/testi/padcare.jpg',co:'PadCare',d:'Impact narrative and investor deck for a circular-economy platform: unit economics and impact told as one story.'}
   ];
   const cardHTML=(t,hidden)=>`<div class="flip"${hidden?' aria-hidden="true"':' tabindex="0"'}>
     <div class="flip-inner">
       <div class="flip-face flip-front">
         ${t.raised?`<span class="fm-badge">${t.raised} raised</span>`:''}
-        <span class="avatar">${t.ini}</span>
+        <span class="avatar">${t.avImg?`<img src="${t.avImg}" alt="${t.n}" loading="lazy">`:t.ini}</span>
         <p class="fq">${t.q}</p>
         <div><div class="fn">${t.n}</div><div class="fr">${t.r}</div></div>
       </div>
