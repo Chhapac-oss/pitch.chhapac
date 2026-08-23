@@ -106,7 +106,34 @@
     padding:6px 13px;border-radius:999px;transition:background .2s;white-space:nowrap;
   }
   .nav-links a:hover{background:rgba(63,60,69,.08)}
-  @media(max-width:860px){.nav-links{display:none}nav{width:auto}}
+  .nav-burger{display:none;background:none;border:none;cursor:pointer;padding:8px;flex:none;color:var(--purple)}
+  .nav-burger svg{width:22px;height:22px;display:block}
+  @media(max-width:860px){
+    .nav-links{display:none}
+    .nav-cta{display:none}
+    .nav-burger{display:flex;align-items:center;justify-content:center}
+    nav{width:auto}
+  }
+  .mobile-panel{
+    position:fixed;top:78px;left:50%;transform:translateX(-50%) translateY(-10px);
+    width:min(320px,calc(100vw - 32px));z-index:49;
+    background:rgba(251,248,241,.97);backdrop-filter:blur(18px) saturate(180%);-webkit-backdrop-filter:blur(18px) saturate(180%);
+    border:1px solid rgba(255,255,255,.6);border-radius:22px;padding:12px;
+    box-shadow:0 20px 50px rgba(26,13,110,.18);
+    display:flex;flex-direction:column;gap:2px;
+    opacity:0;pointer-events:none;transition:opacity .22s ease,transform .22s ease;
+  }
+  .mobile-panel.open{opacity:1;pointer-events:auto;transform:translateX(-50%) translateY(0)}
+  .mobile-panel a{
+    text-decoration:none;font-size:.95rem;font-weight:500;color:var(--ink);
+    padding:13px 16px;border-radius:14px;transition:background .2s;
+  }
+  .mobile-panel a:hover{background:rgba(63,60,69,.08)}
+  .mobile-panel .mp-cta{
+    margin-top:6px;text-align:center;background-image:var(--btn-grad);color:#fff;
+    font-weight:600;padding:13px;border-radius:999px;
+  }
+  @media(min-width:861px){.mobile-panel{display:none}}
 
   /* ————— buttons ————— */
   .btn{
@@ -822,9 +849,38 @@
     <a href="#cases">Case studies</a>
     <a href="#faq">FAQ</a>
     <a href="about.html">About</a>
+    <a href="other-services/index.html">What else to expect?</a>
   </div>
   <a class="nav-cta" href="#contact">Book a call</a>
+  <button class="nav-burger" id="navBurger" aria-label="Open menu" aria-expanded="false">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+  </button>
 </nav>
+<div class="mobile-panel" id="mobilePanel">
+  <a href="#what">What we do</a>
+  <a href="#process">Process</a>
+  <a href="#plans">Plans</a>
+  <a href="#cases">Case studies</a>
+  <a href="#faq">FAQ</a>
+  <a href="about.html">About</a>
+  <a href="other-services/index.html">What else to expect?</a>
+  <a class="mp-cta" href="#contact">Book a call</a>
+</div>
+<script>
+(function(){
+  var btn=document.getElementById('navBurger'),panel=document.getElementById('mobilePanel');
+  if(!btn||!panel)return;
+  function close(){panel.classList.remove('open');btn.setAttribute('aria-expanded','false')}
+  btn.addEventListener('click',function(e){
+    e.stopPropagation();
+    var open=panel.classList.toggle('open');
+    btn.setAttribute('aria-expanded',open?'true':'false');
+  });
+  panel.addEventListener('click',function(e){if(e.target.tagName==='A')close()});
+  document.addEventListener('click',function(e){if(!panel.contains(e.target)&&e.target!==btn)close()});
+  window.addEventListener('keydown',function(e){if(e.key==='Escape')close()});
+})();
+</script>
 
 <header id="top">
   <div class="band-wrap">
@@ -1455,6 +1511,7 @@
         <a href="#cases">Case studies</a>
         <a href="#faq">FAQ</a>
         <a href="about.html">About us</a>
+        <a href="other-services/index.html">What else to expect?</a>
       </div>
       <div class="fc-col">
         <span class="fc-h">Connect</span>
