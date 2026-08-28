@@ -182,7 +182,7 @@
     position:absolute;left:24px;bottom:22px;color:rgba(255,255,255,.92);z-index:1;
     font-size:.8rem;font-weight:600;letter-spacing:.04em;text-transform:uppercase;
   }
-  .hero-band .band-ast{position:absolute;top:26px;right:30px;width:55px;height:55px;color:#F5F1E8;z-index:1}
+  .hero-band .band-ast{position:absolute;top:26px;right:30px;width:55px;height:55px;color:#F5F1E8;z-index:1;object-fit:contain}
   .hero-grid{
     display:grid;grid-template-columns:1.25fr .9fr;gap:48px;align-items:end;
     max-width:var(--max);margin:0 auto;padding:56px 24px 0;
@@ -888,7 +888,7 @@
     <div class="hero-band" role="img" aria-label="Chhapac brand gradient">
       <div class="swirl" aria-hidden="true"></div>
       <canvas class="grain" data-grain></canvas>
-      <svg class="band-ast" viewBox="0 0 100 100" fill="currentColor" aria-hidden="true"><use href="#ast"/></svg>
+      <img class="band-ast" src="assets/icons/hero-asterisk.png" alt="" aria-hidden="true">
       <div class="band-word">Crafting the top 5% pitch readiness!</div>
     </div>
     <video class="hero-blob" autoplay loop muted playsinline aria-hidden="true">
