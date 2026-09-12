@@ -630,10 +630,9 @@
   .li-card .li-body{padding:14px 16px 10px}
   .li-card .li-kind{font-family:-apple-system,sans-serif;font-size:.76rem;color:#666;margin-bottom:5px}
   .li-card .li-headline{
-    font-family:-apple-system,sans-serif;font-size:.92rem;font-weight:600;color:#000;line-height:1.35;
+    font-family:-apple-system,sans-serif;font-size:.92rem;font-weight:500;color:#000;line-height:1.35;
     display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;
   }
-  .li-card .li-ellipsis{font-family:-apple-system,sans-serif;font-size:.92rem;color:#000;margin-top:2px}
   .li-card .li-media{position:relative;width:100%;aspect-ratio:16/9.3;overflow:hidden;background:#000}
   .li-card .li-media img{width:100%;height:100%;object-fit:cover;display:block}
   .li-card .li-play{
@@ -1628,15 +1627,15 @@
   // credibility strip: LinkedIn post cards (built once, duplicated for seamless loop)
   // add more entries here as real screenshots/images come in for the other links
   const CRED_POSTS=[
-    {href:'https://www.linkedin.com/posts/piyushj12_when-we-started-skininspired-the-idea-was-activity-7502221495025311744-lYM2',headline:"What actually makes a brand last?",img:'assets/credibility/post-1-thumb.jpg'},
-    {href:'https://www.linkedin.com/feed/update/urn:li:activity:7446202692097548288/',headline:"We're excited to welcome Chhapac as the Ecosystem Partner & Pitch Builders for BeyondXcelerate.",img:'assets/credibility/post-2-thumb.jpg'},
-    {href:'https://www.linkedin.com/posts/chhayajoshi_dubaistartups-womeninbusiness-masterclass-ugcPost-7391194560816824320-fYgR',headline:"When you take your first Dubai trip and end up leading a masterclass instead.",img:'assets/credibility/post-3-thumb.jpg'},
+    {href:'https://www.linkedin.com/posts/piyushj12_when-we-started-skininspired-the-idea-was-activity-7502221495025311744-lYM2',headline:"What actually makes a brand last? When we started SkinInspired, the idea was simple: build skincare that people could genuinely trust and believe in.",img:'assets/credibility/post-1-thumb.jpg'},
+    {href:'https://www.linkedin.com/feed/update/urn:li:activity:7446202692097548288/',headline:"We're excited to welcome Chhapac as the Ecosystem Partner & Pitch Builders for BeyondXcelerate. BeyondXcelerate is designed to help early-stage D2C founders move faster.",img:'assets/credibility/post-2-thumb.jpg'},
+    {href:'https://www.linkedin.com/posts/chhayajoshi_dubaistartups-womeninbusiness-masterclass-ugcPost-7391194560816824320-fYgR',headline:"When you take your first Dubai trip and end up leading a masterclass instead. Sometimes the best moments aren't planned, they're built in real time!",img:'assets/credibility/post-3-thumb.jpg'},
     {href:'https://www.linkedin.com/posts/ajinkya-dhariya-71469789_yesterday-i-was-going-through-our-annual-activity-7450762571533402112-wNyv',headline:"Yesterday I was going through our annual MIS: 725+ enterprises, 2200+ sites, 200+ new clients in FY25-26.",img:'assets/credibility/post-6-thumb.jpg'},
     {href:'https://www.linkedin.com/posts/ajinkya-dhariya-71469789_recently-i-had-the-incredible-opportunity-activity-7204114318898978816-qI8m',headline:"Recently, I had the incredible opportunity to meet Nithin, the founder of Zerodha and Rainmatter Foundation.",img:'assets/credibility/post-7-thumb.jpg'},
     {href:'https://www.linkedin.com/posts/ajinkya-dhariya-71469789_from-questioning-padcares-operation-model-activity-7179146472129523713-bsp3',headline:"From questioning PadCare's operation model to a blank cheque from Peyush, on Shark Tank India.",img:'assets/credibility/post-8-thumb.jpg'},
-    {href:'https://www.linkedin.com/posts/ideabaazofficial_ideabaaz-startupfest-founderasthebrand-activity-7498427200686166016-ci79',headline:"The Ideabaaz Startup Fest brings the biggest names together for a conversation on The Founder as the Brand.",img:'assets/credibility/post-10-thumb.jpg'},
+    {href:'https://www.linkedin.com/posts/ideabaazofficial_ideabaaz-startupfest-founderasthebrand-activity-7498427200686166016-ci79',headline:"Where bold ideas meet the people who can take them further. The Ideabaaz Startup Fest brings together the biggest names for a conversation on The Founder as the Brand.",img:'assets/credibility/post-10-thumb.jpg'},
     {href:'https://www.linkedin.com/posts/ideabaazofficial_ideabaaz-startupfest-womenentrepreneurs-activity-7498070097434148864-h_4s',headline:"India's next economic leap will be built by bold minds, and women are at the forefront.",img:'assets/credibility/post-12-thumb.jpg'},
-    {href:'https://www.linkedin.com/posts/ideabaazofficial_ideabaaz-ideabaazstartupfest-cleantech-activity-7497514615023661056-Q6Z0',headline:"Profitability meets planetary impact: what does it take to build businesses sustainable for the planet?",img:'assets/credibility/post-13-thumb.jpg'},
+    {href:'https://www.linkedin.com/posts/ideabaazofficial_ideabaaz-ideabaazstartupfest-cleantech-activity-7497514615023661056-Q6Z0',headline:"Profitability meets planetary impact. What does it take to build businesses that are not just profitable, but sustainable for the planet?",img:'assets/credibility/post-13-thumb.jpg'},
   ];
   (function(){
     const track=document.getElementById('credTrack');
@@ -1646,7 +1645,6 @@
         <div class="li-body">
           <div class="li-kind">Post</div>
           <div class="li-headline">${p.headline}</div>
-          <div class="li-ellipsis">...</div>
         </div>
         <div class="li-media">
           <img src="${p.img}" alt="" loading="lazy">
