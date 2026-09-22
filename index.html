@@ -176,7 +176,7 @@
   }
   @media(max-width:860px){
     .hero-band{height:min(52vh,430px)}
-    .hero-blob{width:476px;height:476px;top:-9px;bottom:auto;left:-61px;right:auto}
+    .hero-blob{width:476px;height:476px;top:-9px;bottom:auto;left:-111px;right:auto}
   }
   .hero-band .band-word{
     position:absolute;left:24px;bottom:22px;color:rgba(255,255,255,.92);z-index:1;
@@ -916,7 +916,7 @@
       <img class="band-ast" src="assets/icons/hero-asterisk.png" alt="" aria-hidden="true">
       <div class="band-word">Crafting the top 5% pitch readiness!</div>
     </div>
-    <video class="hero-blob" id="heroBlobVid" autoplay loop muted playsinline aria-hidden="true">
+    <video class="hero-blob" id="heroBlobVid" autoplay loop muted playsinline webkit-playsinline="true" preload="auto" aria-hidden="true">
       <source src="assets/slime.mov" type='video/quicktime; codecs="hvc1"'>
       <source src="assets/slime.webm" type="video/webm">
     </video>
@@ -926,9 +926,20 @@
       var v = document.getElementById('heroBlobVid');
       if(!v) return;
       v.muted = true;
-      var tryPlay = function(){ v.play().catch(function(){}); };
+      v.defaultMuted = true;
+      var tryPlay = function(){ var p = v.play(); if(p && p.catch) p.catch(function(){}); };
       tryPlay();
+      document.addEventListener('loadedmetadata', tryPlay, true);
       document.addEventListener('visibilitychange', function(){ if(!document.hidden) tryPlay(); });
+      // last-resort: unlock on the very first tap/click anywhere on the page,
+      // since some mobile browsers gate autoplay behind any user gesture on the page
+      var unlock = function(){
+        tryPlay();
+        document.removeEventListener('touchstart', unlock);
+        document.removeEventListener('click', unlock);
+      };
+      document.addEventListener('touchstart', unlock, {once:true, passive:true});
+      document.addEventListener('click', unlock, {once:true});
     })();
   </script>
   <div class="hero-grid">
