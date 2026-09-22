@@ -176,7 +176,7 @@
   }
   @media(max-width:860px){
     .hero-band{height:min(52vh,430px)}
-    .hero-blob{width:235px;height:235px;top:24%;bottom:auto;right:-2%}
+    .hero-blob{width:476px;height:476px;top:-9px;bottom:auto;left:-61px;right:auto}
   }
   .hero-band .band-word{
     position:absolute;left:24px;bottom:22px;color:rgba(255,255,255,.92);z-index:1;
@@ -916,11 +916,21 @@
       <img class="band-ast" src="assets/icons/hero-asterisk.png" alt="" aria-hidden="true">
       <div class="band-word">Crafting the top 5% pitch readiness!</div>
     </div>
-    <video class="hero-blob" autoplay loop muted playsinline aria-hidden="true">
+    <video class="hero-blob" id="heroBlobVid" autoplay loop muted playsinline aria-hidden="true">
       <source src="assets/slime.mov" type='video/quicktime; codecs="hvc1"'>
       <source src="assets/slime.webm" type="video/webm">
     </video>
   </div>
+  <script>
+    (function(){
+      var v = document.getElementById('heroBlobVid');
+      if(!v) return;
+      v.muted = true;
+      var tryPlay = function(){ v.play().catch(function(){}); };
+      tryPlay();
+      document.addEventListener('visibilitychange', function(){ if(!document.hidden) tryPlay(); });
+    })();
+  </script>
   <div class="hero-grid">
     <h1>Narrative-led pitching investors grasp <span class="accent">in seconds, not minutes.</span></h1>
     <div class="hero-copy">
